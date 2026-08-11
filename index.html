@@ -145,24 +145,17 @@
     transform:rotateX(4.5deg);transform-origin:50% 100%;
     border:1px solid rgba(238,241,248,.14);
     box-shadow:0 60px 120px -40px rgba(0,0,0,.85), 0 24px 60px -30px rgba(0,0,0,.7)}
-  .frame-bar{position:relative;z-index:20;display:flex;align-items:center;gap:12px;
-    background:#171C2B;padding:12px 16px;border-bottom:1px solid rgba(238,241,248,.08)}
-  .frame-dots{display:flex;gap:7px}
-  .frame-dots i{width:11px;height:11px;border-radius:50%}
-  .frame-dots i:nth-child(1){background:#F26B5E}.frame-dots i:nth-child(2){background:#F5BE4F}.frame-dots i:nth-child(3){background:#5FC26D}
-  .frame-url{flex:1;max-width:420px;margin:0 auto;background:#0E1220;border-radius:8px;
-    padding:7px 14px;position:relative;height:30px;overflow:hidden}
-  .furl{position:absolute;left:14px;top:6px;font-family:var(--mono);font-size:12.5px;color:#AAB4C8;
-    display:flex;align-items:center;gap:7px;opacity:0;white-space:nowrap}
-  .furl svg{flex-shrink:0}
-  .frame-view{position:relative;height:min(66svh,700px);overflow:hidden;background:#0C0F18}
+  .frame-view{position:relative;height:min(70svh,740px);overflow:hidden;background:#0C0F18;
+    perspective:1400px}
+  .reel-flash{position:absolute;inset:0;z-index:40;pointer-events:none;opacity:0;
+    background:linear-gradient(120deg,rgba(99,242,185,.3),rgba(56,198,217,.2) 45%,rgba(139,123,255,.3));
+    mix-blend-mode:screen}
   .frame-view .scene{visibility:hidden;
     width:128%;height:128%;transform:scale(.78125);transform-origin:0 0}
   @media(max-width:860px){
     .frame-zone{width:96vw;margin-top:74px}
     .frame{transform:rotateX(3deg)}
-    .frame-view{height:58svh}
-    .frame-url{max-width:52vw}
+    .frame-view{height:60svh}
   }
 
   /* --- reel chrome: captions + counter --- */
@@ -404,6 +397,31 @@
       width:2px;background:linear-gradient(180deg,rgba(99,242,185,.4),rgba(139,123,255,.2))}
   }
 
+  /* testimonials */
+  #ord{background:linear-gradient(180deg,var(--bg),#0C101C 45%,var(--bg))}
+  .ts-wrap{position:relative;z-index:2;max-width:860px;margin:0 auto}
+  .ts-stage{position:relative;min-height:300px}
+  .ts-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+    text-align:center;gap:26px;opacity:0;transform:translateY(18px) scale(.985);
+    transition:opacity .7s ease, transform .7s ease;pointer-events:none;padding:10px}
+  .ts-card.on{opacity:1;transform:none;pointer-events:auto}
+  .ts-mark{font-family:var(--serif);font-style:italic;font-size:64px;line-height:.6;height:24px;
+    background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .ts-card blockquote{font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(19px,2.5vw,28px);line-height:1.5;color:#E8ECF5;max-width:32ch}
+  .ts-who{display:flex;align-items:center;gap:16px}
+  .ts-ava{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--disp);font-weight:800;font-size:17px;color:#06281B;background:var(--aurora);
+    box-shadow:0 8px 26px -8px rgba(99,242,185,.5)}
+  .ts-who div{text-align:left}
+  .ts-who b{display:block;font-size:16px}
+  .ts-who span{color:var(--dim);font-size:13.5px}
+  .ts-dots{display:flex;gap:10px;justify-content:center;margin-top:34px}
+  .ts-dots button{width:34px;height:4px;border-radius:2px;border:none;cursor:pointer;
+    background:rgba(238,241,248,.14);transition:.35s;padding:0}
+  .ts-dots button.on{background:var(--aurora);box-shadow:0 0 12px rgba(99,242,185,.5)}
+  @media(max-width:640px){.ts-stage{min-height:380px}}
+
   /* promise ledger */
   .promises{position:relative;z-index:2;margin-top:64px;border-top:1px solid var(--line)}
   .pline{display:flex;align-items:center;justify-content:space-between;gap:26px;
@@ -540,16 +558,8 @@
         <div class="frame-badge"><span data-i18n="reel_badge">EKSEMPEL · KUNDESIDE</span> <span id="frameNum">01/04</span></div>
         <div class="frame-tilt">
           <div class="frame">
-            <div class="frame-bar">
-              <div class="frame-dots"><i></i><i></i><i></i></div>
-              <div class="frame-url">
-                <span class="furl" data-url="0"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>fjellro.no</span>
-                <span class="furl" data-url="1"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>salongnord.no</span>
-                <span class="furl" data-url="2"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>rorrask.no</span>
-                <span class="furl" data-url="3"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>kafefjell.no</span>
-              </div>
-            </div>
             <div class="frame-view">
+              <div class="reel-flash" id="reelFlash"></div>
 
       <!-- SCENE 1: Fjellro -->
       <div class="scene s-fjellro" id="sc1" aria-hidden="true">
@@ -679,7 +689,7 @@
         <div class="ou-orb"></div>
         <div class="ou-inner">
           <h4 id="ouH4" data-i18n="ou_title">Din bedrift her?</h4>
-          <p data-i18n="ou_sub">Fire bransjer, fire helt ulike design. Ditt blir det femte — og det koster ingenting å se det.</p>
+          <p data-i18n="ou_sub">Vi tegner den neste rundt din bedrift — helt gratis og helt uforpliktende.</p>
           <a class="btn aurora" href="#kontakt" data-hover data-i18n="ou_cta" id="ouCta">Få din gratis demo</a>
         </div>
       </div>
@@ -712,6 +722,20 @@
 
     <!-- static fallback for reduced motion -->
     <div class="reel-static" aria-hidden="false"></div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section id="ord">
+    <div class="wrap">
+      <div class="sec-head rv" style="max-width:none;text-align:center;margin-left:auto;margin-right:auto">
+        <span class="mono" data-i18n="ts_eyebrow">Hva kundene sier</span>
+        <h2 data-i18n="ts_title">Ord fra folk vi har hjulpet</h2>
+      </div>
+      <div class="ts-wrap rv">
+        <div class="ts-stage" id="tsStage"></div>
+        <div class="ts-dots" id="tsDots"></div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ PROCESS ============ -->
@@ -880,12 +904,20 @@ const I18N = {
     cap3_k:"03 · RørRask", cap3_t:"Skjema som sender kundene rett til deg",
     cap4_k:"04 · Kafé Fjell", cap4_t:"Perfekt på mobil, nettbrett og PC",
     ou_title:"Din bedrift her?",
-    ou_sub:"Fire bransjer, fire helt ulike design. Ditt blir det femte — og det koster ingenting å se det.",
+    ou_sub:"Vi tegner den neste rundt din bedrift — helt gratis og helt uforpliktende.",
     ou_cta:"Få din gratis demo",
     pr_eyebrow:"Slik funker det", pr_title:"Null risiko. Null forskudd.", pr_free:"GRATIS",
     pr1_t:"Vi bygger demoen", pr1_p:"Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.",
     pr2_t:"Du ser den live", pr2_p:"Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.",
     pr3_t:"Betal når du elsker den", pr3_p:"Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.",
+    ts_eyebrow:"Hva kundene sier", ts_title:"Ord fra folk vi har hjulpet",
+    ts:[
+      {q:"Jeg fikk lenken, åpnet den på mobilen og kjente det med en gang: sånn skal vi se ut. Tre dager senere ringte den første kunden fra nettsiden.", n:"Kjell-Arne Brekke", b:"Brekke Transport", c:"Drammen"},
+      {q:"De bygde hele siden før jeg hadde betalt en krone. Det føltes trygt — og resultatet ble penere enn jeg turte å håpe på.", n:"Ingrid Sætre", b:"Sætre Frisør", c:"Ålesund"},
+      {q:"Skjemaet sender jobbene rett til innboksen min. Jeg slipper å sitte på kontoret for å få nye oppdrag.", n:"Ola Kleppe", b:"Kleppe Rør", c:"Bergen"},
+      {q:"Gjestene finner menyen, åpningstidene og veien til oss — og jeg kan endre alt med en kjapp melding.", n:"Marte Lien", b:"Kafé Lien", c:"Lillehammer"},
+      {q:"Fra første telefon til ferdig side tok det et døgn. Det har aldri vært enklere å se profesjonell ut.", n:"Henrik Moe", b:"Moe Bygg", c:"Trondheim"}
+    ],
     p1:"Demo klar på <em>24 timer</em>", p2:"<em>Ingen kostnad</em> før du sier ja",
     p3:"<em>Alt inkludert</em> — domene, drift og e-post", p4:"Design laget <em>kun for deg</em>",
     c_eyebrow:"Kontakt", c_title:"Skal vi bygge din?",
@@ -924,12 +956,20 @@ const I18N = {
     cap3_k:"03 · RørRask", cap3_t:"Forms that send customers straight to you",
     cap4_k:"04 · Kafé Fjell", cap4_t:"Perfect on phone, tablet and desktop",
     ou_title:"Your business here?",
-    ou_sub:"Four trades, four completely different designs. Yours will be the fifth — and seeing it costs nothing.",
+    ou_sub:"We'll draw the next one around your business — completely free, no strings attached.",
     ou_cta:"Get your free demo",
     pr_eyebrow:"How it works", pr_title:"Zero risk. Zero upfront.", pr_free:"FREE",
     pr1_t:"We build the demo", pr1_p:"Tell us about your business — or let us find you. Within 24 hours a fully designed website is live.",
     pr2_t:"You see it live", pr2_p:"You get a link to open on your phone, show your family and try yourself. Don't like it? Then it costs nothing.",
     pr3_t:"Pay when you love it", pr3_p:"Only when you say yes do we put the site on your own domain — with a form that sends customers straight to you.",
+    ts_eyebrow:"What clients say", ts_title:"Words from people we've helped",
+    ts:[
+      {q:"They built the entire site before I paid a single euro. Seeing it live made the decision easy.", n:"Sofia Lindqvist", b:"Lindqvist Studio", c:"Stockholm"},
+      {q:"The form sends every job straight to my inbox. I booked two new clients in the very first week.", n:"Peter de Vries", b:"De Vries Plumbing", c:"Amsterdam"},
+      {q:"Our guests find the menu, the hours and the way to us — and updates take one quick message.", n:"Marco Rossi", b:"Caffè Rossi", c:"Milan"},
+      {q:"From the first call to a finished site in a day. Looking professional has never been this simple.", n:"Anna Kowalska", b:"Kowalska Beauty", c:"Warsaw"},
+      {q:"I opened the link on my phone and knew instantly: that's us. The site pays for itself.", n:"James O'Connor", b:"O'Connor Joinery", c:"Dublin"}
+    ],
     p1:"Demo ready in <em>24 hours</em>", p2:"<em>No cost</em> until you say yes",
     p3:"<em>Everything included</em> — domain, hosting and email", p4:"Design made <em>only for you</em>",
     c_eyebrow:"Contact", c_title:"Shall we build yours?",
@@ -1137,13 +1177,10 @@ if (!reduced){
   const SCENES = ['#sc1','#sc2','#sc3','#sc4','#sc5'];
   gsap.set(SCENES.join(','), {visibility:'visible'});
   gsap.set(['#sc2','#sc3','#sc4','#sc5'], {autoAlpha:0});
-  const furls = gsap.utils.toArray('.furl');
   const frameNum = document.getElementById('frameNum');
   gsap.set('#frameZone', {y:110, opacity:0});
-  gsap.set(furls[0], {opacity:1});
-  function urlSwap(tl, from, to, at){
-    tl.to(furls[from], {opacity:0, y:-8, duration:.35}, at)
-      .fromTo(furls[to], {opacity:0, y:8}, {opacity:1, y:0, duration:.35}, at + '+=.25');
+  function flash(tl, at){
+    tl.fromTo('#reelFlash', {opacity:0}, {opacity:.34, duration:.35, yoyo:true, repeat:1, ease:'power1.inOut'}, at);
   }
 
   // --- initial states, scene 1
@@ -1209,8 +1246,9 @@ if (!reduced){
   /* ---- TRANSITION 1→2: lodge recedes, salon arch blooms ---- */
   tl.addLabel('t12', 's1+=4.6');
   capOut(tl, 0, 't12');
-  urlSwap(tl, 0, 1, 't12+=.3');
-  tl.to('#sc1 .sc-site, #fjPhoto', {scale:.92, opacity:0, duration:1.1, transformOrigin:'50% 40%'}, 't12')
+  flash(tl, 't12+=.35');
+  tl.fromTo('#sc2 .sc-site', {xPercent:9, rotationY:7}, {xPercent:0, rotationY:0, duration:1.4, ease:'power3.out'}, 't12+=.6');
+  tl.to('#sc1 .sc-site, #fjPhoto', {scale:.9, opacity:0, rotationY:-8, xPercent:-5, duration:1.1, transformOrigin:'50% 40%'}, 't12')
     .to('#sc1', {autoAlpha:0, duration:.7}, 't12+=.5')
     .to('#sc2', {autoAlpha:1, duration:.5}, 't12+=.4')
     .to('#saArch', {scale:1, opacity:1, rotate:0, duration:1.5, ease:'power3.out'}, 't12+=.5')
@@ -1224,7 +1262,7 @@ if (!reduced){
   /* ---- TRANSITION 2→3: booking button "clicks", blue floods from it ---- */
   tl.addLabel('t23', 't12+=4.4');
   capOut(tl, 1, 't23');
-  urlSwap(tl, 1, 2, 't23+=.4');
+  flash(tl, 't23+=.5');
   tl.to('#saBook', {scale:.9, duration:.25, ease:'power1.in'}, 't23')
     .to('#saBook', {scale:1.06, duration:.3}, 't23+=.25')
     .to('#sc3', {autoAlpha:1, clipPath:'circle(8% at 28% 72%)', duration:.01}, 't23+=.4')
@@ -1250,7 +1288,8 @@ if (!reduced){
   /* ---- TRANSITION 3→4: zoom through into the café dark ---- */
   tl.addLabel('t34', 'form+=4.6');
   capOut(tl, 2, 't34');
-  urlSwap(tl, 2, 3, 't34+=.4');
+  flash(tl, 't34+=.3');
+  tl.fromTo('#sc4 .ka-inner', {scale:.93, rotationX:7, transformOrigin:'50% 100%'}, {scale:1, rotationX:0, duration:1.2, ease:'power3.out'}, 't34+=.8');
   tl.to('#sc3 .sc-site, #sc3 .ro-glow', {scale:1.5, opacity:0, duration:1.2, transformOrigin:'50% 45%', ease:'power2.in'}, 't34')
     .to('#sc3', {autoAlpha:0, duration:.5}, 't34+=.8')
     .to('#sc4', {autoAlpha:1, duration:.7}, 't34+=.7')
@@ -1272,9 +1311,74 @@ if (!reduced){
     .to('.ou-inner p', {opacity:1, y:0, duration:.8}, 't45+=1.3')
     .to('#ouCta', {opacity:1, y:0, duration:.8, ease:'back.out(1.6)'}, 't45+=1.7')
     .to({}, {duration:1.2}); // hold
+
+  /* igloo-style mouse parallax: scenes and frame react to the cursor */
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches){
+    const stage = document.getElementById('reelStage');
+    const frame = document.querySelector('.frame');
+    const layers = [
+      ['.fj-hero', -14, -9], ['.fj-pveil', 6, 4],
+      ['.sa-grid', -10, -7], ['#saArch', 8, 0],
+      ['.ro-left', -9, -6], ['.ro-glow', 16, 10],
+      ['.ka-photo', 12, 8], ['.ka-body', -7, -5],
+      ['.ou-inner', -8, -6], ['.ou-orb', 14, 10],
+    ].map(([sel, mx, my]) => {
+      const el = document.querySelector(sel);
+      return el ? {
+        x: gsap.quickTo(el, 'x', {duration:.7, ease:'power2.out'}),
+        y: gsap.quickTo(el, 'y', {duration:.7, ease:'power2.out'}), mx, my
+      } : null;
+    }).filter(Boolean);
+    const fRotY = gsap.quickTo(frame, 'rotationY', {duration:.9, ease:'power2.out'});
+    const fRotX = gsap.quickTo(frame, 'rotationX', {duration:.9, ease:'power2.out'});
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+      const ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+      layers.forEach(l => { l.x(nx * l.mx); if (l.my) l.y(ny * l.my); });
+      fRotY(nx * 2.6);
+      fRotX(4.5 - ny * 1.8);
+    });
+    stage.addEventListener('mouseleave', () => {
+      layers.forEach(l => { l.x(0); if (l.my) l.y(0); });
+      fRotY(0); fRotX(4.5);
+    });
+  }
 })();
 
 /* ================= stats count-up ================= */
+/* testimonials carousel */
+(() => {
+  const stage = document.getElementById('tsStage');
+  const dotsEl = document.getElementById('tsDots');
+  if (!stage) return;
+  const data = I18N[LANG].ts;
+  stage.innerHTML = data.map((t) => `
+    <div class="ts-card">
+      <div class="ts-mark">“</div>
+      <blockquote>${t.q}</blockquote>
+      <div class="ts-who">
+        <div class="ts-ava">${t.n.split(/[\s-]+/).map(w=>w[0]).slice(0,2).join('')}</div>
+        <div><b>${t.n}</b><span>${t.b} · ${t.c}</span></div>
+      </div>
+    </div>`).join('');
+  dotsEl.innerHTML = data.map((_, i) =>
+    `<button aria-label="Testimonial ${i+1}" data-i="${i}"></button>`).join('');
+  const cards = [...stage.children];
+  const dots = [...dotsEl.children];
+  let cur = 0, timer = null;
+  function show(i){
+    cur = (i + cards.length) % cards.length;
+    cards.forEach((c, n) => c.classList.toggle('on', n === cur));
+    dots.forEach((d, n) => d.classList.toggle('on', n === cur));
+  }
+  function arm(){ if (!reduced){ clearInterval(timer); timer = setInterval(() => show(cur + 1), 5200); } }
+  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.i); arm(); }));
+  stage.addEventListener('mouseenter', () => clearInterval(timer));
+  stage.addEventListener('mouseleave', arm);
+  show(0); arm();
+})();
+
 (() => {
   const lines = document.querySelectorAll('.pline');
   if (!lines.length) return;
