@@ -134,7 +134,7 @@
   .sc-site{position:absolute;inset:0;display:flex;flex-direction:column}
 
   /* --- the persistent browser window the client sites live in --- */
-  .frame-zone{position:relative;z-index:10;width:min(86vw,1120px);margin-top:84px}
+  .frame-zone{position:relative;z-index:10;width:min(94vw,1280px);margin-top:66px}
   .frame-badge{position:absolute;top:-15px;left:22px;z-index:30;
     background:rgba(10,13,20,.92);border:1px solid rgba(99,242,185,.4);color:var(--mint);
     font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
@@ -155,12 +155,13 @@
   .furl{position:absolute;left:14px;top:6px;font-family:var(--mono);font-size:12.5px;color:#AAB4C8;
     display:flex;align-items:center;gap:7px;opacity:0;white-space:nowrap}
   .furl svg{flex-shrink:0}
-  .frame-view{position:relative;height:min(62svh,640px);overflow:hidden;background:#0C0F18}
-  .frame-view .scene{visibility:hidden}
+  .frame-view{position:relative;height:min(66svh,700px);overflow:hidden;background:#0C0F18}
+  .frame-view .scene{visibility:hidden;
+    width:128%;height:128%;transform:scale(.78125);transform-origin:0 0}
   @media(max-width:860px){
-    .frame-zone{width:94vw;margin-top:78px}
+    .frame-zone{width:96vw;margin-top:74px}
     .frame{transform:rotateX(3deg)}
-    .frame-view{height:56svh}
+    .frame-view{height:58svh}
     .frame-url{max-width:52vw}
   }
 
@@ -344,22 +345,56 @@
     animation:drift 24s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(60px,-50px,0) scale(1.15)}}
 
-  #prosess{background:linear-gradient(180deg,var(--bg),#0C1019 40%,var(--bg))}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative;z-index:2}
-  .step{position:relative;background:linear-gradient(160deg,rgba(238,241,248,.045),rgba(238,241,248,.015));
-    border:1px solid var(--line);border-radius:20px;padding:34px 30px;overflow:hidden;
-    transition:transform .35s ease, border-color .35s ease}
-  .step:hover{transform:translateY(-6px);border-color:rgba(99,242,185,.3)}
-  .step::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
-    background:var(--aurora);opacity:0;transition:opacity .35s}
-  .step:hover::before{opacity:1}
-  .step .num{font-family:var(--disp);font-weight:800;font-size:60px;line-height:1;
-    background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
-  .step h3{font-family:var(--disp);font-weight:700;font-size:23px;margin:18px 0 10px}
-  .step p{color:var(--dim);font-size:15.5px}
-  .step .free{position:absolute;top:26px;right:26px;font-family:var(--mono);font-size:10.5px;
-    letter-spacing:.14em;color:#06281B;background:var(--mint);padding:6px 11px;border-radius:999px}
-  @media(max-width:900px){.steps{grid-template-columns:1fr}}
+  #prosess{background:linear-gradient(180deg,var(--bg) 0%,#0A0F1E 30%,#0B101F 70%,var(--bg) 100%);overflow:hidden}
+  #prosessAurora{position:absolute;inset:0;width:100%;height:100%;opacity:.8;pointer-events:none}
+  .stars{position:absolute;inset:0;pointer-events:none}
+  .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;
+    animation:twinkle 4s ease-in-out infinite}
+  @keyframes twinkle{0%,100%{opacity:.12}50%{opacity:.7}}
+
+  /* the journey: a path drawing itself through three orb stops */
+  .journey{position:relative;z-index:2;margin-top:20px}
+  .j-path{position:absolute;left:0;right:0;top:56px;height:150px;pointer-events:none}
+  .j-path svg{width:100%;height:100%;overflow:visible}
+  .j-line-bg{fill:none;stroke:rgba(238,241,248,.08);stroke-width:2;stroke-dasharray:6 8}
+  .j-line{fill:none;stroke:url(#jgrad);stroke-width:2.5;
+    filter:drop-shadow(0 0 10px rgba(99,242,185,.5))}
+  .j-comet{filter:drop-shadow(0 0 12px rgba(99,242,185,.9))}
+  .j-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;position:relative}
+  .jnode{position:relative;text-align:center;padding-top:8px}
+  .j-orb{position:relative;width:112px;height:112px;margin:0 auto 26px}
+  .j-orb .halo{position:absolute;inset:-12px;border-radius:50%;
+    border:1px dashed rgba(238,241,248,.15);animation:spin 30s linear infinite}
+  .jnode:hover .halo{animation-duration:8s;border-color:rgba(99,242,185,.4)}
+  .j-orb .core{position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, rgba(99,242,185,.22), rgba(13,17,32,.9) 60%);
+    border:1.5px solid transparent;
+    background-clip:padding-box;
+    box-shadow:0 0 0 1.5px rgba(99,242,185,.35), 0 18px 50px -18px rgba(99,242,185,.35),
+      inset 0 0 26px rgba(99,242,185,.12);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--disp);font-weight:800;font-size:34px;
+    background-color:rgba(13,17,32,.85);backdrop-filter:blur(6px);
+    transition:box-shadow .4s, transform .4s}
+  .j-orb .core b{background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .jnode:hover .core{transform:scale(1.06);
+    box-shadow:0 0 0 1.5px rgba(99,242,185,.7), 0 24px 70px -18px rgba(99,242,185,.55),
+      inset 0 0 34px rgba(99,242,185,.2)}
+  .jnode h3{font-family:var(--disp);font-weight:700;font-size:22px;margin-bottom:10px}
+  .jnode p{color:var(--dim);font-size:15px;max-width:30ch;margin:0 auto}
+  .jnode .free{position:absolute;top:-4px;left:calc(50% + 36px);font-family:var(--mono);font-size:10px;
+    letter-spacing:.14em;color:#06281B;background:var(--mint);padding:5px 10px;border-radius:999px;
+    transform:rotate(6deg);box-shadow:0 6px 18px -6px rgba(99,242,185,.6)}
+  @media(max-width:900px){
+    .j-grid{grid-template-columns:1fr;gap:44px}
+    .j-path{display:none}
+    .jnode{display:grid;grid-template-columns:112px 1fr;gap:22px;text-align:left;align-items:center}
+    .jnode .j-orb{margin:0}
+    .jnode p{margin:0}
+    .jnode .free{left:78px;top:-8px}
+    .jnode:not(:last-child)::after{content:"";position:absolute;left:55px;top:118px;bottom:-40px;
+      width:2px;background:linear-gradient(180deg,rgba(99,242,185,.4),rgba(139,123,255,.2))}
+  }
 
   /* HUD ring gauges */
   .hud{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;position:relative;z-index:2}
@@ -685,29 +720,45 @@
 
   <!-- ============ PROCESS ============ -->
   <section id="prosess">
-    <div class="glow" style="width:520px;height:520px;left:-10%;bottom:-5%;background:radial-gradient(circle,rgba(99,242,185,.13),transparent 65%)"></div>
-    <div class="glow" style="width:460px;height:460px;right:-8%;top:0;background:radial-gradient(circle,rgba(139,123,255,.12),transparent 65%)"></div>
+    <canvas id="prosessAurora" aria-hidden="true"></canvas>
+    <div class="stars" id="stars" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sec-head rv">
         <span class="mono" data-i18n="pr_eyebrow">Slik funker det</span>
         <h2 data-i18n="pr_title">Null risiko. Null forskudd.</h2>
       </div>
-      <div class="steps">
-        <div class="step rv">
-          <span class="free" data-i18n="pr_free">GRATIS</span>
-          <span class="num">01</span>
-          <h3 data-i18n="pr1_t">Vi bygger demoen</h3>
-          <p data-i18n="pr1_p">Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.</p>
+      <div class="journey">
+        <div class="j-path" aria-hidden="true">
+          <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="jgrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#63F2B9"/>
+                <stop offset="50%" stop-color="#38C6D9"/>
+                <stop offset="100%" stop-color="#8B7BFF"/>
+              </linearGradient>
+            </defs>
+            <path class="j-line-bg" d="M60,75 C260,-20 420,170 600,75 C780,-20 940,170 1140,75"/>
+            <path class="j-line" id="jLine" d="M60,75 C260,-20 420,170 600,75 C780,-20 940,170 1140,75"/>
+            <circle class="j-comet" id="jComet" r="5" fill="#63F2B9" cx="60" cy="75"/>
+          </svg>
         </div>
-        <div class="step rv">
-          <span class="num">02</span>
-          <h3 data-i18n="pr2_t">Du ser den live</h3>
-          <p data-i18n="pr2_p">Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.</p>
-        </div>
-        <div class="step rv">
-          <span class="num">03</span>
-          <h3 data-i18n="pr3_t">Betal når du elsker den</h3>
-          <p data-i18n="pr3_p">Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.</p>
+        <div class="j-grid">
+          <div class="jnode rv">
+            <span class="free" data-i18n="pr_free">GRATIS</span>
+            <div class="j-orb"><span class="halo"></span><span class="core"><b>01</b></span></div>
+            <h3 data-i18n="pr1_t">Vi bygger demoen</h3>
+            <p data-i18n="pr1_p">Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.</p>
+          </div>
+          <div class="jnode rv">
+            <div class="j-orb"><span class="halo"></span><span class="core"><b>02</b></span></div>
+            <h3 data-i18n="pr2_t">Du ser den live</h3>
+            <p data-i18n="pr2_p">Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.</p>
+          </div>
+          <div class="jnode rv">
+            <div class="j-orb"><span class="halo"></span><span class="core"><b>03</b></span></div>
+            <h3 data-i18n="pr3_t">Betal når du elsker den</h3>
+            <p data-i18n="pr3_p">Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.</p>
+          </div>
         </div>
       </div>
       <div class="hud">
@@ -996,24 +1047,20 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
   });
 }
 
-/* ================= aurora canvas ================= */
-(() => {
-  const cv = document.getElementById('auroraCanvas');
+/* ================= aurora canvases (reusable) ================= */
+function startAurora(id, ribbons){
+  const cv = document.getElementById(id);
+  if (!cv) return;
   const ctx = cv.getContext('2d');
   const DPR = Math.min(devicePixelRatio || 1, 1.5);
   let W, H, running = true;
   function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W*DPR; cv.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
   size(); addEventListener('resize', size);
-  const RIBBONS = [
-    {hue:158, sat:80, base:.30, amp:.10, speed:.00042, off:0,    alpha:.20},
-    {hue:187, sat:75, base:.42, amp:.13, speed:.00031, off:2.1,  alpha:.16},
-    {hue:255, sat:70, base:.24, amp:.08, speed:.00055, off:4.4,  alpha:.13},
-  ];
   function draw(now){
     if (!running) return;
     ctx.clearRect(0,0,W,H);
     ctx.globalCompositeOperation = 'lighter';
-    for (const r of RIBBONS){
+    for (const r of ribbons){
       const yBase = H * r.base;
       ctx.beginPath();
       ctx.moveTo(-100, yBase);
@@ -1040,6 +1087,50 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
     if (vis && !running){ running = true; requestAnimationFrame(draw); }
     running = vis;
   }).observe(cv);
+}
+startAurora('auroraCanvas', [
+  {hue:158, sat:80, base:.30, amp:.10, speed:.00042, off:0,    alpha:.20},
+  {hue:187, sat:75, base:.42, amp:.13, speed:.00031, off:2.1,  alpha:.16},
+  {hue:255, sat:70, base:.24, amp:.08, speed:.00055, off:4.4,  alpha:.13},
+]);
+startAurora('prosessAurora', [
+  {hue:160, sat:75, base:.55, amp:.12, speed:.00030, off:1.2,  alpha:.10},
+  {hue:200, sat:70, base:.72, amp:.10, speed:.00044, off:3.6,  alpha:.08},
+  {hue:258, sat:65, base:.40, amp:.09, speed:.00025, off:5.1,  alpha:.07},
+]);
+
+/* starfield for the journey sky */
+(() => {
+  const host = document.getElementById('stars');
+  if (!host) return;
+  let html = '';
+  for (let i = 0; i < 70; i++){
+    const x = (Math.random()*100).toFixed(2), y = (Math.random()*100).toFixed(2);
+    const d = (Math.random()*4).toFixed(2), s = Math.random() < .2 ? 3 : 2;
+    html += `<i style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;animation-delay:-${d}s"></i>`;
+  }
+  host.innerHTML = html;
+})();
+
+/* journey path draws itself + comet rides it */
+(() => {
+  const line = document.getElementById('jLine');
+  const comet = document.getElementById('jComet');
+  if (!line) return;
+  const L = line.getTotalLength();
+  line.style.strokeDasharray = L;
+  if (reduced){ line.style.strokeDashoffset = 0; return; }
+  line.style.strokeDashoffset = L;
+  ScrollTrigger.create({
+    trigger:'.journey', start:'top 80%', end:'bottom 45%', scrub:0.6,
+    onUpdate(self){
+      const p = self.progress;
+      line.style.strokeDashoffset = L * (1 - p);
+      const pt = line.getPointAtLength(L * p);
+      comet.setAttribute('cx', pt.x);
+      comet.setAttribute('cy', pt.y);
+    }
+  });
 })();
 
 /* ================= hero intro ================= */
