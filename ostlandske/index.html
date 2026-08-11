@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Østlandske Transportservice AS — Maskintransport over hele Norge</title>
+<meta name="description" content="Maskintransport, bred/tung/lang last, tralletrekking og partilast over hele landet. Ring 906 06 787 for pristilbud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#131418;
+    --panel:#1C1D23;
+    --red:#E5192D;
+    --red-glow:rgba(229,25,45,.45);
+    --paper:#F7F6F4;
+    --ink:#1C1D21;
+    --grey:#585A61;
+    --line:#E3E1DC;
+    --white:#FFFFFF;
+    --max:1120px;
+    --display:"Archivo Black",Arial,sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+  .eyebrow{
+    font-family:var(--display);font-size:13px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--red);
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;background:var(--black);
+    box-shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+  .nav{display:flex;align-items:center;gap:20px;height:80px;color:#fff}
+  .brand{display:flex;flex-direction:column;line-height:1.15;text-decoration:none;margin-right:auto}
+  .brand b{
+    font-family:var(--display);font-size:21px;letter-spacing:.04em;color:#fff;
+    text-shadow:0 0 14px var(--red-glow);
+  }
+  .brand b span{color:var(--red)}
+  .brand small{font-size:11.5px;letter-spacing:.3em;color:#9A9CA4;text-transform:uppercase}
+  .nav a.link{
+    text-decoration:none;font-weight:600;font-size:16px;color:#C9CBD1;padding:6px 2px;
+  }
+  .nav a.link:hover{color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--red);color:#fff;text-decoration:none;
+    font-size:18px;font-weight:700;padding:16px 28px;border-radius:12px;
+    border:none;cursor:pointer;transition:transform .15s, box-shadow .2s;
+    box-shadow:0 4px 18px var(--red-glow);
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px var(--red-glow)}
+  .btn.big{font-size:20px;padding:19px 34px}
+  .btn.dark{background:#26272E;box-shadow:none}
+  .btn.dark:hover{background:#2E3038}
+  @media(max-width:820px){.nav a.link{display:none}.btn{font-size:16px;padding:14px 20px}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--black);color:#fff;overflow:hidden}
+  .hero-img{position:absolute;inset:0;background:url("https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/hero.jpg") center 38%/cover no-repeat}
+  .hero-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(12,13,16,.88) 0%, rgba(12,13,16,.62) 45%, rgba(12,13,16,.25) 100%);
+  }
+  .hero-inner{position:relative;padding:110px 0 120px;max-width:640px}
+  .hero h1{
+    font-family:var(--display);font-size:clamp(34px,5.6vw,58px);line-height:1.12;
+    letter-spacing:.01em;margin:18px 0 20px;
+    text-shadow:0 2px 24px rgba(0,0,0,.5);
+  }
+  .hero h1 em{font-style:normal;color:var(--red);text-shadow:0 0 22px var(--red-glow)}
+  .hero p{font-size:21px;color:#E4E5E9;margin-bottom:34px;max-width:34ch}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-note{margin-top:26px;font-size:16px;color:#B9BBC2}
+
+  /* what we haul strip */
+  .strip{background:var(--panel);color:#fff;border-top:1px solid #2A2B31}
+  .strip .wrap{
+    display:flex;gap:10px 38px;flex-wrap:wrap;justify-content:center;
+    padding:20px 22px;font-family:var(--display);font-size:15px;letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .strip span::before{content:"■";color:var(--red);margin-right:12px;font-size:11px;vertical-align:2px}
+
+  /* ---------- sections ---------- */
+  section{padding:92px 0}
+  .sec-head{max-width:660px;margin-bottom:52px}
+  .sec-head h2{
+    font-family:var(--display);font-size:clamp(28px,4vw,42px);line-height:1.15;
+    margin-top:14px;
+  }
+  .sec-head p{margin-top:16px;color:var(--grey);font-size:19px}
+
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+  .svc{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;box-shadow:0 8px 28px -18px rgba(19,20,24,.25);
+  }
+  .svc figure{height:280px;overflow:hidden}
+  .svc figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .svc:hover figure img{transform:scale(1.03)}
+  .svc .txt{padding:26px 28px 30px}
+  .svc h3{font-family:var(--display);font-size:22px;margin-bottom:10px}
+  .svc h3::after{content:"";display:block;width:44px;height:4px;background:var(--red);border-radius:2px;margin-top:10px}
+  .svc p{color:var(--grey);font-size:17px}
+  @media(max-width:760px){.svc-grid{grid-template-columns:1fr}.svc figure{height:220px}}
+
+  /* about */
+  .about{background:var(--black);color:#fff}
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+  .about-photo{border-radius:18px;overflow:hidden;box-shadow:0 20px 50px -20px rgba(0,0,0,.7)}
+  .about h2{font-family:var(--display);font-size:clamp(26px,3.6vw,38px);line-height:1.2;margin:14px 0 20px}
+  .about p{color:#C9CBD1;font-size:18.5px;margin-bottom:18px}
+  .about-facts{
+    display:grid;grid-template-columns:1fr 1fr;gap:0 30px;margin-top:26px;
+    border-top:1px solid #2A2B31;
+  }
+  .fact{padding:16px 0;border-bottom:1px solid #2A2B31}
+  .fact b{display:block;font-family:var(--display);font-size:20px;color:#fff}
+  .fact span{font-size:14.5px;color:#9A9CA4;letter-spacing:.06em;text-transform:uppercase}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  /* ---------- quote form ---------- */
+  .quote{background:var(--paper)}
+  .quote-panel{
+    background:var(--white);border:1px solid var(--line);border-radius:22px;
+    box-shadow:0 24px 60px -30px rgba(19,20,24,.3);
+    display:grid;grid-template-columns:1fr 1.3fr;overflow:hidden;
+  }
+  .quote-info{background:var(--panel);color:#fff;padding:48px 44px;display:flex;flex-direction:column;gap:18px}
+  .quote-info h2{font-family:var(--display);font-size:clamp(24px,3vw,32px);line-height:1.2}
+  .quote-info p{color:#C9CBD1;font-size:17.5px}
+  .quote-phone{
+    font-family:var(--display);font-size:30px;color:#fff;text-decoration:none;
+    text-shadow:0 0 16px var(--red-glow);
+  }
+  .quote-phone:hover{text-decoration:underline;text-underline-offset:8px}
+  .quote-info .hours{font-size:15px;color:#9A9CA4;letter-spacing:.08em;text-transform:uppercase}
+  form{padding:46px 44px;display:flex;flex-direction:column;gap:20px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  label{font-weight:700;font-size:16.5px;display:block;margin-bottom:8px}
+  input,textarea{
+    width:100%;font-family:var(--sans);font-size:18px;color:var(--ink);
+    background:var(--paper);border:2px solid var(--line);border-radius:12px;
+    padding:15px 16px;transition:border-color .2s;
+  }
+  input:focus,textarea:focus{outline:none;border-color:var(--red)}
+  textarea{min-height:110px;resize:vertical}
+  .form-ok{
+    display:none;background:#E9F6EC;border:2px solid #3E9B57;color:#1E5B31;
+    border-radius:12px;padding:18px 20px;font-size:18px;font-weight:600;
+  }
+  .form-ok.show{display:block}
+  .form-err{
+    display:none;background:#FBEBEC;border:2px solid var(--red);color:#8C1220;
+    border-radius:12px;padding:16px 18px;font-size:16.5px;
+  }
+  .form-err.show{display:block}
+  @media(max-width:860px){
+    .quote-panel{grid-template-columns:1fr}
+    .quote-info,form{padding:32px 26px}
+  }
+
+  /* footer */
+  footer{background:var(--black);color:#C9CBD1;padding:56px 0 64px}
+  .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;font-size:16.5px}
+  .foot h4{font-family:var(--display);font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+  .foot a{color:#C9CBD1;text-decoration:none}
+  .foot a:hover{color:#fff;text-decoration:underline}
+  .foot .brand{margin-bottom:12px}
+  .foot p{margin-bottom:6px}
+  .foot .org{margin-top:16px;font-size:14px;color:#7C7E86}
+  @media(max-width:760px){.foot{grid-template-columns:1fr;gap:28px}}
+
+  /* gentle reveal */
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .svc figure img{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <b>ØSTLANDSKE <span>TRANSPORTSERVICE</span></b>
+      <small>Maskintransport · Hele Norge</small>
+    </a>
+    <a class="link" href="#tjenester">Tjenester</a>
+    <a class="link" href="#om-oss">Om oss</a>
+    <a class="link" href="#pristilbud">Pristilbud</a>
+    <a class="btn" href="tel:+4790606787">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      906 06 787
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="hero-img" role="img" aria-label="Østlandske Transportservice sin svarte Scania frakter en buss på semitrailer"></div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="eyebrow">Transportservice siden 2022 · Oslo</span>
+        <h1>Maskintransport <em>over hele Norge</em></h1>
+        <p>Vi frakter maskiner, bred, tung og lang last — trygt og til avtalt tid.</p>
+        <div class="hero-ctas">
+          <a class="btn big" href="tel:+4790606787">Ring 906 06 787</a>
+          <a class="btn big dark" href="#pristilbud">Få pristilbud</a>
+        </div>
+        <p class="hero-note">Svar samme dag · Hele landet</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <span>Maskintransport</span>
+      <span>Bred / tung / lang last</span>
+      <span>Tralletrekking</span>
+      <span>Partilast</span>
+    </div>
+  </div>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="tjenester">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Hva vi frakter</span>
+        <h2>Fra gravemaskin til hel buss</h2>
+        <p>Har det hjul, belter eller bare mange tonn? Vi har utstyret og erfaringen til å flytte det.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc rv">
+          <figure><img src="https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/maskin.jpg" alt="Gravemaskin klar for transport" loading="lazy"></figure>
+          <div class="txt">
+            <h3>Maskintransport</h3>
+            <p>Gravemaskiner, hjullastere og annet anleggsutstyr — hentet på anlegget og levert der du trenger det.</p>
+          </div>
+        </div>
+        <div class="svc rv">
+          <figure><img src="https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/hero.jpg" alt="Buss lastet på semitrailer" loading="lazy"></figure>
+          <div class="txt">
+            <h3>Bred, tung og lang last</h3>
+            <p>Spesialtransport av last som ikke passer i en vanlig trailer — vi har fraktet alt fra brakker til hele busser.</p>
+          </div>
+        </div>
+        <div class="svc rv">
+          <figure><img src="https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/container.jpg" alt="Container på flatvogn" loading="lazy"></figure>
+          <div class="txt">
+            <h3>Tralletrekking og partilast</h3>
+            <p>Vi trekker traller og tar partilast over hele landet — fleksibelt og effektivt for bedrifter.</p>
+          </div>
+        </div>
+        <div class="svc rv">
+          <figure><img src="https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/kjoretoy.jpg" alt="Varebil på plan mot transport" loading="lazy"></figure>
+          <div class="txt">
+            <h3>Kjøretøytransport</h3>
+            <p>Varebiler, minibusser og andre kjøretøy fraktes sikkert på plan — uten mil på telleren.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="om-oss">
+    <div class="wrap about-grid">
+      <div class="about-photo rv">
+        <img src="https://raw.githubusercontent.com/VlatkoTuchev/demo-assets/main/ostlandske/night.jpg" alt="Østlandske Transportservice sin Volvo klar for oppdrag på kvelden" loading="lazy">
+      </div>
+      <div class="rv">
+        <span class="eyebrow">Om oss</span>
+        <h2>Et lite selskap som tar store oppdrag</h2>
+        <p>Østlandske Transportservice AS holder til på Løren i Oslo og har siden 2022 fraktet
+        maskiner og spesiallast over hele Norge. Hos oss snakker du direkte med de som
+        faktisk kjører — ikke et sentralbord.</p>
+        <p>Vi er stolte av utstyret vårt, ryddige leveranser og kunder som kommer tilbake.
+        Følg oss gjerne på Facebook, der deler vi hverdagen fra veien.</p>
+        <div class="about-facts">
+          <div class="fact"><b>Hele Norge</b><span>Kjøreområde</span></div>
+          <div class="fact"><b>Løren, Oslo</b><span>Base</span></div>
+          <div class="fact"><b>2022</b><span>Etablert</span></div>
+          <div class="fact"><b>Samme dag</b><span>Svar på forespørsler</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE FORM (the hook) ================= -->
+  <section class="quote" id="pristilbud">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Pristilbud</span>
+        <h2>Fortell oss hva som skal fraktes</h2>
+        <p>Fyll ut skjemaet, så tar vi kontakt med pris — som regel samme dag. Du kan også ringe oss direkte.</p>
+      </div>
+      <div class="quote-panel rv">
+        <div class="quote-info">
+          <h2>Vi svarer raskt</h2>
+          <p>Beskriv lasten og strekningen, så finner vi riktig bil og gir deg en konkret pris.</p>
+          <a class="quote-phone" href="tel:+4790606787">906 06 787</a>
+          <span class="hours">Man–lør · Lørenveien 59A, Oslo</span>
+          <p style="font-size:15.5px;color:#9A9CA4">E-post: jea@ostlandsketransportservice.no</p>
+        </div>
+        <!-- Submissions email a structured table to vlatkotuchev123@gmail.com via FormSubmit.
+             NOTE: the FIRST submission triggers an activation email to that inbox — click
+             "Activate" once and every later submission arrives automatically. -->
+        <form id="quoteForm" novalidate>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div>
+            <label for="f-navn">Navn / firma</label>
+            <input id="f-navn" name="Navn eller firma" type="text" autocomplete="name" required>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="f-tlf">Telefonnummer</label>
+              <input id="f-tlf" name="Telefon" type="tel" autocomplete="tel" required>
+            </div>
+            <div>
+              <label for="f-epost">E-post</label>
+              <input id="f-epost" name="E-post" type="email" autocomplete="email">
+            </div>
+          </div>
+          <div>
+            <label for="f-hva">Hva skal fraktes?</label>
+            <textarea id="f-hva" name="Hva skal fraktes" placeholder="F.eks. gravemaskin 14 tonn, brakke 3×8 m …" required></textarea>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="f-fra">Fra (sted/by)</label>
+              <input id="f-fra" name="Fra sted" type="text" required>
+            </div>
+            <div>
+              <label for="f-til">Til (sted/by)</label>
+              <input id="f-til" name="Til sted" type="text" required>
+            </div>
+          </div>
+          <button class="btn big" type="submit" id="sendBtn">Send forespørsel</button>
+          <div class="form-ok" id="formOk">Takk for forespørselen! Vi kontakter deg så snart som mulig — som regel samme dag.</div>
+          <div class="form-err" id="formErr">Noe gikk galt med sendingen. Ring oss gjerne direkte på 906 06 787.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="#top">
+        <b style="font-family:var(--display);font-size:19px;color:#fff">ØSTLANDSKE <span style="color:var(--red)">TRANSPORTSERVICE</span></b>
+      </a>
+      <p>Maskintransport, bred/tung/lang last, tralletrekking og partilast over hele landet.</p>
+      <p class="org">Org.nr 928 583 910 · Østlandske Transportservice AS</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p><a href="tel:+4790606787">906 06 787</a></p>
+      <p><a href="mailto:jea@ostlandsketransportservice.no">jea@ostlandsketransportservice.no</a></p>
+      <p>Lørenveien 59A, 0585 Oslo</p>
+    </div>
+    <div>
+      <h4>Følg oss</h4>
+      <p><a href="https://www.facebook.com/profile.php?id=100091676539376" target="_blank" rel="noopener">Facebook</a></p>
+      <p><a href="https://www.instagram.com/ostlandsketransportservice/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // gentle scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.1, rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // quote form -> structured email via FormSubmit (AJAX, no redirect)
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const ok = document.getElementById('formOk');
+    const err = document.getElementById('formErr');
+    const btn = document.getElementById('sendBtn');
+    ok.classList.remove('show'); err.classList.remove('show');
+    if (!form.reportValidity()) return;
+    btn.disabled = true; btn.textContent = 'Sender…';
+    const data = Object.fromEntries(new FormData(form).entries());
+    delete data._honey;
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/vlatkotuchev123@gmail.com', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify({
+          _subject: '🚛 Ny transportforespørsel — ' + (data['Navn eller firma'] || 'nettsiden'),
+          _template: 'table',
+          ...data
+        })
+      });
+      if (!r.ok) throw new Error('http ' + r.status);
+      ok.classList.add('show');
+      form.querySelectorAll('input:not([name=_honey]),textarea').forEach(el => el.value = '');
+      btn.textContent = 'Sendt ✓';
+    } catch (_) {
+      err.classList.add('show');
+      btn.disabled = false; btn.textContent = 'Send forespørsel';
+    }
+  });
+</script>
+</body>
+</html>
