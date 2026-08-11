@@ -409,8 +409,9 @@
     btn.disabled = true; btn.textContent = 'Sender…';
     const data = Object.fromEntries(new FormData(form).entries());
     delete data._honey;
+    data['Kilde'] = 'ostlandske-demo';
     try {
-      const r = await fetch('https://vlatkotuchev.app.n8n.cloud/webhook/ostlandske-lead', {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: JSON.stringify(data)
