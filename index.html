@@ -11,12 +11,12 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%2363F2B9'/><circle cx='50' cy='50' r='20' fill='%230A0D14'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0A0D14;
-    --bg2:#0E1220;
-    --card:#131828;
+    --bg2:#0D1120;
+    --card:#121728;
     --ink:#EEF1F8;
     --dim:#95A0B8;
     --line:rgba(238,241,248,.09);
@@ -27,6 +27,7 @@
     --max:1200px;
     --disp:"Bricolage Grotesque",system-ui,sans-serif;
     --sans:"Instrument Sans",system-ui,sans-serif;
+    --serif:"Fraunces",Georgia,serif;
     --mono:"IBM Plex Mono",ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -43,8 +44,21 @@
   .mono{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
   .grad-text{background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
 
+  /* film grain over everything */
+  .grain{position:fixed;inset:-50%;z-index:180;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 9s steps(6) infinite}
+  @keyframes grain{
+    0%,100%{transform:translate(0,0)}16%{transform:translate(-3%,2%)}33%{transform:translate(2%,-3%)}
+    50%{transform:translate(-2%,-2%)}66%{transform:translate(3%,2%)}83%{transform:translate(-3%,3%)}}
+
+  /* drifting aurora glows per section */
+  .glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(10px);opacity:.5;
+    animation:drift 22s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(60px,-50px,0) scale(1.15)}}
+
   /* ---------- cursor ---------- */
-  .cursor,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;
+  .cursor,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:220;border-radius:50%;
     transform:translate(-50%,-50%)}
   .cursor{width:8px;height:8px;background:var(--mint)}
   .cursor-ring{width:34px;height:34px;border:1px solid rgba(99,242,185,.5);
@@ -112,17 +126,17 @@
 
   /* ---------- sections ---------- */
   section{position:relative;padding:130px 0}
-  .sec-head{max-width:720px;margin-bottom:70px}
+  .sec-head{max-width:760px;margin-bottom:60px;position:relative;z-index:2}
   .sec-head .mono{display:block;margin-bottom:18px}
   .sec-head h2{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;
     font-size:clamp(34px,5vw,58px);line-height:1.05}
   .sec-head p{margin-top:18px;color:var(--dim);font-size:18.5px;max-width:56ch}
   .rv{opacity:0;transform:translateY(30px)}
 
-  /* ---------- build section (the centerpiece) ---------- */
-  #bygg{padding:0}
+  /* ---------- build section ---------- */
+  #bygg{padding:0;background:linear-gradient(180deg,var(--bg) 0%,#0C1019 50%,var(--bg) 100%)}
   .bygg-stage{min-height:100svh;display:flex;align-items:center;overflow:hidden;position:relative}
-  .bygg-grid{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:center;width:100%}
+  .bygg-grid{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:center;width:100%;position:relative;z-index:2}
   .phases{display:flex;flex-direction:column;gap:8px;position:relative}
   .phase{padding:18px 20px;border-left:2px solid var(--line);transition:.35s;opacity:.32}
   .phase.on{opacity:1;border-left-color:var(--mint);background:linear-gradient(90deg,rgba(99,242,185,.07),transparent)}
@@ -130,7 +144,6 @@
   .phase h3{font-family:var(--disp);font-weight:700;font-size:20px;line-height:1.2}
   .phase p{font-size:14.5px;color:var(--dim);margin-top:6px}
 
-  /* the mock browser that builds itself */
   .mock-wrap{perspective:1400px}
   .mock{
     background:#F7F6F4;border-radius:14px;overflow:hidden;color:#1C1D21;
@@ -161,8 +174,7 @@
   .mock-hero-txt h4{font-family:var(--disp);font-weight:800;font-size:clamp(17px,2.4vw,26px);line-height:1.1}
   .mock-hero-txt h4 .mch{opacity:0}
   .mock-hero-txt .mock-btn{display:inline-block;margin-top:12px;background:#E5192D;color:#fff;
-    font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px;
-    box-shadow:0 0 0 0 rgba(229,25,45,.55)}
+    font-size:11px;font-weight:700;padding:8px 16px;border-radius:999px}
   .mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 22px 22px;background:#F7F6F4}
   .mock-card{background:#fff;border:1px solid #E3E1DC;border-radius:10px;overflow:hidden}
   .mock-card img{height:64px;width:100%;object-fit:cover}
@@ -181,29 +193,117 @@
     .phase.on{border-top-color:var(--mint)}
   }
 
-  /* ---------- showcase ---------- */
-  .show-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:26px}
-  .show-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;
-    overflow:hidden;text-decoration:none;display:block}
-  .show-frame{position:relative;margin:22px 22px 0;border-radius:12px 12px 0 0;overflow:hidden;
-    background:#0C0F18;height:430px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
-  .show-frame .bar{display:flex;gap:6px;padding:10px 12px;background:#1A1F30;position:relative;z-index:3}
-  .show-frame .bar i{width:9px;height:9px;border-radius:50%;background:#2A3048}
-  .show-pan{position:absolute;top:34px;left:0;right:0;will-change:transform}
-  .show-static{position:absolute;top:34px;left:0;right:0;bottom:0;object-fit:cover;object-position:top}
-  .show-meta{display:flex;align-items:baseline;gap:14px;padding:20px 26px 24px}
-  .show-meta h3{font-family:var(--disp);font-weight:700;font-size:22px}
-  .show-meta span{color:var(--dim);font-size:14.5px}
-  .show-meta .go{margin-left:auto;color:var(--mint);font-weight:600;font-size:15px;white-space:nowrap}
-  .show-card:hover .go{text-decoration:underline;text-underline-offset:4px}
-  .show-tag{position:absolute;top:34px;right:34px;z-index:5;background:rgba(10,13,20,.8);backdrop-filter:blur(6px);
+  /* ---------- horizontal showcase gallery ---------- */
+  #arbeid{padding:0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 22%,var(--bg2) 78%,var(--bg) 100%)}
+  .gal-pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    overflow:hidden;position:relative;padding:90px 0 60px}
+  .gal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:44px}
+  .gal-count{font-family:var(--disp);font-weight:800;font-size:clamp(22px,3vw,32px);white-space:nowrap}
+  .gal-count small{color:var(--dim);font-size:.6em;font-weight:700}
+  .gal-track{display:flex;gap:clamp(20px,3vw,44px);width:max-content;padding:0 max(24px,calc((100vw - var(--max))/2 + 24px));
+    will-change:transform}
+  .g-slide{width:min(74vw,760px);flex-shrink:0}
+  .g-frame{position:relative;border-radius:16px;overflow:hidden;background:#0C0F18;
+    border:1px solid var(--line);
+    box-shadow:0 34px 80px -34px rgba(0,0,0,.85);
+    transition:transform .45s ease, box-shadow .45s ease}
+  .g-slide:hover .g-frame{transform:translateY(-8px);box-shadow:0 50px 100px -36px rgba(0,0,0,.9),0 0 60px -30px rgba(99,242,185,.35)}
+  .g-bar{display:flex;gap:6px;padding:11px 13px;background:#1A1F30;position:relative;z-index:3}
+  .g-bar i{width:9px;height:9px;border-radius:50%;background:#2A3048}
+  .g-view{position:relative;height:clamp(300px,44vw,440px);overflow:hidden}
+  .g-view > img{position:absolute;top:0;left:0;right:0;width:100%;
+    transition:transform 6s cubic-bezier(.22,.61,.36,1)}
+  .g-slide:hover .g-view > img.pan{transform:translateY(calc(-100% + 440px))}
+  .g-tag{position:absolute;top:14px;right:14px;z-index:6;background:rgba(10,13,20,.82);backdrop-filter:blur(6px);
     border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
     padding:7px 12px;border-radius:999px;color:var(--mint)}
-  @media(max-width:900px){.show-grid{grid-template-columns:1fr}.show-frame{height:340px}}
+  .g-tag.concept{color:#C9B8FF;border-color:rgba(139,123,255,.35)}
+  .g-meta{display:flex;align-items:baseline;gap:14px;padding:18px 6px 0}
+  .g-meta h3{font-family:var(--disp);font-weight:700;font-size:21px}
+  .g-meta span{color:var(--dim);font-size:14.5px}
+  .g-meta .go{margin-left:auto;color:var(--mint);font-weight:600;font-size:15px;white-space:nowrap;text-decoration:none}
+  .g-meta .go:hover{text-decoration:underline;text-underline-offset:4px}
+
+  /* --- concept mini-sites (pure DOM, each its own art direction) --- */
+  .c-inner{position:absolute;inset:0;display:flex;flex-direction:column}
+  /* Salong Nord — warm cream elegance */
+  .c-salon{background:#F4EDE3;color:#2A2118}
+  .c-salon .c-nav{display:flex;justify-content:space-between;align-items:center;padding:4.5% 6%}
+  .c-salon .c-logo{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(13px,1.6vw,18px)}
+  .c-salon .c-links{display:flex;gap:14px;font-size:clamp(8px,1vw,11px);letter-spacing:.14em;text-transform:uppercase;color:#8A7A64}
+  .c-salon .c-hero{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+  .c-salon .c-hero::before{content:"";position:absolute;width:52%;aspect-ratio:.78;left:24%;top:6%;
+    border-radius:999px 999px 0 0;background:linear-gradient(160deg,#D9BFA0,#B98A63 60%,#8F6544);opacity:.9}
+  .c-salon .c-hero-txt{position:relative;z-index:2;transform:translateY(14%)}
+  .c-salon h4{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(22px,3.6vw,44px);line-height:1.05}
+  .c-salon .c-sub{font-size:clamp(9px,1.2vw,13px);letter-spacing:.22em;text-transform:uppercase;color:#8A7A64;margin-top:8px}
+  .c-salon .c-btn{display:inline-block;margin-top:14px;background:#2A2118;color:#F4EDE3;
+    font-size:clamp(9px,1.1vw,12px);letter-spacing:.12em;padding:2.2% 5%;border-radius:999px}
+  .c-salon .c-foot{display:flex;justify-content:center;gap:5%;padding:3.4% 0 4.5%;font-size:clamp(8px,1vw,11px);color:#8A7A64}
+  /* RørRask — bold utility blue */
+  .c-ror{background:#F2F6FC;color:#0D1B33}
+  .c-ror .c-nav{display:flex;align-items:center;gap:3%;padding:4% 6%;background:#0E5FD8;color:#fff}
+  .c-ror .c-logo{font-family:var(--disp);font-weight:800;font-size:clamp(12px,1.6vw,17px)}
+  .c-ror .c-badge{margin-left:auto;background:#FF4438;font-weight:700;font-size:clamp(8px,1vw,11px);
+    padding:1.6% 3%;border-radius:999px;color:#fff;animation:pulse 2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 6px rgba(255,68,56,.15)}}
+  .c-ror .c-hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 7%;position:relative;overflow:hidden}
+  .c-ror .c-hero::after{content:"";position:absolute;right:-14%;top:-30%;width:56%;height:160%;
+    background:linear-gradient(200deg,#1E74F0,#0E5FD8 55%,#0A4AAC);transform:rotate(14deg);border-radius:26px}
+  .c-ror h4{font-family:var(--disp);font-weight:800;font-size:clamp(20px,3.2vw,40px);line-height:1.04;max-width:60%;position:relative;z-index:2}
+  .c-ror .c-phone{display:inline-flex;align-items:center;gap:8px;margin-top:5%;background:#0D1B33;color:#fff;
+    font-family:var(--disp);font-weight:800;font-size:clamp(11px,1.6vw,17px);padding:2.4% 5%;border-radius:999px;
+    position:relative;z-index:2;width:max-content}
+  .c-ror .c-chips{display:flex;gap:2.6%;padding:0 7% 6%;position:relative;z-index:2}
+  .c-ror .c-chips b{background:#fff;border:1px solid #D6E2F5;color:#0D1B33;font-weight:600;
+    font-size:clamp(8px,1.05vw,11.5px);padding:1.8% 3.4%;border-radius:999px;white-space:nowrap}
+  /* Kafé Fjell — dark espresso warmth */
+  .c-kafe{background:#201812;color:#F2E6D8}
+  .c-kafe .c-nav{display:flex;justify-content:space-between;align-items:center;padding:4.5% 6.5%;
+    border-bottom:1px solid rgba(242,230,216,.14)}
+  .c-kafe .c-logo{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(13px,1.7vw,19px);color:#E8B04B}
+  .c-kafe .c-links{font-size:clamp(8px,1vw,11px);letter-spacing:.18em;text-transform:uppercase;color:#B39B82}
+  .c-kafe .c-hero{flex:1;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;padding:0 6.5%;gap:6%}
+  .c-kafe h4{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(20px,3vw,38px);line-height:1.1}
+  .c-kafe .c-menu{margin-top:6%;font-size:clamp(8.5px,1.1vw,12px);color:#CBB49C}
+  .c-kafe .c-menu div{display:flex;align-items:baseline;gap:6px;margin-bottom:3.2%}
+  .c-kafe .c-menu i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-3px)}
+  .c-kafe .c-menu b{color:#E8B04B;font-weight:600}
+  .c-kafe .c-photo{align-self:stretch;margin:8% 0;border-radius:12px;
+    background:radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%);
+    box-shadow:inset 0 0 0 1px rgba(242,230,216,.15), 0 20px 40px -20px rgba(0,0,0,.8)}
+  .c-kafe .c-foot{padding:0 6.5% 5.5%;font-size:clamp(8px,1vw,11px);letter-spacing:.16em;
+    text-transform:uppercase;color:#B39B82}
+
+  /* gallery progress */
+  .gal-progress{margin-top:40px;height:2px;background:var(--line);border-radius:2px;position:relative;overflow:hidden}
+  .gal-progress i{position:absolute;inset:0;background:var(--aurora);transform:scaleX(0);transform-origin:left}
+
+  @media(max-width:860px){
+    #arbeid{padding:90px 0}
+    .gal-pin{min-height:0;padding:0}
+    .gal-track{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      padding:0 24px 20px}
+    .g-slide{scroll-snap-align:center;width:86vw}
+    .g-view{height:64vw}
+    .gal-progress{display:none}
+  }
 
   /* ---------- process ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:step}
-  .step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 30px}
+  #prosess::before{content:"";position:absolute;left:-10%;bottom:-5%;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(99,242,185,.13),transparent 65%);pointer-events:none;
+    animation:drift 26s ease-in-out infinite alternate}
+  #prosess::after{content:"";position:absolute;right:-8%;top:0;width:460px;height:460px;
+    background:radial-gradient(circle,rgba(139,123,255,.12),transparent 65%);pointer-events:none;
+    animation:drift 30s ease-in-out infinite alternate-reverse}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative;z-index:2}
+  .step{position:relative;background:linear-gradient(160deg,rgba(238,241,248,.045),rgba(238,241,248,.015));
+    border:1px solid var(--line);border-radius:20px;padding:34px 30px;overflow:hidden;
+    transition:transform .35s ease, border-color .35s ease}
+  .step:hover{transform:translateY(-6px);border-color:rgba(99,242,185,.3)}
+  .step::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:var(--aurora);opacity:0;transition:opacity .35s}
+  .step:hover::before{opacity:1}
   .step .num{font-family:var(--disp);font-weight:800;font-size:60px;line-height:1;
     background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
   .step h3{font-family:var(--disp);font-weight:700;font-size:23px;margin:18px 0 10px}
@@ -212,17 +312,31 @@
     letter-spacing:.14em;color:#06281B;background:var(--mint);padding:6px 11px;border-radius:999px}
   @media(max-width:900px){.steps{grid-template-columns:1fr}}
 
-  /* facts strip */
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-    border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:26px}
-  .factbox{background:var(--bg2);padding:30px 26px}
-  .factbox b{font-family:var(--disp);font-weight:800;font-size:clamp(26px,3vw,38px);display:block}
-  .factbox span{color:var(--dim);font-size:14px}
-  @media(max-width:900px){.facts{grid-template-columns:repeat(2,1fr)}}
+  /* ---------- stats band (redesigned) ---------- */
+  .stats{position:relative;margin-top:34px;border-radius:24px;padding:1px;z-index:2;
+    background:linear-gradient(120deg,rgba(99,242,185,.4),rgba(56,198,217,.12) 30%,rgba(139,123,255,.35) 100%)}
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);border-radius:23px;overflow:hidden;
+    background:linear-gradient(160deg,#0E1322 0%,#0B0F1A 100%)}
+  .stat{position:relative;padding:40px 30px 36px;text-align:center}
+  .stat + .stat::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(238,241,248,.14),transparent)}
+  .stat b{font-family:var(--disp);font-weight:800;font-size:clamp(38px,4.6vw,60px);line-height:1;
+    display:block;background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 24px rgba(99,242,185,.25))}
+  .stat span{display:block;margin-top:10px;color:var(--dim);font-size:14.5px}
+  .stat::after{content:"";position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--aurora);
+    transform:translateX(-50%);transition:width .45s ease}
+  .stat:hover::after{width:56%}
+  @media(max-width:900px){
+    .stats-inner{grid-template-columns:1fr 1fr}
+    .stat:nth-child(3)::before{display:none}
+  }
 
   /* ---------- contact ---------- */
+  #kontakt::before{content:"";position:absolute;left:50%;top:-140px;width:640px;height:640px;transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(56,198,217,.10),transparent 62%);pointer-events:none}
   .contact-panel{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;
-    overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr}
+    overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;z-index:2}
   .contact-info{padding:56px 50px;position:relative}
   .contact-info::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(ellipse at -20% 120%, rgba(99,242,185,.16), transparent 55%),
@@ -250,22 +364,24 @@
   .form-err.show{display:block}
   @media(max-width:900px){.contact-panel{grid-template-columns:1fr}.contact-info,form{padding:36px 28px}}
 
-  /* footer */
   footer{border-top:1px solid var(--line);padding:44px 0 56px;margin-top:40px}
   .foot{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;color:var(--dim);font-size:14.5px}
   .foot a{color:var(--dim);text-decoration:none}
   .foot a:hover{color:var(--ink)}
 
   @media (prefers-reduced-motion: reduce){
-    .marquee-track{animation:none}
+    .marquee-track,.grain,.glow,#prosess::before,#prosess::after{animation:none}
     .hero-hint span{animation:none}
     .hero h1 .ch{transform:none}
     .hero p.lead,.hero-ctas,.rv{opacity:1;transform:none}
+    .gal-track{overflow-x:auto;width:auto}
+    .g-slide{width:min(86vw,760px)}
   }
 </style>
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
 <div class="cursor"></div><div class="cursor-ring"></div>
 
 <header id="hdr">
@@ -312,6 +428,7 @@
   <!-- ============ BUILD CINEMA ============ -->
   <section id="bygg">
     <div class="bygg-stage">
+      <div class="glow" style="width:480px;height:480px;left:-8%;top:12%;background:radial-gradient(circle,rgba(99,242,185,.10),transparent 65%)"></div>
       <div class="wrap bygg-grid">
         <div class="phases">
           <div class="phase" data-phase="0">
@@ -362,44 +479,146 @@
     </div>
   </section>
 
-  <!-- ============ SHOWCASE ============ -->
+  <!-- ============ HORIZONTAL SHOWCASE ============ -->
   <section id="arbeid">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <span class="mono" data-i18n="work_eyebrow">Ekte demoer</span>
-        <h2 data-i18n="work_title">Bygget for ekte bedrifter</h2>
-        <p data-i18n="work_sub">Dette er ikke maler. Hver side er tegnet rundt én bedrift — deres fag, deres bilder, deres kunder.</p>
-      </div>
-      <div class="show-grid">
-        <a class="show-card rv" href="https://dinnettside.com/ostlandske/" target="_blank" rel="noopener" data-hover>
-          <span class="show-tag">LIVE</span>
-          <div class="show-frame">
-            <div class="bar"><i></i><i></i><i></i></div>
-            <img class="show-pan" id="panImg" src="assets/show_ostlandske_tall.jpg" alt="Østlandske Transportservice nettside">
+    <div class="gal-pin" id="galPin">
+      <div class="wrap">
+        <div class="gal-head">
+          <div class="sec-head" style="margin-bottom:0">
+            <span class="mono" data-i18n="work_eyebrow">Utvalgt arbeid</span>
+            <h2 data-i18n="work_title">Hver bransje. Sitt eget design.</h2>
+            <p data-i18n="work_sub">Fra tungtransport til frisørsalong — ingen maler, ingen gjenbruk. Scroll og se selv.</p>
           </div>
-          <div class="show-meta">
+          <div class="gal-count"><span id="galCur">01</span><small>/05</small></div>
+        </div>
+      </div>
+      <div class="gal-track" id="galTrack">
+
+        <!-- 1: Østlandske (real, live) -->
+        <div class="g-slide">
+          <div class="g-frame">
+            <span class="g-tag">LIVE</span>
+            <div class="g-bar"><i></i><i></i><i></i></div>
+            <div class="g-view">
+              <img class="pan" src="assets/show_ostlandske_tall.jpg" alt="Østlandske Transportservice nettside">
+            </div>
+          </div>
+          <div class="g-meta">
             <h3>Østlandske Transportservice</h3>
             <span data-i18n="work_c1">Maskintransport · Oslo</span>
-            <span class="go" data-i18n="work_visit">Se live →</span>
-          </div>
-        </a>
-        <div class="show-card rv">
-          <span class="show-tag" data-i18n="work_soon">UNDER BYGGING</span>
-          <div class="show-frame">
-            <div class="bar"><i></i><i></i><i></i></div>
-            <img class="show-static" src="assets/show_inch.jpg" alt="1inch Innredning nettside">
-          </div>
-          <div class="show-meta">
-            <h3>1inch Innredning</h3>
-            <span data-i18n="work_c2">Snekkerverksted · Oslo</span>
+            <a class="go" href="https://dinnettside.com/ostlandske/" target="_blank" rel="noopener" data-hover data-i18n="work_visit">Se live →</a>
           </div>
         </div>
+
+        <!-- 2: Salong Nord (concept) -->
+        <div class="g-slide">
+          <div class="g-frame">
+            <span class="g-tag concept" data-i18n="work_concept">KONSEPT</span>
+            <div class="g-bar"><i></i><i></i><i></i></div>
+            <div class="g-view">
+              <div class="c-inner c-salon">
+                <div class="c-nav">
+                  <span class="c-logo">Salong Nord</span>
+                  <span class="c-links"><span>Behandlinger</span><span>Priser</span><span>Bestill</span></span>
+                </div>
+                <div class="c-hero">
+                  <div class="c-hero-txt">
+                    <h4>Tid til å skinne</h4>
+                    <div class="c-sub">Frisør &amp; hudpleie · Tromsø</div>
+                    <span class="c-btn">BESTILL TIME</span>
+                  </div>
+                </div>
+                <div class="c-foot"><span>Man–lør</span><span>Storgata 12</span><span>77 60 00 00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="g-meta">
+            <h3>Salong Nord</h3>
+            <span data-i18n="work_c2">Frisørsalong · Tromsø</span>
+          </div>
+        </div>
+
+        <!-- 3: 1inch (real, in progress) -->
+        <div class="g-slide">
+          <div class="g-frame">
+            <span class="g-tag" data-i18n="work_soon">UNDER BYGGING</span>
+            <div class="g-bar"><i></i><i></i><i></i></div>
+            <div class="g-view">
+              <img src="assets/show_inch.jpg" alt="1inch Innredning nettside" style="height:100%;object-fit:cover;object-position:top">
+            </div>
+          </div>
+          <div class="g-meta">
+            <h3>1inch Innredning</h3>
+            <span data-i18n="work_c3">Snekkerverksted · Oslo</span>
+          </div>
+        </div>
+
+        <!-- 4: RørRask (concept) -->
+        <div class="g-slide">
+          <div class="g-frame">
+            <span class="g-tag concept" data-i18n="work_concept">KONSEPT</span>
+            <div class="g-bar"><i></i><i></i><i></i></div>
+            <div class="g-view">
+              <div class="c-inner c-ror">
+                <div class="c-nav">
+                  <span class="c-logo">RørRask</span>
+                  <span class="c-badge">DØGNVAKT</span>
+                </div>
+                <div class="c-hero">
+                  <h4>Rørlegger på døra innen én time</h4>
+                  <span class="c-phone">☎ 400 20 300</span>
+                </div>
+                <div class="c-chips"><b>Lekkasje</b><b>Bad</b><b>Varmtvann</b><b>Avløp</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="g-meta">
+            <h3>RørRask</h3>
+            <span data-i18n="work_c4">Rørlegger · Bergen</span>
+          </div>
+        </div>
+
+        <!-- 5: Kafé Fjell (concept) -->
+        <div class="g-slide">
+          <div class="g-frame">
+            <span class="g-tag concept" data-i18n="work_concept">KONSEPT</span>
+            <div class="g-bar"><i></i><i></i><i></i></div>
+            <div class="g-view">
+              <div class="c-inner c-kafe">
+                <div class="c-nav">
+                  <span class="c-logo">Kafé Fjell</span>
+                  <span class="c-links">Meny · Om oss · Finn oss</span>
+                </div>
+                <div class="c-hero">
+                  <div>
+                    <h4>Brent i byen,<br>servert med utsikt</h4>
+                    <div class="c-menu">
+                      <div><span>Fjellbrygg filter</span><i></i><b>49,-</b></div>
+                      <div><span>Kanelsnurr</span><i></i><b>39,-</b></div>
+                      <div><span>Skillingsbolle</span><i></i><b>42,-</b></div>
+                    </div>
+                  </div>
+                  <div class="c-photo"></div>
+                </div>
+                <div class="c-foot">Åpent alle dager 07–18 · Fjellgata 3</div>
+              </div>
+            </div>
+          </div>
+          <div class="g-meta">
+            <h3>Kafé Fjell</h3>
+            <span data-i18n="work_c5">Kafé · Ålesund</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="wrap">
+        <div class="gal-progress"><i id="galBar"></i></div>
       </div>
     </div>
   </section>
 
   <!-- ============ PROCESS ============ -->
-  <section id="prosess" style="padding-top:40px">
+  <section id="prosess" style="padding-top:110px">
     <div class="wrap">
       <div class="sec-head rv">
         <span class="mono" data-i18n="pr_eyebrow">Slik funker det</span>
@@ -423,11 +642,13 @@
           <p data-i18n="pr3_p">Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.</p>
         </div>
       </div>
-      <div class="facts rv">
-        <div class="factbox"><b>24t</b><span data-i18n="f1">fra idé til demo</span></div>
-        <div class="factbox"><b>0 kr</b><span data-i18n="f2">før du sier ja</span></div>
-        <div class="factbox"><b class="grad-text">100%</b><span data-i18n="f3">skreddersydd design</span></div>
-        <div class="factbox"><b>1 år</b><span data-i18n="f4">domene og drift inkludert</span></div>
+      <div class="stats rv">
+        <div class="stats-inner">
+          <div class="stat"><b data-count="24" data-suffix="t">0t</b><span data-i18n="f1">fra idé til demo</span></div>
+          <div class="stat"><b data-count="0" data-from="9" data-suffix=" kr">9 kr</b><span data-i18n="f2">før du sier ja</span></div>
+          <div class="stat"><b data-count="100" data-suffix="%">0%</b><span data-i18n="f3">skreddersydd design</span></div>
+          <div class="stat"><b data-count="1" data-suffix=" år">0 år</b><span data-i18n="f4">domene og drift inkludert</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -501,10 +722,11 @@ const I18N = {
     ph1_t:"Vi henter identiteten", ph1_p:"Ekte bilder, farger og språk fra bedriften din.",
     ph2_t:"Design som passer bransjen", ph2_p:"Ingen maler — hver side tegnes for faget ditt.",
     ph3_t:"Klar på 24 timer", ph3_p:"Publisert med skjema som sender deg kundene.",
-    work_eyebrow:"Ekte demoer", work_title:"Bygget for ekte bedrifter",
-    work_sub:"Dette er ikke maler. Hver side er tegnet rundt én bedrift — deres fag, deres bilder, deres kunder.",
-    work_c1:"Maskintransport · Oslo", work_c2:"Snekkerverksted · Oslo",
-    work_visit:"Se live →", work_soon:"UNDER BYGGING",
+    work_eyebrow:"Utvalgt arbeid", work_title:"Hver bransje. Sitt eget design.",
+    work_sub:"Fra tungtransport til frisørsalong — ingen maler, ingen gjenbruk. Scroll og se selv.",
+    work_c1:"Maskintransport · Oslo", work_c2:"Frisørsalong · Tromsø", work_c3:"Snekkerverksted · Oslo",
+    work_c4:"Rørlegger · Bergen", work_c5:"Kafé · Ålesund",
+    work_visit:"Se live →", work_soon:"UNDER BYGGING", work_concept:"KONSEPT",
     pr_eyebrow:"Slik funker det", pr_title:"Null risiko. Null forskudd.", pr_free:"GRATIS",
     pr1_t:"Vi bygger demoen", pr1_p:"Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.",
     pr2_t:"Du ser den live", pr2_p:"Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.",
@@ -529,10 +751,11 @@ const I18N = {
     ph1_t:"We capture your identity", ph1_p:"Real photos, colors and language from your business.",
     ph2_t:"Design that fits your trade", ph2_p:"No templates — every site is drawn for your craft.",
     ph3_t:"Ready in 24 hours", ph3_p:"Published with a form that sends customers to you.",
-    work_eyebrow:"Real demos", work_title:"Built for real businesses",
-    work_sub:"These are not templates. Every site is designed around one business — their trade, their photos, their customers.",
-    work_c1:"Heavy haulage · Oslo", work_c2:"Carpentry studio · Oslo",
-    work_visit:"View live →", work_soon:"IN PROGRESS",
+    work_eyebrow:"Selected work", work_title:"Every trade. Its own design.",
+    work_sub:"From heavy haulage to hair salons — no templates, no reuse. Scroll and see for yourself.",
+    work_c1:"Heavy haulage · Oslo", work_c2:"Hair salon · Tromsø", work_c3:"Carpentry studio · Oslo",
+    work_c4:"Plumber · Bergen", work_c5:"Café · Ålesund",
+    work_visit:"View live →", work_soon:"IN PROGRESS", work_concept:"CONCEPT",
     pr_eyebrow:"How it works", pr_title:"Zero risk. Zero upfront.", pr_free:"FREE",
     pr1_t:"We build the demo", pr1_p:"Tell us about your business — or let us find you. Within 24 hours a fully designed website is live.",
     pr2_t:"You see it live", pr2_p:"You get a link to open on your phone, show your family and try yourself. Don't like it? Then it costs nothing.",
@@ -560,13 +783,14 @@ function applyLang(l){
   document.querySelectorAll('[data-i18n]').forEach(el => { const k=el.dataset.i18n; if(d[k]!==undefined) el.textContent = d[k]; });
   document.querySelectorAll('[data-i18n-html]').forEach(el => { const k=el.dataset.i18nHtml; if(d[k]!==undefined) el.innerHTML = d[k]; });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { const k=el.dataset.i18nPh; if(d[k]!==undefined) el.placeholder = d[k]; });
-  splitHero(); // re-split the (possibly new) headline
+  splitHero();
 }
 document.getElementById('langNo').addEventListener('click', ()=>applyLang('no'));
 document.getElementById('langEn').addEventListener('click', ()=>applyLang('en'));
 
 /* ================= setup ================= */
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = matchMedia('(max-width: 860px)').matches;
 gsap.registerPlugin(ScrollTrigger);
 
 let lenis = null;
@@ -581,7 +805,6 @@ if (!reduced) {
   }));
 }
 
-/* header state */
 const hdr = document.getElementById('hdr');
 addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10), {passive:true});
 
@@ -606,7 +829,7 @@ if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
   const cv = document.getElementById('auroraCanvas');
   const ctx = cv.getContext('2d');
   const DPR = Math.min(devicePixelRatio || 1, 1.5);
-  let W, H, t = 0, running = true;
+  let W, H, running = true;
   function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W*DPR; cv.height = H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
   size(); addEventListener('resize', size);
   const RIBBONS = [
@@ -689,8 +912,8 @@ if (!reduced){
   if (reduced){
     urlEl.textContent = URL_TEXT;
     document.querySelectorAll('.mch').forEach(s=>s.style.opacity=1);
-    document.getElementById('mockBadge').style.opacity=1;
-    document.getElementById('mockBadge').style.transform='none';
+    const b = document.getElementById('mockBadge');
+    b.style.opacity=1; b.style.transform='none';
     setPhase(2);
     return;
   }
@@ -721,20 +944,55 @@ if (!reduced){
     .to(mock, {y:-8, duration:1.4, ease:'sine.inOut'});
 })();
 
-/* ================= showcase pan ================= */
+/* ================= HORIZONTAL GALLERY ================= */
 (() => {
-  const img = document.getElementById('panImg');
-  if (!img || reduced) return;
-  img.addEventListener('load', () => {
-    const frame = img.closest('.show-frame');
-    const travel = () => Math.max(0, img.offsetHeight - frame.offsetHeight + 34);
-    gsap.fromTo(img, {y:0}, {y:() => -travel(), ease:'none',
-      scrollTrigger:{trigger:frame, start:'top 85%', end:'bottom 5%', scrub:0.6, invalidateOnRefresh:true}});
+  const track = document.getElementById('galTrack');
+  const cur = document.getElementById('galCur');
+  const bar = document.getElementById('galBar');
+  const slides = track.children.length;
+  if (reduced || isMobile){
+    // native horizontal scroll (snap) on mobile / reduced motion
+    track.addEventListener('scroll', () => {
+      const p = track.scrollLeft / (track.scrollWidth - track.clientWidth || 1);
+      cur.textContent = String(Math.min(slides, 1 + Math.round(p * (slides-1)))).padStart(2,'0');
+    }, {passive:true});
+    return;
+  }
+  const travel = () => track.scrollWidth - innerWidth;
+  gsap.to(track, {
+    x: () => -travel(), ease:'none',
+    scrollTrigger:{
+      trigger:'#arbeid', start:'top top', end:() => '+=' + (travel() + 400),
+      pin:'.gal-pin', scrub:0.6, anticipatePin:1, invalidateOnRefresh:true,
+      onUpdate(self){
+        cur.textContent = String(Math.min(slides, 1 + Math.round(self.progress * (slides-1)))).padStart(2,'0');
+        if (bar) bar.style.transform = `scaleX(${self.progress})`;
+      }
+    }
   });
-  if (img.complete) img.dispatchEvent(new Event('load'));
 })();
 
-/* ================= form -> n8n ================= */
+/* ================= stats count-up ================= */
+(() => {
+  const nums = document.querySelectorAll('.stat b[data-count]');
+  if (!nums.length) return;
+  const fmt = (el, v) => { el.textContent = Math.round(v) + (el.dataset.suffix || ''); };
+  if (reduced){ nums.forEach(el => fmt(el, +el.dataset.count)); return; }
+  nums.forEach(el => {
+    const target = +el.dataset.count;
+    const from = el.dataset.from !== undefined ? +el.dataset.from : 0;
+    fmt(el, from);
+    ScrollTrigger.create({
+      trigger: el, start:'top 88%', once:true,
+      onEnter(){
+        gsap.to({v:from}, {v:target, duration:1.6, ease:'power3.out',
+          onUpdate(){ fmt(el, this.targets()[0].v); }});
+      }
+    });
+  });
+})();
+
+/* ================= form -> lead worker ================= */
 document.getElementById('leadForm').addEventListener('submit', async e => {
   e.preventDefault();
   const form = e.target;
