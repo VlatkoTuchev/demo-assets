@@ -769,6 +769,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
 <script>
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+gsap.registerPlugin(ScrollTrigger);
+
 /* ================= i18n ================= */
 const I18N = {
   no: {
@@ -880,9 +883,6 @@ document.getElementById('langEn').addEventListener('click', ()=>switchLang('en')
 applyLang(LANG); // apply synchronously so the showreel builds in the right language
 
 /* ================= setup ================= */
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-gsap.registerPlugin(ScrollTrigger);
-
 let lenis = null;
 if (!reduced) {
   lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
