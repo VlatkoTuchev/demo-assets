@@ -410,14 +410,10 @@
     const data = Object.fromEntries(new FormData(form).entries());
     delete data._honey;
     try {
-      const r = await fetch('https://formsubmit.co/ajax/vlatkotuchev123@gmail.com', {
+      const r = await fetch('https://vlatkotuchev.app.n8n.cloud/webhook/ostlandske-lead', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: JSON.stringify({
-          _subject: '🚛 Ny transportforespørsel — ' + (data['Navn eller firma'] || 'nettsiden'),
-          _template: 'table',
-          ...data
-        })
+        body: JSON.stringify(data)
       });
       if (!r.ok) throw new Error('http ' + r.status);
       const res = await r.json();
