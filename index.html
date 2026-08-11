@@ -184,19 +184,18 @@
     transform:scaleX(0);transform-origin:left}
 
   /* ---------- SCENE 1 · FJELLRO (mountain lodge) ---------- */
-  .s-fjellro .sc-bg{background:linear-gradient(180deg,#AFC8D6 0%,#DCE8ED 46%,#F2EFE7 100%)}
-  .s-fjellro{color:#233530}
-  .fj-sun{position:absolute;left:62%;top:16%;width:min(11vw,120px);aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle,#FFF7E0 20%,#FFDFA3 60%,transparent 72%)}
-  .fj-mtn{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%}
-  .fj-mtn svg{width:100%;height:100%;display:block}
+  .s-fjellro .sc-bg{background:linear-gradient(180deg,#1B2A30 0%,#2E4550 100%)}
+  .s-fjellro{color:#F2EFE7}
+  .fj-photo{position:absolute;inset:0;background:url("assets/site_fjellro.jpg") center 60%/cover no-repeat}
+  .fj-pveil{position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(12,20,24,.62) 0%, rgba(12,20,24,.18) 42%, rgba(12,20,24,.10) 62%, rgba(12,20,24,.55) 100%)}
   .fj-nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;
     padding:3.4vh 5% 0}
   .fj-logo{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.8vw,24px);letter-spacing:.02em}
-  .fj-links{display:flex;gap:26px;font-size:clamp(10px,1vw,13px);letter-spacing:.2em;text-transform:uppercase;color:#4C6058}
+  .fj-links{display:flex;gap:26px;font-size:clamp(10px,1vw,13px);letter-spacing:.2em;text-transform:uppercase;color:rgba(242,239,231,.78)}
   .fj-hero{position:relative;z-index:5;flex:1;display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;transform:translateY(-6%)}
-  .fj-kicker{font-size:clamp(10px,1.1vw,13px);letter-spacing:.34em;text-transform:uppercase;color:#4C6058;margin-bottom:2vh}
+  .fj-kicker{font-size:clamp(10px,1.1vw,13px);letter-spacing:.34em;text-transform:uppercase;color:rgba(242,239,231,.85);margin-bottom:2vh}
   .fj-hero h4{font-family:var(--serif);font-weight:500;font-size:clamp(38px,7vw,92px);line-height:1.02}
   .fj-hero h4 em{font-style:italic}
   .fj-hero h4 .fch{display:inline-block;opacity:0;transform:translateY(30%)}
@@ -214,7 +213,10 @@
   .s-salon{color:#33261B}
   .sa-arch{position:absolute;left:50%;top:50%;width:min(34vw,430px);aspect-ratio:.74;
     transform:translate(-50%,-56%);border-radius:999px 999px 14px 14px;
-    background:linear-gradient(165deg,#E3C29E 0%,#C8916A 45%,#8F5B3C 100%);
+    background:
+      linear-gradient(180deg, rgba(51,38,27,0) 55%, rgba(51,38,27,.28) 100%),
+      url("assets/site_salon.jpg") center/cover no-repeat,
+      linear-gradient(165deg,#E3C29E 0%,#C8916A 45%,#8F5B3C 100%);
     box-shadow:0 40px 90px -34px rgba(51,38,27,.55)}
   .sa-arch::after{content:"";position:absolute;inset:5%;border-radius:inherit;border:1px solid rgba(241,232,220,.5)}
   .sa-nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;
@@ -242,6 +244,10 @@
   .s-ror{color:#fff}
   .ro-glow{position:absolute;right:-12%;top:-18%;width:60%;aspect-ratio:1;border-radius:50%;
     background:radial-gradient(circle,rgba(56,140,255,.4),transparent 65%)}
+  .ro-photo{position:absolute;inset:0;background:url("assets/site_ror.jpg") center/cover no-repeat;
+    opacity:.26;mix-blend-mode:luminosity}
+  .ro-photo::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(140deg, rgba(11,27,56,.5) 0%, rgba(14,42,92,.25) 60%, rgba(11,75,180,.2) 100%)}
   .ro-nav{position:relative;z-index:5;display:flex;align-items:center;gap:2vw;
     padding:3.4vh 5% 0}
   .ro-logo{font-family:var(--disp);font-weight:800;font-size:clamp(17px,1.9vw,25px)}
@@ -290,7 +296,8 @@
   .ka-menu div i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-3px)}
   .ka-menu b{color:#E8B04B;font-weight:600}
   .ka-photo{align-self:stretch;margin:6% 0;border-radius:14px;
-    background:radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%);
+    background:url("assets/site_kafe.jpg") center/cover no-repeat,
+      radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%);
     box-shadow:inset 0 0 0 1px rgba(242,230,216,.15), 0 24px 50px -22px rgba(0,0,0,.8)}
   .ka-phone{position:absolute;right:6%;bottom:-4%;z-index:9;width:clamp(150px,17vw,215px);aspect-ratio:.5;
     background:#12100D;border-radius:26px;padding:9px;
@@ -304,7 +311,8 @@
   .ka-pscreen .ph4{font-family:var(--serif);font-style:italic;font-weight:600;color:#F2E6D8;
     font-size:clamp(12px,1.3vw,17px);line-height:1.15;padding:0 10%}
   .ka-pscreen .pimg{margin:8% 10%;aspect-ratio:1.6;border-radius:10px;
-    background:radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%)}
+    background:url("assets/site_kafe.jpg") center/cover no-repeat,
+      radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%)}
   .ka-pscreen .pmenu{padding:0 10%;font-size:clamp(8px,.85vw,10.5px);color:#CBB49C}
   .ka-pscreen .pmenu div{display:flex;gap:5px;align-items:baseline;margin-bottom:6%}
   .ka-pscreen .pmenu i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-2px)}
@@ -396,32 +404,25 @@
       width:2px;background:linear-gradient(180deg,rgba(99,242,185,.4),rgba(139,123,255,.2))}
   }
 
-  /* HUD ring gauges */
-  .hud{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;position:relative;z-index:2}
-  .ring{position:relative;display:flex;flex-direction:column;align-items:center;padding:34px 12px 30px;
-    border-radius:20px;background:linear-gradient(170deg,rgba(238,241,248,.035),rgba(238,241,248,.008));
-    border:1px solid var(--line);overflow:hidden;transition:border-color .4s, transform .4s}
-  .ring:hover{border-color:rgba(99,242,185,.35);transform:translateY(-6px)}
-  .ring::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s;
-    background:radial-gradient(ellipse at 50% 0%,rgba(99,242,185,.09),transparent 60%)}
-  .ring:hover::before{opacity:1}
-  .ring-svg{position:relative;width:clamp(120px,11vw,150px);aspect-ratio:1}
-  .ring-svg svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
-  .ring-track{fill:none;stroke:rgba(238,241,248,.08);stroke-width:6}
-  .ring-arc{fill:none;stroke-width:6;stroke-linecap:round;
-    filter:drop-shadow(0 0 8px rgba(99,242,185,.55))}
-  .ring-halo{position:absolute;inset:-9px;border-radius:50%;border:1px dashed rgba(238,241,248,.14);
-    animation:spin 26s linear infinite}
-  .ring:hover .ring-halo{animation-duration:7s;border-color:rgba(99,242,185,.35)}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  .ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--disp);font-weight:800;font-size:clamp(21px,2.1vw,28px);
-    font-variant-numeric:tabular-nums;
-    background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .ring span{margin-top:18px;color:var(--dim);font-size:14px;text-align:center}
-  .ring .tick{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:9.5px;
-    letter-spacing:.16em;color:rgba(238,241,248,.25)}
-  @media(max-width:900px){.hud{grid-template-columns:1fr 1fr;gap:14px}}
+  /* promise ledger */
+  .promises{position:relative;z-index:2;margin-top:64px;border-top:1px solid var(--line)}
+  .pline{display:flex;align-items:center;justify-content:space-between;gap:26px;
+    padding:30px 10px;border-bottom:1px solid var(--line);position:relative;
+    transition:transform .35s ease}
+  .pline::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;
+    background:var(--aurora);transition:width .6s ease}
+  .pline:hover{transform:translateX(10px)}
+  .pline:hover::after{width:100%}
+  .pline h3{font-family:var(--disp);font-weight:800;letter-spacing:-.01em;
+    font-size:clamp(24px,3.4vw,44px);line-height:1.12;color:var(--ink)}
+  .pline h3 em{font-style:normal;background:var(--aurora);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 22px rgba(99,242,185,.25))}
+  .pcheck{flex-shrink:0;width:clamp(34px,3.4vw,46px);aspect-ratio:1}
+  .pcheck circle{fill:none;stroke:rgba(238,241,248,.14);stroke-width:2}
+  .pcheck path{fill:none;stroke:var(--mint);stroke-width:3.4;stroke-linecap:round;
+    stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(99,242,185,.6))}
+  @media(max-width:640px){.pline{padding:22px 4px}}
 
   /* ---------- contact ---------- */
   #kontakt::before{content:"";position:absolute;left:50%;top:-140px;width:640px;height:640px;transform:translateX(-50%);
@@ -553,14 +554,8 @@
       <!-- SCENE 1: Fjellro -->
       <div class="scene s-fjellro" id="sc1" aria-hidden="true">
         <div class="sc-bg"></div>
-        <div class="fj-sun" id="fjSun"></div>
-        <div class="fj-mtn" id="fjMtn">
-          <svg viewBox="0 0 1440 620" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-            <polygon id="fjM1" points="0,620 0,300 300,140 520,330 760,90 1030,340 1240,180 1440,330 1440,620" fill="#7FA3B5"/>
-            <polygon id="fjM2" points="0,620 0,420 260,260 560,470 840,230 1120,460 1440,300 1440,620" fill="#4C7A8C"/>
-            <polygon id="fjM3" points="0,620 0,520 340,380 700,560 1000,400 1440,540 1440,620" fill="#2E5563"/>
-          </svg>
-        </div>
+        <div class="fj-photo" id="fjPhoto"></div>
+        <div class="fj-pveil"></div>
         <div class="sc-site">
           <div class="fj-nav" id="fjNav">
             <span class="fj-logo">Fjellro</span>
@@ -609,6 +604,7 @@
       <!-- SCENE 3: RørRask -->
       <div class="scene s-ror" id="sc3" aria-hidden="true">
         <div class="sc-bg"></div>
+        <div class="ro-photo"></div>
         <div class="ro-glow"></div>
         <div class="sc-site">
           <div class="ro-nav" id="roNav">
@@ -761,83 +757,36 @@
           </div>
         </div>
       </div>
-      <div class="hud">
-        <div class="ring rv">
-          <span class="tick">01</span>
-          <div class="ring-svg">
-            <div class="ring-halo"></div>
-            <svg viewBox="0 0 120 120">
-              <defs>
-                <linearGradient id="rg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63F2B9"/>
-                  <stop offset="55%" stop-color="#38C6D9"/>
-                  <stop offset="100%" stop-color="#8B7BFF"/>
-                </linearGradient>
-              </defs>
-              <circle class="ring-track" cx="60" cy="60" r="52"/>
-              <circle class="ring-arc" cx="60" cy="60" r="52" stroke="url(#rg1)"/>
-            </svg>
-            <b class="ring-num" data-count="24" data-suffix="t">0t</b>
-          </div>
-          <span data-i18n="f1">fra idé til demo</span>
+      <div class="promises" id="promises">
+        <div class="pline rv">
+          <h3 data-i18n-html="p1">Demo klar på <em>24 timer</em></h3>
+          <svg class="pcheck" viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="20"/>
+            <path d="M12 23 L19 30 L32 14"/>
+          </svg>
         </div>
-        <div class="ring rv">
-          <span class="tick">02</span>
-          <div class="ring-svg">
-            <div class="ring-halo"></div>
-            <svg viewBox="0 0 120 120">
-              <defs>
-                <linearGradient id="rg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63F2B9"/>
-                  <stop offset="55%" stop-color="#38C6D9"/>
-                  <stop offset="100%" stop-color="#8B7BFF"/>
-                </linearGradient>
-              </defs>
-              <circle class="ring-track" cx="60" cy="60" r="52"/>
-              <circle class="ring-arc" cx="60" cy="60" r="52" stroke="url(#rg2)"/>
-            </svg>
-            <b class="ring-num" data-count="0" data-from="9" data-suffix=" kr">0 kr</b>
-          </div>
-          <span data-i18n="f2">før du sier ja</span>
+        <div class="pline rv">
+          <h3 data-i18n-html="p2"><em>Ingen kostnad</em> før du sier ja</h3>
+          <svg class="pcheck" viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="20"/>
+            <path d="M12 23 L19 30 L32 14"/>
+          </svg>
         </div>
-        <div class="ring rv">
-          <span class="tick">03</span>
-          <div class="ring-svg">
-            <div class="ring-halo"></div>
-            <svg viewBox="0 0 120 120">
-              <defs>
-                <linearGradient id="rg3" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63F2B9"/>
-                  <stop offset="55%" stop-color="#38C6D9"/>
-                  <stop offset="100%" stop-color="#8B7BFF"/>
-                </linearGradient>
-              </defs>
-              <circle class="ring-track" cx="60" cy="60" r="52"/>
-              <circle class="ring-arc" cx="60" cy="60" r="52" stroke="url(#rg3)"/>
-            </svg>
-            <b class="ring-num" data-count="100" data-suffix="%">0%</b>
-          </div>
-          <span data-i18n="f3">skreddersydd design</span>
+        <div class="pline rv">
+          <h3 data-i18n-html="p3"><em>Alt inkludert</em> — domene, drift og e-post</h3>
+          <svg class="pcheck" viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="20"/>
+            <path d="M12 23 L19 30 L32 14"/>
+          </svg>
         </div>
-        <div class="ring rv">
-          <span class="tick">04</span>
-          <div class="ring-svg">
-            <div class="ring-halo"></div>
-            <svg viewBox="0 0 120 120">
-              <defs>
-                <linearGradient id="rg4" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63F2B9"/>
-                  <stop offset="55%" stop-color="#38C6D9"/>
-                  <stop offset="100%" stop-color="#8B7BFF"/>
-                </linearGradient>
-              </defs>
-              <circle class="ring-track" cx="60" cy="60" r="52"/>
-              <circle class="ring-arc" cx="60" cy="60" r="52" stroke="url(#rg4)"/>
-            </svg>
-            <b class="ring-num" data-count="1" data-suffix=" år">0 år</b>
-          </div>
-          <span data-i18n="f4">domene og drift inkludert</span>
+        <div class="pline rv">
+          <h3 data-i18n-html="p4">Design laget <em>kun for deg</em></h3>
+          <svg class="pcheck" viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="20"/>
+            <path d="M12 23 L19 30 L32 14"/>
+          </svg>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -937,7 +886,8 @@ const I18N = {
     pr1_t:"Vi bygger demoen", pr1_p:"Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.",
     pr2_t:"Du ser den live", pr2_p:"Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.",
     pr3_t:"Betal når du elsker den", pr3_p:"Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.",
-    f1:"fra idé til demo", f2:"før du sier ja", f3:"skreddersydd design", f4:"domene og drift inkludert",
+    p1:"Demo klar på <em>24 timer</em>", p2:"<em>Ingen kostnad</em> før du sier ja",
+    p3:"<em>Alt inkludert</em> — domene, drift og e-post", p4:"Design laget <em>kun for deg</em>",
     c_eyebrow:"Kontakt", c_title:"Skal vi bygge din?",
     c_sub:"Legg igjen noen ord om bedriften din, så bygger vi et gratis utkast og sender deg lenken.",
     c_mini:"Svar innen <b>24 timer</b> · Helt uforpliktende",
@@ -980,7 +930,8 @@ const I18N = {
     pr1_t:"We build the demo", pr1_p:"Tell us about your business — or let us find you. Within 24 hours a fully designed website is live.",
     pr2_t:"You see it live", pr2_p:"You get a link to open on your phone, show your family and try yourself. Don't like it? Then it costs nothing.",
     pr3_t:"Pay when you love it", pr3_p:"Only when you say yes do we put the site on your own domain — with a form that sends customers straight to you.",
-    f1:"from idea to demo", f2:"before you say yes", f3:"tailor-made design", f4:"domain & hosting included",
+    p1:"Demo ready in <em>24 hours</em>", p2:"<em>No cost</em> until you say yes",
+    p3:"<em>Everything included</em> — domain, hosting and email", p4:"Design made <em>only for you</em>",
     c_eyebrow:"Contact", c_title:"Shall we build yours?",
     c_sub:"Leave a few words about your business and we'll build a free draft and send you the link.",
     c_mini:"Reply within <b>24 hours</b> · No obligations",
@@ -1199,8 +1150,7 @@ if (!reduced){
   gsap.set('#fjNav', {y:-46, opacity:0});
   gsap.set('#fjKick', {opacity:0, y:14});
   gsap.set('#fjBook', {y:56, opacity:0, scale:.94});
-  gsap.set('#fjSun', {y:80, opacity:0});
-  gsap.set('#fjM1', {y:150}); gsap.set('#fjM2', {y:210}); gsap.set('#fjM3', {y:280});
+  gsap.set('#fjPhoto', {scale:1.22, opacity:0});
   // scene 2
   gsap.set('#saArch', {scale:.4, opacity:0, rotate:-8, transformOrigin:'50% 80%'});
   gsap.set('#saNav', {y:-40, opacity:0});
@@ -1246,24 +1196,21 @@ if (!reduced){
   /* ---- SCENE 1: Fjellro builds itself ---- */
   tl.addLabel('s1')
     .to('#frameZone', {y:0, opacity:1, duration:1.1, ease:'power3.out'}, 's1')
-    .to('#fjSun', {y:0, opacity:1, duration:1.2}, 's1+=.3')
-    .to('#fjM1', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.1')
-    .to('#fjM2', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.3')
-    .to('#fjM3', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.5')
+    .to('#fjPhoto', {opacity:1, duration:1.3, ease:'power1.inOut'}, 's1+=.2')
+    .to('#fjPhoto', {scale:1.06, duration:2.6, ease:'power2.out'}, 's1+=.4')
     .to('#fjNav', {y:0, opacity:1, duration:.8}, 's1+=.9')
     .to('#fjKick', {opacity:1, y:0, duration:.6}, 's1+=1.3')
     .to('.fch', {opacity:1, y:0, duration:.06, stagger:.05, ease:'none'}, 's1+=1.5')
     .to('#fjBook', {y:0, opacity:1, scale:1, duration:.9, ease:'back.out(1.6)'}, 's1+=2.3');
   capIn(tl, 0, 's1+=.6');
-  // idle drift
-  tl.to('#fjSun', {y:-16, duration:1.6, ease:'sine.inOut'}, 's1+=3.2')
-    .to('#fjM1', {y:10, duration:1.6, ease:'sine.inOut'}, 's1+=3.2');
+  // idle ken burns
+  tl.to('#fjPhoto', {scale:1.1, y:-10, duration:1.8, ease:'sine.inOut'}, 's1+=3.2');
 
   /* ---- TRANSITION 1→2: lodge recedes, salon arch blooms ---- */
   tl.addLabel('t12', 's1+=4.6');
   capOut(tl, 0, 't12');
   urlSwap(tl, 0, 1, 't12+=.3');
-  tl.to('#sc1 .sc-site, #fjMtn, #fjSun', {scale:.92, opacity:0, duration:1.1, transformOrigin:'50% 40%'}, 't12')
+  tl.to('#sc1 .sc-site, #fjPhoto', {scale:.92, opacity:0, duration:1.1, transformOrigin:'50% 40%'}, 't12')
     .to('#sc1', {autoAlpha:0, duration:.7}, 't12+=.5')
     .to('#sc2', {autoAlpha:1, duration:.5}, 't12+=.4')
     .to('#saArch', {scale:1, opacity:1, rotate:0, duration:1.5, ease:'power3.out'}, 't12+=.5')
@@ -1329,25 +1276,18 @@ if (!reduced){
 
 /* ================= stats count-up ================= */
 (() => {
-  const rings = document.querySelectorAll('.ring');
-  if (!rings.length) return;
-  const C = 2 * Math.PI * 52;
-  const fmt = (el, v) => { el.textContent = Math.round(v) + (el.dataset.suffix || ''); };
-  rings.forEach(r => {
-    const num = r.querySelector('.ring-num');
-    const arc = r.querySelector('.ring-arc');
-    arc.style.strokeDasharray = C;
-    arc.style.strokeDashoffset = C;
-    const target = +num.dataset.count;
-    const from = num.dataset.from !== undefined ? +num.dataset.from : 0;
-    if (reduced){ fmt(num, target); arc.style.strokeDashoffset = 0; return; }
-    fmt(num, from);
+  const lines = document.querySelectorAll('.pline');
+  if (!lines.length) return;
+  lines.forEach(line => {
+    const path = line.querySelector('.pcheck path');
+    const L = path.getTotalLength();
+    path.style.strokeDasharray = L;
+    if (reduced){ path.style.strokeDashoffset = 0; return; }
+    path.style.strokeDashoffset = L;
     ScrollTrigger.create({
-      trigger: r, start:'top 90%', once:true,
+      trigger: line, start:'top 87%', once:true,
       onEnter(){
-        gsap.to(arc, {strokeDashoffset:0, duration:1.8, ease:'power3.inOut'});
-        gsap.to({v:from}, {v:target, duration:1.8, ease:'power3.out',
-          onUpdate(){ fmt(num, this.targets()[0].v); }});
+        gsap.to(path, {strokeDashoffset:0, duration:.8, delay:.3, ease:'power2.out'});
       }
     });
   });
