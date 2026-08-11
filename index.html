@@ -108,6 +108,10 @@
 
   .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     overflow:hidden;background:rgba(14,18,32,.5);position:relative}
+  .marq-label{position:absolute;left:0;top:0;bottom:0;z-index:3;display:flex;align-items:center;
+    padding:0 26px 0 max(24px,calc((100vw - var(--max))/2 + 24px));
+    background:linear-gradient(90deg,var(--bg) 55%,transparent);
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--mint);white-space:nowrap}
   .marquee-track{display:flex;gap:0;white-space:nowrap;width:max-content;
     animation:marq 30s linear infinite;padding:16px 0}
   .marquee span{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.08em;
@@ -119,20 +123,58 @@
      THE SHOWREEL — one pinned stage, four worlds morphing
      ============================================================ */
   #reel{position:relative;padding:0}
-  .reel-stage{position:relative;height:100svh;overflow:hidden;background:var(--bg)}
+  .reel-stage{position:relative;height:100svh;overflow:hidden;background:var(--bg);
+    display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .reel-stage::before{content:"";position:absolute;left:-12%;top:-18%;width:56%;aspect-ratio:1;
+    border-radius:50%;background:radial-gradient(circle,rgba(99,242,185,.07),transparent 62%)}
+  .reel-stage::after{content:"";position:absolute;right:-14%;bottom:-22%;width:60%;aspect-ratio:1;
+    border-radius:50%;background:radial-gradient(circle,rgba(139,123,255,.07),transparent 62%)}
   .scene{position:absolute;inset:0;visibility:hidden}
   .scene .sc-bg{position:absolute;inset:0}
   .sc-site{position:absolute;inset:0;display:flex;flex-direction:column}
 
+  /* --- the persistent browser window the client sites live in --- */
+  .frame-zone{position:relative;z-index:10;width:min(86vw,1120px);margin-top:84px}
+  .frame-badge{position:absolute;top:-15px;left:22px;z-index:30;
+    background:rgba(10,13,20,.92);border:1px solid rgba(99,242,185,.4);color:var(--mint);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    padding:8px 14px;border-radius:999px;backdrop-filter:blur(6px);
+    box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
+  .frame-tilt{perspective:1700px}
+  .frame{position:relative;border-radius:16px;overflow:hidden;
+    transform:rotateX(4.5deg);transform-origin:50% 100%;
+    border:1px solid rgba(238,241,248,.14);
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.85), 0 24px 60px -30px rgba(0,0,0,.7)}
+  .frame-bar{position:relative;z-index:20;display:flex;align-items:center;gap:12px;
+    background:#171C2B;padding:12px 16px;border-bottom:1px solid rgba(238,241,248,.08)}
+  .frame-dots{display:flex;gap:7px}
+  .frame-dots i{width:11px;height:11px;border-radius:50%}
+  .frame-dots i:nth-child(1){background:#F26B5E}.frame-dots i:nth-child(2){background:#F5BE4F}.frame-dots i:nth-child(3){background:#5FC26D}
+  .frame-url{flex:1;max-width:420px;margin:0 auto;background:#0E1220;border-radius:8px;
+    padding:7px 14px;position:relative;height:30px;overflow:hidden}
+  .furl{position:absolute;left:14px;top:6px;font-family:var(--mono);font-size:12.5px;color:#AAB4C8;
+    display:flex;align-items:center;gap:7px;opacity:0;white-space:nowrap}
+  .furl svg{flex-shrink:0}
+  .frame-view{position:relative;height:min(62svh,640px);overflow:hidden;background:#0C0F18}
+  .frame-view .scene{visibility:hidden}
+  @media(max-width:860px){
+    .frame-zone{width:94vw;margin-top:78px}
+    .frame{transform:rotateX(3deg)}
+    .frame-view{height:56svh}
+    .frame-url{max-width:52vw}
+  }
+
   /* --- reel chrome: captions + counter --- */
   .reel-cap{position:absolute;left:0;right:0;bottom:0;z-index:60;pointer-events:none;
-    padding:0 0 34px}
+    padding:0 0 26px}
   .reel-cap .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
-  .cap-box{position:relative;min-height:86px;flex:1;max-width:560px}
-  .cap{position:absolute;left:0;bottom:0;opacity:0}
-  .cap .mono{display:block;margin-bottom:8px;color:var(--mint);text-shadow:0 1px 8px rgba(0,0,0,.6)}
-  .cap h3{font-family:var(--disp);font-weight:800;font-size:clamp(20px,2.6vw,30px);line-height:1.15;
-    color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  .cap-box{position:relative;min-height:78px;flex:1;max-width:640px}
+  .cap{position:absolute;left:0;bottom:0;opacity:0;
+    background:rgba(10,13,20,.78);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:14px;padding:14px 20px}
+  .cap .mono{display:block;margin-bottom:6px;color:var(--mint)}
+  .cap h3{font-family:var(--disp);font-weight:800;font-size:clamp(17px,2.1vw,24px);line-height:1.15;
+    color:#F3F5FA}
   .reel-dots{display:flex;gap:9px;align-items:center;padding-bottom:8px}
   .reel-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);transition:.3s}
   .reel-dots i.on{background:var(--mint);box-shadow:0 0 12px rgba(99,242,185,.8);transform:scale(1.25)}
@@ -148,7 +190,7 @@
   .fj-mtn{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%}
   .fj-mtn svg{width:100%;height:100%;display:block}
   .fj-nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;
-    padding:calc(74px + 3vh) 6vw 0}
+    padding:3.4vh 5% 0}
   .fj-logo{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.8vw,24px);letter-spacing:.02em}
   .fj-links{display:flex;gap:26px;font-size:clamp(10px,1vw,13px);letter-spacing:.2em;text-transform:uppercase;color:#4C6058}
   .fj-hero{position:relative;z-index:5;flex:1;display:flex;flex-direction:column;align-items:center;
@@ -175,9 +217,9 @@
     box-shadow:0 40px 90px -34px rgba(51,38,27,.55)}
   .sa-arch::after{content:"";position:absolute;inset:5%;border-radius:inherit;border:1px solid rgba(241,232,220,.5)}
   .sa-nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;
-    padding:calc(74px + 3vh) 6vw 0}
+    padding:3.4vh 5% 0}
   .sa-logo{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(17px,1.8vw,24px)}
-  .sa-links{display:flex;gap:24px;font-size:clamp(10px,1vw,12.5px);letter-spacing:.18em;text-transform:uppercase;color:#8A7259}
+  .sa-links{display:flex;gap:24px;font-size:clamp(10px,1vw,12.5px);letter-spacing:.18em;text-transform:uppercase;color:#6E5942}
   .sa-grid{position:relative;z-index:5;flex:1;display:grid;grid-template-columns:1fr auto 1fr;
     align-items:center;padding:0 6vw;gap:3vw}
   .sa-left h4{font-family:var(--serif);font-style:italic;font-weight:600;
@@ -200,7 +242,7 @@
   .ro-glow{position:absolute;right:-12%;top:-18%;width:60%;aspect-ratio:1;border-radius:50%;
     background:radial-gradient(circle,rgba(56,140,255,.4),transparent 65%)}
   .ro-nav{position:relative;z-index:5;display:flex;align-items:center;gap:2vw;
-    padding:calc(74px + 3vh) 6vw 0}
+    padding:3.4vh 5% 0}
   .ro-logo{font-family:var(--disp);font-weight:800;font-size:clamp(17px,1.9vw,25px)}
   .ro-badge{margin-left:auto;background:#FF4438;font-weight:700;font-size:clamp(9px,1vw,12px);
     letter-spacing:.1em;padding:1vh 1.6vw;border-radius:999px;animation:pulse 2s infinite}
@@ -234,12 +276,8 @@
   /* ---------- SCENE 4 · KAFÉ FJELL (responsive morph) ---------- */
   .s-kafe .sc-bg{background:radial-gradient(ellipse at 30% 20%,#2B2018 0%,#191009 70%)}
   .s-kafe{color:#F2E6D8}
-  .ka-stage{position:relative;z-index:5;flex:1;display:flex;align-items:center;justify-content:center;
-    padding-top:74px}
-  .ka-device{position:relative;width:min(76vw,880px);height:min(62vh,560px);background:#241A12;
-    border-radius:18px;overflow:hidden;box-shadow:0 50px 110px -40px rgba(0,0,0,.85),0 0 0 1px rgba(242,230,216,.12)}
   .ka-inner{position:absolute;inset:0;display:flex;flex-direction:column}
-  .ka-nav{display:flex;justify-content:space-between;align-items:center;padding:3.5% 5.5%;
+  .ka-nav{display:flex;justify-content:space-between;align-items:center;padding:3.4vh 5% 2.4vh;
     border-bottom:1px solid rgba(242,230,216,.14)}
   .ka-logo{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(14px,1.7vw,20px);color:#E8B04B}
   .ka-links{font-size:clamp(8.5px,.95vw,11.5px);letter-spacing:.18em;text-transform:uppercase;color:#B39B82}
@@ -253,8 +291,23 @@
   .ka-photo{align-self:stretch;margin:6% 0;border-radius:14px;
     background:radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%);
     box-shadow:inset 0 0 0 1px rgba(242,230,216,.15), 0 24px 50px -22px rgba(0,0,0,.8)}
-  .ka-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:34%;height:16px;
-    border-radius:999px;background:#12100D;opacity:0;z-index:8}
+  .ka-phone{position:absolute;right:6%;bottom:-4%;z-index:9;width:clamp(150px,17vw,215px);aspect-ratio:.5;
+    background:#12100D;border-radius:26px;padding:9px;
+    box-shadow:0 34px 70px -24px rgba(0,0,0,.85),0 0 0 1px rgba(242,230,216,.2)}
+  .ka-phone::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);
+    width:36%;height:13px;border-radius:0 0 10px 10px;background:#12100D;z-index:3}
+  .ka-pscreen{position:relative;width:100%;height:100%;border-radius:18px;overflow:hidden;
+    background:radial-gradient(ellipse at 30% 15%,#2B2018 0%,#191009 75%)}
+  .ka-pscreen .pl{font-family:var(--serif);font-style:italic;font-weight:600;color:#E8B04B;
+    font-size:clamp(11px,1.1vw,14px);padding:14% 10% 6%}
+  .ka-pscreen .ph4{font-family:var(--serif);font-style:italic;font-weight:600;color:#F2E6D8;
+    font-size:clamp(12px,1.3vw,17px);line-height:1.15;padding:0 10%}
+  .ka-pscreen .pimg{margin:8% 10%;aspect-ratio:1.6;border-radius:10px;
+    background:radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%)}
+  .ka-pscreen .pmenu{padding:0 10%;font-size:clamp(8px,.85vw,10.5px);color:#CBB49C}
+  .ka-pscreen .pmenu div{display:flex;gap:5px;align-items:baseline;margin-bottom:6%}
+  .ka-pscreen .pmenu i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-2px)}
+  .ka-pscreen .pmenu b{color:#E8B04B}
 
   /* ---------- SCENE 5 · OUTRO ---------- */
   .s-outro .sc-bg{background:var(--bg)}
@@ -433,6 +486,7 @@
     </div>
     <div class="hero-hint"><span data-i18n="hero_scroll">Scroll</span></div>
     <div class="marquee" aria-hidden="true">
+      <div class="marq-label" data-i18n="marq_label">VI BYGGER FOR ↓</div>
       <div class="marquee-track" id="marq">
         <span>Snekker</span><span>Rørlegger</span><span>Transport</span><span>Elektriker</span>
         <span>Bilverksted</span><span>Maler</span><span>Renhold</span><span>Frisør</span>
@@ -445,6 +499,21 @@
   <section id="reel">
     <div class="reel-stage" id="reelStage">
       <div class="reel-progress"><i id="reelBar"></i></div>
+
+      <div class="frame-zone" id="frameZone">
+        <div class="frame-badge"><span data-i18n="reel_badge">EKSEMPEL · KUNDESIDE</span> <span id="frameNum">01/04</span></div>
+        <div class="frame-tilt">
+          <div class="frame">
+            <div class="frame-bar">
+              <div class="frame-dots"><i></i><i></i><i></i></div>
+              <div class="frame-url">
+                <span class="furl" data-url="0"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>fjellro.no</span>
+                <span class="furl" data-url="1"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>salongnord.no</span>
+                <span class="furl" data-url="2"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>rorrask.no</span>
+                <span class="furl" data-url="3"><svg width="10" height="11" viewBox="0 0 10 11" fill="none"><path d="M2 5V3.5C2 2 3 1 5 1s3 1 3 2.5V5" stroke="#63F2B9" stroke-width="1.4"/><rect x="1" y="5" width="8" height="5" rx="1.2" fill="#63F2B9"/></svg>kafefjell.no</span>
+              </div>
+            </div>
+            <div class="frame-view">
 
       <!-- SCENE 1: Fjellro -->
       <div class="scene s-fjellro" id="sc1" aria-hidden="true">
@@ -537,30 +606,41 @@
       <!-- SCENE 4: Kafé Fjell -->
       <div class="scene s-kafe" id="sc4" aria-hidden="true">
         <div class="sc-bg"></div>
-        <div class="ka-stage">
-          <div class="ka-device" id="kaDevice">
-            <div class="ka-notch" id="kaNotch"></div>
-            <div class="ka-inner">
-              <div class="ka-nav">
-                <span class="ka-logo">Kafé Fjell</span>
-                <span class="ka-links" data-i18n="ka_links">Meny · Om oss · Finn oss</span>
+        <div class="ka-inner">
+          <div class="ka-nav">
+            <span class="ka-logo">Kafé Fjell</span>
+            <span class="ka-links" data-i18n="ka_links">Meny · Om oss · Finn oss</span>
+          </div>
+          <div class="ka-body">
+            <div>
+              <h4 id="kaH4" data-i18n-html="ka_h4">Brent i byen,<br>servert med utsikt</h4>
+              <div class="ka-menu" id="kaMenu">
+                <div><span data-i18n="ka_m1">Fjellbrygg filter</span><i></i><b>49,-</b></div>
+                <div><span data-i18n="ka_m2">Kanelsnurr</span><i></i><b>39,-</b></div>
+                <div><span data-i18n="ka_m3">Skillingsbolle</span><i></i><b>42,-</b></div>
+                <div><span data-i18n="ka_m4">Toast med brunost</span><i></i><b>79,-</b></div>
               </div>
-              <div class="ka-body">
-                <div>
-                  <h4 id="kaH4" data-i18n-html="ka_h4">Brent i byen,<br>servert med utsikt</h4>
-                  <div class="ka-menu" id="kaMenu">
-                    <div><span data-i18n="ka_m1">Fjellbrygg filter</span><i></i><b>49,-</b></div>
-                    <div><span data-i18n="ka_m2">Kanelsnurr</span><i></i><b>39,-</b></div>
-                    <div><span data-i18n="ka_m3">Skillingsbolle</span><i></i><b>42,-</b></div>
-                    <div><span data-i18n="ka_m4">Toast med brunost</span><i></i><b>79,-</b></div>
-                  </div>
-                </div>
-                <div class="ka-photo" id="kaPhoto"></div>
-              </div>
+            </div>
+            <div class="ka-photo" id="kaPhoto"></div>
+          </div>
+        </div>
+        <div class="ka-phone" id="kaPhone">
+          <div class="ka-pscreen">
+            <div class="pl">Kafé Fjell</div>
+            <div class="ph4" data-i18n-html="ka_h4">Brent i byen,<br>servert med utsikt</div>
+            <div class="pimg"></div>
+            <div class="pmenu">
+              <div><span data-i18n="ka_m1">Fjellbrygg filter</span><i></i><b>49,-</b></div>
+              <div><span data-i18n="ka_m2">Kanelsnurr</span><i></i><b>39,-</b></div>
             </div>
           </div>
         </div>
       </div>
+
+            </div><!-- /frame-view -->
+          </div><!-- /frame -->
+        </div><!-- /frame-tilt -->
+      </div><!-- /frame-zone -->
 
       <!-- SCENE 5: Outro -->
       <div class="scene s-outro" id="sc5" aria-hidden="true">
@@ -780,6 +860,7 @@ const I18N = {
     hero_title:"Nettsider som&nbsp;selger.",
     hero_lead:"Vi bygger en skreddersydd demo til bedriften din — gratis. Du betaler først når du elsker den.",
     hero_cta1:"Få gratis demo", hero_cta2:"Se showreelen", hero_scroll:"Scroll",
+    reel_badge:"EKSEMPEL · KUNDESIDE", marq_label:"VI BYGGER FOR ↓",
     cap1_k:"01 · Fjellro fjellhotell", cap1_t:"Vi bygger siden ferdig — på 24 timer",
     fj_l1:"Rom", fj_l2:"Bad & sauna", fj_l3:"Restaurant", fj_l4:"Bestill",
     fj_kick:"Fjellhotell · Lofoten", fj_h4:"Ro finner deg",
@@ -822,6 +903,7 @@ const I18N = {
     hero_title:"Websites that&nbsp;sell.",
     hero_lead:"We build a tailor-made demo website for your business — for free. You pay only when you love it.",
     hero_cta1:"Get a free demo", hero_cta2:"Watch the showreel", hero_scroll:"Scroll",
+    reel_badge:"EXAMPLE · CLIENT SITE", marq_label:"WE BUILD FOR ↓",
     cap1_k:"01 · Fjellro mountain hotel", cap1_t:"We build the whole site — in 24 hours",
     fj_l1:"Rooms", fj_l2:"Bath & sauna", fj_l3:"Restaurant", fj_l4:"Book",
     fj_kick:"Mountain hotel · Lofoten", fj_h4:"Stillness finds you",
@@ -1013,6 +1095,14 @@ if (!reduced){
   const SCENES = ['#sc1','#sc2','#sc3','#sc4','#sc5'];
   gsap.set(SCENES.join(','), {visibility:'visible'});
   gsap.set(['#sc2','#sc3','#sc4','#sc5'], {autoAlpha:0});
+  const furls = gsap.utils.toArray('.furl');
+  const frameNum = document.getElementById('frameNum');
+  gsap.set('#frameZone', {y:110, opacity:0});
+  gsap.set(furls[0], {opacity:1});
+  function urlSwap(tl, from, to, at){
+    tl.to(furls[from], {opacity:0, y:-8, duration:.35}, at)
+      .fromTo(furls[to], {opacity:0, y:8}, {opacity:1, y:0, duration:.35}, at + '+=.25');
+  }
 
   // --- initial states, scene 1
   gsap.set('#fjNav', {y:-46, opacity:0});
@@ -1032,9 +1122,9 @@ if (!reduced){
   gsap.set('#roForm', {x:120, opacity:0, rotate:2});
   gsap.set('#roSend', {scale:1});
   // scene 4
-  gsap.set('#kaDevice', {y:120, opacity:0, scale:.94});
   gsap.set('#kaMenu div', {opacity:0, x:-24});
   gsap.set('#kaPhoto', {opacity:0, scale:.85});
+  gsap.set('#kaPhone', {y:'130%', rotate:6});
   // scene 5
   gsap.set('#ouH4', {opacity:0, y:50, scale:.92});
   gsap.set('.ou-inner p', {opacity:0, y:26});
@@ -1057,13 +1147,15 @@ if (!reduced){
         bar.style.transform = `scaleX(${self.progress})`;
         const seg = Math.min(4, Math.floor(self.progress * 5));
         dots.forEach((d,n)=>d.classList.toggle('on', n===seg));
+        frameNum.textContent = '0' + Math.min(4, seg + 1) + '/04';
       }
     }
   });
 
   /* ---- SCENE 1: Fjellro builds itself ---- */
   tl.addLabel('s1')
-    .to('#fjSun', {y:0, opacity:1, duration:1.2}, 's1')
+    .to('#frameZone', {y:0, opacity:1, duration:1.1, ease:'power3.out'}, 's1')
+    .to('#fjSun', {y:0, opacity:1, duration:1.2}, 's1+=.3')
     .to('#fjM1', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.1')
     .to('#fjM2', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.3')
     .to('#fjM3', {y:0, duration:1.4, ease:'power3.out'}, 's1+=.5')
@@ -1079,6 +1171,7 @@ if (!reduced){
   /* ---- TRANSITION 1→2: lodge recedes, salon arch blooms ---- */
   tl.addLabel('t12', 's1+=4.6');
   capOut(tl, 0, 't12');
+  urlSwap(tl, 0, 1, 't12+=.3');
   tl.to('#sc1 .sc-site, #fjMtn, #fjSun', {scale:.92, opacity:0, duration:1.1, transformOrigin:'50% 40%'}, 't12')
     .to('#sc1', {autoAlpha:0, duration:.7}, 't12+=.5')
     .to('#sc2', {autoAlpha:1, duration:.5}, 't12+=.4')
@@ -1093,6 +1186,7 @@ if (!reduced){
   /* ---- TRANSITION 2→3: booking button "clicks", blue floods from it ---- */
   tl.addLabel('t23', 't12+=4.4');
   capOut(tl, 1, 't23');
+  urlSwap(tl, 1, 2, 't23+=.4');
   tl.to('#saBook', {scale:.9, duration:.25, ease:'power1.in'}, 't23')
     .to('#saBook', {scale:1.06, duration:.3}, 't23+=.25')
     .to('#sc3', {autoAlpha:1, clipPath:'circle(8% at 28% 72%)', duration:.01}, 't23+=.4')
@@ -1118,25 +1212,23 @@ if (!reduced){
   /* ---- TRANSITION 3→4: zoom through into the café dark ---- */
   tl.addLabel('t34', 'form+=4.6');
   capOut(tl, 2, 't34');
+  urlSwap(tl, 2, 3, 't34+=.4');
   tl.to('#sc3 .sc-site, #sc3 .ro-glow', {scale:1.5, opacity:0, duration:1.2, transformOrigin:'50% 45%', ease:'power2.in'}, 't34')
     .to('#sc3', {autoAlpha:0, duration:.5}, 't34+=.8')
     .to('#sc4', {autoAlpha:1, duration:.7}, 't34+=.7')
-    .to('#kaDevice', {y:0, opacity:1, scale:1, duration:1.2, ease:'power3.out'}, 't34+=.9')
-    .to('#kaMenu div', {opacity:1, x:0, duration:.6, stagger:.14}, 't34+=1.7')
-    .to('#kaPhoto', {opacity:1, scale:1, duration:.9}, 't34+=1.9');
+    .to('#kaMenu div', {opacity:1, x:0, duration:.6, stagger:.14}, 't34+=1.5')
+    .to('#kaPhoto', {opacity:1, scale:1, duration:.9}, 't34+=1.7');
   capIn(tl, 3, 't34+=1.4');
 
-  /* ---- SCENE 4: desktop morphs into phone ---- */
+  /* ---- SCENE 4: the same site slides in as a phone ---- */
   tl.addLabel('morph', 't34+=3.0');
-  tl.to('#kaDevice', {width:'min(88vw, 340px)', height:'min(74vh, 620px)', borderRadius:38, duration:1.6, ease:'power3.inOut'}, 'morph')
-    .to('#kaNotch', {opacity:1, duration:.4}, 'morph+=1.2')
-    .to('#kaPhoto', {opacity:0, duration:.5}, 'morph')
-    .to('.ka-body', {gridTemplateColumns:'1fr', duration:.01}, 'morph+=.7');
+  tl.to('#kaPhone', {y:'0%', rotate:0, duration:1.4, ease:'back.out(1.2)'}, 'morph');
 
-  /* ---- TRANSITION 4→5: lights out, aurora finale ---- */
+  /* ---- TRANSITION 4→5: frame departs, aurora finale ---- */
   tl.addLabel('t45', 'morph+=2.6');
   capOut(tl, 3, 't45');
-  tl.to('#sc4', {autoAlpha:0, duration:.9}, 't45')
+  tl.to('#frameZone', {y:-90, opacity:0, scale:.94, duration:1.1, ease:'power2.in'}, 't45')
+    .to('#sc4', {autoAlpha:0, duration:.9}, 't45')
     .to('#sc5', {autoAlpha:1, duration:.7}, 't45+=.5')
     .to('#ouH4', {opacity:1, y:0, scale:1, duration:1.1, ease:'power3.out'}, 't45+=.8')
     .to('.ou-inner p', {opacity:1, y:0, duration:.8}, 't45+=1.3')
