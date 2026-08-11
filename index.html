@@ -311,19 +311,6 @@
   .ka-pscreen .pmenu i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-2px)}
   .ka-pscreen .pmenu b{color:#E8B04B}
 
-  /* ---------- SCENE 5 · OUTRO ---------- */
-  .s-outro .sc-bg{background:var(--bg)}
-  .s-outro{color:var(--ink)}
-  .ou-inner{position:relative;z-index:5;flex:1;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;text-align:center;gap:3.4vh;padding-top:74px}
-  .ou-inner h4{font-family:var(--disp);font-weight:800;font-size:clamp(40px,7.4vw,104px);line-height:1;
-    background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;
-    filter:drop-shadow(0 0 34px rgba(99,242,185,.25))}
-  .ou-inner p{color:var(--dim);font-size:clamp(15px,1.6vw,20px);max-width:40ch}
-  .ou-orb{position:absolute;width:560px;height:560px;border-radius:50%;left:50%;top:50%;
-    transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(56,198,217,.12),transparent 62%);
-    pointer-events:none}
-
   /* fallback stack (reduced motion / no-JS) */
   .reel-static{display:none}
   @media (prefers-reduced-motion: reduce){
@@ -443,10 +430,32 @@
   @media(max-width:640px){.pline{padding:22px 4px}}
 
   /* ---------- contact ---------- */
-  #kontakt::before{content:"";position:absolute;left:50%;top:-140px;width:640px;height:640px;transform:translateX(-50%);
-    background:radial-gradient(circle,rgba(56,198,217,.10),transparent 62%);pointer-events:none}
-  .contact-panel{position:relative;background:var(--card);border:1px solid var(--line);border-radius:26px;
-    overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;z-index:2}
+  #kontakt{overflow:hidden}
+  #kontaktAurora{position:absolute;inset:0;width:100%;height:100%;opacity:.7;pointer-events:none}
+  .cpanel-border{position:relative;z-index:2;border-radius:28px;padding:1.5px;
+    background:linear-gradient(120deg,rgba(99,242,185,.55),rgba(56,198,217,.15) 30%,
+      rgba(139,123,255,.5) 60%,rgba(99,242,185,.4));
+    background-size:300% 300%;animation:borderflow 9s ease-in-out infinite}
+  @keyframes borderflow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .contact-panel{position:relative;background:linear-gradient(165deg,#131a2e 0%,#0E1322 55%,#0C101D 100%);
+    border-radius:27px;overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr}
+  .c-live{display:inline-flex;align-items:center;gap:9px;margin:18px 0 4px;
+    background:rgba(99,242,185,.08);border:1px solid rgba(99,242,185,.3);border-radius:999px;
+    padding:8px 15px;font-size:13px;font-weight:600;color:var(--mint)}
+  .c-live i{width:8px;height:8px;border-radius:50%;background:var(--mint);
+    animation:pulsedot 1.7s ease-in-out infinite}
+  @keyframes pulsedot{0%,100%{box-shadow:0 0 0 0 rgba(99,242,185,.5)}50%{box-shadow:0 0 0 7px rgba(99,242,185,0)}}
+  .c-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .c-chips span{font-size:13px;color:var(--dim)}
+  .c-chips span::before{content:"✓ ";color:var(--mint);font-weight:700}
+  .btn-send{position:relative;overflow:hidden;font-size:17px;padding:17px 30px}
+  .btn-send::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+    transform:skewX(-20deg);
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    animation:shine 3.4s ease-in-out infinite}
+  @keyframes shine{0%,55%{left:-70%}85%,100%{left:135%}}
+  input:focus,textarea:focus{outline:none;border-color:var(--mint);
+    box-shadow:0 0 0 4px rgba(99,242,185,.12)}
   .contact-info{padding:56px 50px;position:relative}
   .contact-info::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(ellipse at -20% 120%, rgba(99,242,185,.16), transparent 55%),
@@ -683,17 +692,6 @@
         </div><!-- /frame-tilt -->
       </div><!-- /frame-zone -->
 
-      <!-- SCENE 5: Outro -->
-      <div class="scene s-outro" id="sc5" aria-hidden="true">
-        <div class="sc-bg"></div>
-        <div class="ou-orb"></div>
-        <div class="ou-inner">
-          <h4 id="ouH4" data-i18n="ou_title">Din bedrift her?</h4>
-          <p data-i18n="ou_sub">Vi tegner den neste rundt din bedrift — helt gratis og helt uforpliktende.</p>
-          <a class="btn aurora" href="#kontakt" data-hover data-i18n="ou_cta" id="ouCta">Få din gratis demo</a>
-        </div>
-      </div>
-
       <!-- captions + dots -->
       <div class="reel-cap">
         <div class="wrap">
@@ -715,7 +713,7 @@
               <h3 data-i18n="cap4_t">Perfekt på mobil, nettbrett og PC</h3>
             </div>
           </div>
-          <div class="reel-dots" id="reelDots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="reel-dots" id="reelDots"><i class="on"></i><i></i><i></i><i></i></div>
         </div>
       </div>
     </div>
@@ -817,13 +815,15 @@
 
   <!-- ============ CONTACT ============ -->
   <section id="kontakt" style="padding-top:40px">
+    <canvas id="kontaktAurora" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="contact-panel rv">
+      <div class="cpanel-border rv">
+      <div class="contact-panel">
         <div class="contact-info">
           <span class="mono" data-i18n="c_eyebrow">Kontakt</span>
           <h2 data-i18n="c_title">Skal vi bygge din?</h2>
           <p data-i18n="c_sub">Legg igjen noen ord om bedriften din, så bygger vi et gratis utkast og sender deg lenken.</p>
-          <p class="mini" data-i18n-html="c_mini">Svar innen <b>24 timer</b> · Helt uforpliktende</p>
+          <div class="c-live"><i></i><span data-i18n="c_live">Ledig kapasitet denne uken</span></div>
         </div>
         <form id="leadForm" novalidate>
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -851,10 +851,16 @@
             <label for="f-msg" data-i18n="c_msg">Hva driver dere med?</label>
             <textarea id="f-msg" name="Om bedriften" data-i18n-ph="c_msg_ph" placeholder="F.eks. rørleggerfirma i Bergen, 4 ansatte …"></textarea>
           </div>
-          <button class="btn aurora" type="submit" id="sendBtn" data-hover data-i18n="c_send">Send — få gratis demo</button>
+          <button class="btn aurora btn-send" type="submit" id="sendBtn" data-hover data-i18n="c_send">Send — få gratis demo</button>
+          <div class="c-chips">
+            <span data-i18n="c_t1">Svar innen 24 timer</span>
+            <span data-i18n="c_t2">100 % uforpliktende</span>
+            <span data-i18n="c_t3">Ingen kortopplysninger</span>
+          </div>
           <div class="form-ok" id="formOk" data-i18n="c_ok">Takk! Vi tar kontakt innen 24 timer med lenken til demoen din.</div>
           <div class="form-err" id="formErr" data-i18n="c_err">Noe gikk galt med sendingen. Prøv igjen — eller send en e-post.</div>
         </form>
+      </div>
       </div>
     </div>
   </section>
@@ -920,6 +926,8 @@ const I18N = {
     ],
     p1:"Demo klar på <em>24 timer</em>", p2:"<em>Ingen kostnad</em> før du sier ja",
     p3:"<em>Alt inkludert</em> — domene, drift og e-post", p4:"Design laget <em>kun for deg</em>",
+    c_live:"Ledig kapasitet denne uken", c_t1:"Svar innen 24 timer",
+    c_t2:"100 % uforpliktende", c_t3:"Ingen kortopplysninger",
     c_eyebrow:"Kontakt", c_title:"Skal vi bygge din?",
     c_sub:"Legg igjen noen ord om bedriften din, så bygger vi et gratis utkast og sender deg lenken.",
     c_mini:"Svar innen <b>24 timer</b> · Helt uforpliktende",
@@ -972,6 +980,8 @@ const I18N = {
     ],
     p1:"Demo ready in <em>24 hours</em>", p2:"<em>No cost</em> until you say yes",
     p3:"<em>Everything included</em> — domain, hosting and email", p4:"Design made <em>only for you</em>",
+    c_live:"Availability this week", c_t1:"Reply within 24 hours",
+    c_t2:"100% no obligations", c_t3:"No card details needed",
     c_eyebrow:"Contact", c_title:"Shall we build yours?",
     c_sub:"Leave a few words about your business and we'll build a free draft and send you the link.",
     c_mini:"Reply within <b>24 hours</b> · No obligations",
@@ -1084,6 +1094,10 @@ startAurora('auroraCanvas', [
   {hue:187, sat:75, base:.42, amp:.13, speed:.00031, off:2.1,  alpha:.16},
   {hue:255, sat:70, base:.24, amp:.08, speed:.00055, off:4.4,  alpha:.13},
 ]);
+startAurora('kontaktAurora', [
+  {hue:165, sat:70, base:.62, amp:.10, speed:.00033, off:2.0,  alpha:.07},
+  {hue:250, sat:65, base:.34, amp:.09, speed:.00027, off:4.2,  alpha:.06},
+]);
 startAurora('prosessAurora', [
   {hue:160, sat:75, base:.55, amp:.12, speed:.00030, off:1.2,  alpha:.10},
   {hue:200, sat:70, base:.72, amp:.10, speed:.00044, off:3.6,  alpha:.08},
@@ -1159,7 +1173,7 @@ if (!reduced){
     // static stack fallback: move scenes out of the stage
     const stage = document.getElementById('reelStage');
     const stat = document.querySelector('.reel-static');
-    ['sc1','sc2','sc3','sc4','sc5'].forEach(id => stat.appendChild(document.getElementById(id)));
+    ['sc1','sc2','sc3','sc4'].forEach(id => stat.appendChild(document.getElementById(id)));
     stat.querySelectorAll('.scene').forEach(s => s.style.visibility = 'visible');
     stage.remove();
     return;
@@ -1174,9 +1188,9 @@ if (!reduced){
   const dots = gsap.utils.toArray('#reelDots i');
   const bar  = document.getElementById('reelBar');
 
-  const SCENES = ['#sc1','#sc2','#sc3','#sc4','#sc5'];
+  const SCENES = ['#sc1','#sc2','#sc3','#sc4'];
   gsap.set(SCENES.join(','), {visibility:'visible'});
-  gsap.set(['#sc2','#sc3','#sc4','#sc5'], {autoAlpha:0});
+  gsap.set(['#sc2','#sc3','#sc4'], {autoAlpha:0});
   const frameNum = document.getElementById('frameNum');
   gsap.set('#frameZone', {y:110, opacity:0});
   function flash(tl, at){
@@ -1203,10 +1217,6 @@ if (!reduced){
   gsap.set('#kaMenu div', {opacity:0, x:-24});
   gsap.set('#kaPhoto', {opacity:0, scale:.85});
   gsap.set('#kaPhone', {y:'130%', rotate:6});
-  // scene 5
-  gsap.set('#ouH4', {opacity:0, y:50, scale:.92});
-  gsap.set('.ou-inner p', {opacity:0, y:26});
-  gsap.set('#ouCta', {opacity:0, y:26});
 
   const capDur = .45;
   function capIn(tl, i, at){
@@ -1219,13 +1229,13 @@ if (!reduced){
   const tl = gsap.timeline({
     defaults:{ease:'power2.inOut'},
     scrollTrigger:{
-      trigger:'#reel', start:'top top', end:'+=9000',
+      trigger:'#reel', start:'top top', end:'+=8200',
       pin:'.reel-stage', scrub:0.7, anticipatePin:1,
       onUpdate(self){
         bar.style.transform = `scaleX(${self.progress})`;
-        const seg = Math.min(4, Math.floor(self.progress * 5));
+        const seg = Math.min(3, Math.floor(self.progress * 4));
         dots.forEach((d,n)=>d.classList.toggle('on', n===seg));
-        frameNum.textContent = '0' + Math.min(4, seg + 1) + '/04';
+        frameNum.textContent = '0' + (seg + 1) + '/04';
       }
     }
   });
@@ -1301,16 +1311,13 @@ if (!reduced){
   tl.addLabel('morph', 't34+=3.0');
   tl.to('#kaPhone', {y:'0%', rotate:0, duration:1.4, ease:'back.out(1.2)'}, 'morph');
 
-  /* ---- TRANSITION 4→5: frame departs, aurora finale ---- */
+  /* ---- ENDING: the frame takes a bow and departs ---- */
   tl.addLabel('t45', 'morph+=2.6');
   capOut(tl, 3, 't45');
-  tl.to('#frameZone', {y:-90, opacity:0, scale:.94, duration:1.1, ease:'power2.in'}, 't45')
-    .to('#sc4', {autoAlpha:0, duration:.9}, 't45')
-    .to('#sc5', {autoAlpha:1, duration:.7}, 't45+=.5')
-    .to('#ouH4', {opacity:1, y:0, scale:1, duration:1.1, ease:'power3.out'}, 't45+=.8')
-    .to('.ou-inner p', {opacity:1, y:0, duration:.8}, 't45+=1.3')
-    .to('#ouCta', {opacity:1, y:0, duration:.8, ease:'back.out(1.6)'}, 't45+=1.7')
-    .to({}, {duration:1.2}); // hold
+  flash(tl, 't45+=.1');
+  tl.to('#frameZone', {y:-110, opacity:0, scale:.93, rotationX:6, duration:1.2, ease:'power2.in'}, 't45+=.2')
+    .to('#sc4', {autoAlpha:0, duration:.8}, 't45+=.4')
+    .to({}, {duration:.7}); // breath before unpin
 
   /* igloo-style mouse parallax: scenes and frame react to the cursor */
   if (matchMedia('(hover:hover) and (pointer:fine)').matches){
@@ -1321,7 +1328,6 @@ if (!reduced){
       ['.sa-grid', -10, -7], ['#saArch', 8, 0],
       ['.ro-left', -9, -6], ['.ro-glow', 16, 10],
       ['.ka-photo', 12, 8], ['.ka-body', -7, -5],
-      ['.ou-inner', -8, -6], ['.ou-orb', 14, 10],
     ].map(([sel, mx, my]) => {
       const el = document.querySelector(sel);
       return el ? {
