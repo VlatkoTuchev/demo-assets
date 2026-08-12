@@ -198,6 +198,67 @@
     .step{padding-top:0;padding-left:30px}
   }
 
+  /* ---------- prosjekter: før/etter + photo wall ---------- */
+  .iglink{color:var(--brass2);font-weight:700;border-bottom:1px solid rgba(226,184,75,.45)}
+  .iglink:hover{border-bottom-color:var(--brass2)}
+  .ba-wrap{max-width:640px;margin:44px auto 0}
+  .ba{position:relative;aspect-ratio:3/4;max-height:640px;overflow:hidden;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;
+    border:1px solid rgba(198,154,46,.45)}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ba-top{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+  .ba-chip{position:absolute;top:14px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;padding:6px 11px;color:#F2F1ED;
+    background:rgba(16,17,18,.72);pointer-events:none}
+  .ba-chip.l{left:14px}.ba-chip.r{right:14px}
+  .ba-line{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;
+    background:var(--brass2);pointer-events:none;
+    box-shadow:0 0 0 .5px rgba(16,17,18,.5)}
+  .ba-h{position:absolute;top:50%;left:var(--p);width:44px;height:44px;
+    transform:translate(-50%,-50%) rotate(45deg);background:var(--brass);
+    border:2px solid #101112;cursor:ew-resize;padding:0}
+  .ba-h::after{content:"";position:absolute;inset:0;display:block;
+    background:
+      linear-gradient(#101112,#101112) no-repeat 11px 19px/6px 2px,
+      linear-gradient(#101112,#101112) no-repeat 23px 19px/6px 2px;
+    transform:rotate(-45deg)}
+  .ba-h:hover{background:var(--brass2)}
+  .ba-cap{margin-top:12px;text-align:center;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.14em;color:var(--mist2);text-transform:uppercase}
+  .pwall{margin-top:52px;background:rgba(157,124,44,.36);padding:3px;display:grid;gap:3px;
+    grid-template-columns:repeat(12,1fr);grid-auto-rows:290px}
+  .pstone{position:relative;display:block;overflow:hidden;background:var(--coal)}
+  .pstone.s5{grid-column:span 5}.pstone.s4{grid-column:span 4}.pstone.s3{grid-column:span 3}
+  .pstone.tall{grid-row:span 2}
+  .pstone img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .pstone:hover img{transform:scale(1.045)}
+  .pstone::after{content:"";position:absolute;inset:0;border:1px solid transparent;
+    transition:border-color .25s;pointer-events:none}
+  .pstone:hover::after{border-color:rgba(226,184,75,.85)}
+  .pcap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;
+    padding:10px 13px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:#E9E8E3;
+    background:linear-gradient(transparent,rgba(16,17,18,.88) 38%)}
+  .pcap i{font-style:normal;color:var(--brass2);flex-shrink:0}
+  .pwall .pstone{opacity:0;transform:translateY(-16px) rotate(-.4deg)}
+  .pwall.go .pstone{opacity:1;transform:none;
+    transition:opacity .5s ease,transform .62s cubic-bezier(.22,.9,.3,1.14),border-color .25s}
+  .pwall.go .pstone:nth-child(1){transition-delay:.05s}
+  .pwall.go .pstone:nth-child(2){transition-delay:.21s}
+  .pwall.go .pstone:nth-child(3){transition-delay:.37s}
+  .pwall.go .pstone:nth-child(4){transition-delay:.55s}
+  .pwall.go .pstone:nth-child(5){transition-delay:.71s}
+  @media (prefers-reduced-motion: reduce){
+    .pwall .pstone{opacity:1;transform:none;transition:none}
+    .pstone img{transition:none}
+  }
+  @media (max-width:920px){
+    .ba-wrap{margin-top:32px}
+    .pwall{grid-template-columns:1fr;grid-auto-rows:260px;margin-top:36px}
+    .pstone.s5,.pstone.s4,.pstone.s3{grid-column:span 1}
+    .pstone.tall{grid-row:span 1}
+  }
+
   /* ---------- ØMA band ---------- */
   .oma{position:relative;overflow:clip}
   .oma .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34}
@@ -272,6 +333,7 @@
     <nav class="nav-links" aria-label="Hovedmeny">
       <a href="#tjenester">Tjenester</a>
       <a href="#naturstein">Naturstein</a>
+      <a href="#prosjekter">Prosjekter</a>
       <a href="#prosess">Slik jobber vi</a>
       <a href="#om">Om ØMA</a>
       <a href="#kontakt">Kontakt</a>
@@ -377,8 +439,8 @@
 <section class="sec dark" id="naturstein">
   <div class="wrap split">
     <div class="sp-img rv"><span class="notch"></span>
-      <img src="images/mur.jpg" alt="Murplan — teknisk tegning av natursteinsmur med skiftegang og fundament">
-      <div class="sp-cap">Murplan — hver stein har sin plass</div>
+      <img src="images/mur-foto.jpg" alt="Granittmur under bygging — gravemaskin og nylagt pukk langs muren">
+      <div class="sp-cap">Granittmur og kantstein — fra jobben, ikke fra arkivet</div>
     </div>
     <div class="rv">
       <span class="sec-k">Naturstein og støttemurer</span>
@@ -416,8 +478,53 @@
       </ul>
     </div>
     <div class="sp-img nR rv"><span class="notch"></span>
-      <img src="images/gard.jpg" alt="Planskisse av gårdstun med fallpiler mot sluk — riktig fall gir tørr plass">
-      <div class="sp-cap">Planlagt fall — tørr plass, år etter år</div>
+      <img src="images/gard-foto.jpg" alt="Ferdig lagt belegningsstein på gårdsplass foran anneks">
+      <div class="sp-cap">Ferdig levert — belegningsstein, klar til bruk</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="prosjekter">
+  <div class="wrap">
+    <span class="sec-k rv">Prosjekter</span>
+    <h2 class="sec-t rv">Se selv — før og etter</h2>
+    <p class="sec-p rv">Ekte bilder fra jobbene våre, slik vi deler dem på
+      <a class="iglink" href="https://www.instagram.com/omanlegg/" target="_blank" rel="noopener">@omanlegg</a>.
+      Dra i håndtaket og se hva masseutskiftning, granittmur og kantstein gjør med en innkjørsel.</p>
+
+    <div class="ba-wrap rv">
+      <div class="ba" id="ba" style="--p:50%">
+        <img class="ba-base" src="images/etter.jpg" alt="Etter: ny asfaltert innkjørsel med granittmur og kantstein" draggable="false">
+        <img class="ba-top" src="images/for.jpg" alt="Før: gammel, smal og sprukket innkjørsel" draggable="false">
+        <span class="ba-chip l">Før</span><span class="ba-chip r">Etter</span>
+        <div class="ba-line" aria-hidden="true"></div>
+        <button class="ba-h" id="baH" type="button" role="slider" aria-label="Sammenlign før og etter"
+          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal"></button>
+      </div>
+      <div class="ba-cap">Masseutskiftning · granittmur · kantstein · asfalt — én og samme jobb</div>
+    </div>
+
+    <div class="pwall" id="pwall">
+      <a class="pstone s4 tall" href="https://www.instagram.com/p/C0_2iIsI5IA/" target="_blank" rel="noopener">
+        <img src="images/p-natt.jpg" alt="Gravemaskin i snøvær på nattskift, lysene på">
+        <span class="pcap"><i>♥ 86</i>Vinterdrift — vi gnager på til jul</span>
+      </a>
+      <a class="pstone s5" href="https://www.instagram.com/p/Cl5easHoer0/" target="_blank" rel="noopener">
+        <img src="images/p-soloppgang.jpg" alt="Traktor med henger i frostrøyk ved soloppgang">
+        <span class="pcap"><i>♥ 19</i>Fibergrøft i soloppgang</span>
+      </a>
+      <a class="pstone s3" href="https://www.instagram.com/p/Ck9GcazLSPw/" target="_blank" rel="noopener">
+        <img src="images/p-belegg.jpg" alt="Belegningsstein legges med rettholt og fall">
+        <span class="pcap"><i>♥ 19</i>Belegningsstein — stein for stein</span>
+      </a>
+      <a class="pstone s5" href="https://www.instagram.com/p/CyyFzhcILQd/" target="_blank" rel="noopener">
+        <img src="images/p-fjellveg.jpg" alt="Gravemaskin bygger opp fylkesvegen i tåkete fjellandskap">
+        <span class="pcap"><i>♥ 18</i>Fylkesvegen i Skrukkelia — etter «Hans»</span>
+      </a>
+      <a class="pstone s3" href="https://www.instagram.com/p/CqIvlZlIQ6W/" target="_blank" rel="noopener">
+        <img src="images/p-fiberduk.jpg" alt="Fiberduk og bærelag lagt langs boligblokk">
+        <span class="pcap"><i>♥ 15</i>Fiberduk og bærelag — Hilton borettslag</span>
+      </a>
     </div>
   </div>
 </section>
@@ -525,12 +632,37 @@
   }), {threshold:.15});
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // the service wall settles stone by stone
-  const wall = document.getElementById('wall');
-  const wio = new IntersectionObserver((es) => {
-    if (es[0].isIntersecting){ wall.classList.add('go'); wio.disconnect(); }
-  }, {threshold:.18});
-  wio.observe(wall);
+  // the service wall + photo wall settle stone by stone
+  document.querySelectorAll('#wall, #pwall').forEach((w) => {
+    const wio = new IntersectionObserver((es) => {
+      if (es[0].isIntersecting){ w.classList.add('go'); wio.disconnect(); }
+    }, {threshold:.12});
+    wio.observe(w);
+  });
+
+  // før/etter slider — drag, touch and arrow keys
+  const ba = document.getElementById('ba');
+  const baH = document.getElementById('baH');
+  let bp = 50;
+  const baSet = (v) => {
+    bp = Math.max(4, Math.min(96, v));
+    ba.style.setProperty('--p', bp + '%');
+    baH.setAttribute('aria-valuenow', Math.round(bp));
+  };
+  const baFromX = (x) => {
+    const r = ba.getBoundingClientRect();
+    baSet((x - r.left) / r.width * 100);
+  };
+  ba.addEventListener('pointerdown', (e) => {
+    ba.setPointerCapture(e.pointerId); baFromX(e.clientX); e.preventDefault();
+  });
+  ba.addEventListener('pointermove', (e) => {
+    if (e.pressure > 0 || e.buttons) baFromX(e.clientX);
+  });
+  baH.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft'){ baSet(bp - 4); e.preventDefault(); }
+    if (e.key === 'ArrowRight'){ baSet(bp + 4); e.preventDefault(); }
+  });
 
   const form = document.getElementById('leadForm');
   const btn = document.getElementById('sendBtn');
