@@ -168,7 +168,7 @@
 
   /* ---------- prosjekter: draggable før/etter ---------- */
   .prosj{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
   .pcase h3{font-size:22px;margin-bottom:4px}
   .pcase p.meta{color:var(--dim);font-size:14.5px;margin-bottom:16px}
   .ba{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:1/1.13;cursor:pointer;
@@ -203,7 +203,8 @@
     color:var(--dim);font-weight:600}
   .pnote svg{width:16px;height:16px;stroke:var(--wood2);fill:none;stroke-width:2.2;
     stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-  @media(max-width:820px){.pgrid{grid-template-columns:1fr;gap:34px}}
+  @media(max-width:1000px){.pgrid{grid-template-columns:1fr 1fr;gap:26px}}
+  @media(max-width:700px){.pgrid{grid-template-columns:1fr;gap:34px}}
 
   /* contact */
   .kontakt{background:#fff;border-top:1px solid var(--line)}
@@ -396,7 +397,7 @@
     <div class="sec-k rv">Prosjekter</div>
     <h2 class="sec-t rv">Før og etter</h2>
     <p class="sec-p rv">Se forskjellen skje — samme hus, samme vinkel. Trykk på bildet for å bytte selv.
-      Fasaderenovering på Nøtterøy: ny isolasjon, nytt staffpanel, nye vinduer og ny beis.</p>
+      Fasaderenovering på Nøtterøy — ny isolasjon, nytt staffpanel, nye vinduer og overflate.</p>
     <div class="pgrid">
       <div class="pcase rv">
         <h3>Langfasaden</h3>
@@ -414,6 +415,16 @@
         <div class="ba" data-ba style="--pos:50%">
           <img class="after" src="images/pr2_etter.jpg" alt="Ferdig gavlvegg med nytt panel og takutstikk">
           <img class="before" src="images/pr2_for.jpg" alt="Samme gavl under arbeid — gammel kledning revet">
+          <span class="tag"><i></i>Før</span>
+          <span class="prog"><i></i></span>
+        </div>
+      </div>
+      <div class="pcase rv">
+        <h3>Klassisk kysthus</h3>
+        <p class="meta">Nytt panel, nye vinduer og profilert listverk</p>
+        <div class="ba" data-ba style="--pos:50%">
+          <img class="after" src="images/pr3_etter.jpg" alt="Ferdig hvitmalt kysthus med nytt staffpanel og nye sprossevinduer">
+          <img class="before" src="images/pr3_for.jpg" alt="Samme hus i stillas — gammelt panel revet, isolasjon synlig">
           <span class="tag"><i></i>Før</span>
           <span class="prog"><i></i></span>
         </div>
