@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Titlestad AS — Service på el-kjeler og fyringsanlegg i Bergen siden 1995</title>
+<meta name="description" content="Autorisert service og vedlikehold av el-kjeler og fyringsanlegg i Bergen og omegn. Samme firma siden 1995. Ring 55 10 06 06.">
+<meta property="og:title" content="A Titlestad AS — Varme du kan stole på">
+<meta property="og:description" content="Service på el-kjeler og fyringsanlegg i Bergen siden 1995.">
+<meta name="theme-color" content="#12263F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2312263F'/%3E%3Cpath d='M16 6c3.2 4.4 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 2.8-6.6 6-11Z' fill='%23E8A33D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#12263F; --navy2:#0C1A2C; --ink:#1B2A3D; --paper:#F7F9FB; --card:#FFFFFF;
+    --amber:#E8A33D; --amber2:#D18F28; --line:#DFE6EE; --dim:#5A6B80;
+    --serif:'Source Serif 4',Georgia,serif; --sans:'Source Sans 3',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink);background:var(--paper)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--serif);color:var(--navy);line-height:1.15}
+
+  /* reveals */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(247,249,251,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:28px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;
+    font-size:21px;color:var(--navy)}
+  .logo svg{width:30px;height:30px;flex-shrink:0}
+  .nav-links{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:15.5px;color:var(--dim)}
+  .nav-links a:hover{color:var(--navy)}
+  .callbtn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
+    font-weight:700;padding:11px 20px;border-radius:10px;font-size:15.5px;white-space:nowrap;
+    box-shadow:0 8px 20px -8px rgba(18,38,63,.45);transition:transform .2s, box-shadow .2s}
+  .callbtn:hover{transform:translateY(-1px);box-shadow:0 12px 26px -8px rgba(18,38,63,.55)}
+  .callbtn.amber{background:linear-gradient(120deg,var(--amber2),var(--amber));color:#2A1D06}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFFFF 0%,var(--paper) 100%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    padding:72px 0 84px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--amber2);margin-bottom:18px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--amber)}
+  .hero h1{font-size:clamp(38px,5.2vw,60px);font-weight:700;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--amber2);position:relative;white-space:nowrap}
+  .hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--dim);max-width:52ch;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+  .ghostbtn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--navy);
+    color:var(--navy);font-weight:700;padding:10px 20px;border-radius:10px;font-size:15.5px;
+    transition:background .2s,color .2s}
+  .ghostbtn:hover{background:var(--navy);color:#fff}
+  .est{display:flex;gap:26px;flex-wrap:wrap;color:var(--dim);font-size:14.5px;font-weight:600}
+  .est b{display:block;font-family:var(--serif);font-size:26px;color:var(--navy);font-weight:700}
+
+  /* hero visual: photo + thermostat dial */
+  .hv{position:relative}
+  .hv-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(18,38,63,.45);
+    aspect-ratio:16/11;background:linear-gradient(140deg,#1A3557,#0C1A2C)}
+  .hv-img img{width:100%;height:100%;object-fit:cover}
+  .dial{position:absolute;left:-34px;bottom:-34px;width:172px;height:172px;border-radius:50%;
+    background:#fff;box-shadow:0 24px 54px -18px rgba(18,38,63,.5), inset 0 0 0 1px var(--line);
+    display:flex;align-items:center;justify-content:center}
+  .dial svg{width:82%;height:82%}
+  .dial .deg{font-family:var(--serif);font-weight:700;font-size:34px;fill:var(--navy)}
+  .dial .lbl{font-size:9.5px;letter-spacing:.18em;fill:var(--dim);font-weight:600}
+  .dial-arc{fill:none;stroke:#EDF1F6;stroke-width:7;stroke-linecap:round}
+  .dial-val{fill:none;stroke:url(#heatg);stroke-width:7;stroke-linecap:round;
+    transition:stroke-dashoffset 1.6s cubic-bezier(.25,.7,.3,1)}
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 64px}
+    .dial{left:auto;right:10px;bottom:-28px;width:128px;height:128px}
+    .dial .deg{font-size:26px}
+  }
+
+  /* trust strip */
+  .trust{background:var(--navy);color:#C9D6E5}
+  .trust .wrap{display:flex;gap:14px 44px;flex-wrap:wrap;justify-content:center;
+    padding:16px 24px;font-weight:600;font-size:14.5px}
+  .trust span{display:inline-flex;align-items:center;gap:9px}
+  .trust svg{width:16px;height:16px;stroke:var(--amber);fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  /* sections */
+  section{padding:84px 0}
+  .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--amber2);margin-bottom:12px}
+  .sec-t{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:60ch;margin-bottom:44px}
+
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+    transition:transform .25s ease, box-shadow .25s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -22px rgba(18,38,63,.35)}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#183353,var(--navy));margin-bottom:18px}
+  .card .ic svg{width:23px;height:23px;stroke:var(--amber);fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:20px;margin-bottom:9px}
+  .card p{color:var(--dim);font-size:15.5px}
+
+  /* service agreement */
+  .avtale{background:linear-gradient(150deg,var(--navy) 0%,var(--navy2) 100%);color:#DFE8F2;
+    border-radius:22px;padding:52px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;
+    align-items:center;position:relative;overflow:hidden}
+  .avtale::before{content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;
+    border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.22),transparent 65%)}
+  .avtale h2{color:#fff;font-size:clamp(26px,3vw,36px);margin-bottom:14px}
+  .avtale p{color:#AEBFD3;margin-bottom:22px}
+  .avtale ul{list-style:none;display:grid;gap:12px;margin-bottom:28px}
+  .avtale li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:15.5px}
+  .avtale li svg{width:19px;height:19px;stroke:var(--amber);fill:none;stroke-width:2.4;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:3px}
+  .av-img{border-radius:16px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);aspect-ratio:4/3}
+  .av-img img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:880px){.avtale{grid-template-columns:1fr;padding:36px 26px}}
+
+  /* emergency strip */
+  .akutt{background:linear-gradient(120deg,#1A3557,var(--navy));border-radius:22px;color:#fff;
+    padding:40px 44px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:space-between;
+    position:relative;overflow:hidden}
+  .akutt::after{content:"";position:absolute;left:-60px;bottom:-90px;width:240px;height:240px;
+    border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.3),transparent 65%);
+    animation:glow 3.5s ease-in-out infinite}
+  @keyframes glow{50%{opacity:.45;transform:scale(1.15)}}
+  .akutt h3{color:#fff;font-size:clamp(22px,2.6vw,30px);margin-bottom:6px}
+  .akutt p{color:#AEBFD3;font-size:15.5px}
+  .akutt .callbtn{font-size:18px;padding:15px 28px}
+
+  /* about / history */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .ab-img{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;
+    box-shadow:0 26px 60px -26px rgba(18,38,63,.4)}
+  .ab-img img{width:100%;height:100%;object-fit:cover}
+  .badge1995{position:absolute;top:18px;left:18px;background:var(--amber);color:#2A1D06;
+    font-weight:700;font-size:13.5px;letter-spacing:.06em;padding:8px 14px;border-radius:99px;
+    box-shadow:0 10px 24px -8px rgba(232,163,61,.7)}
+  .about ul{list-style:none;display:grid;gap:14px;margin-top:24px}
+  .about li{display:flex;gap:13px;align-items:flex-start;font-weight:600}
+  .about li svg{width:20px;height:20px;stroke:var(--amber2);fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
+  .about li small{display:block;font-weight:400;color:var(--dim);font-size:15px}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* contact */
+  .kontakt{background:#fff;border-top:1px solid var(--line)}
+  .k-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+  .k-info div{margin-bottom:22px}
+  .k-info b{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--amber2);margin-bottom:4px}
+  .k-info a{font-weight:700;color:var(--navy)}
+  form{display:grid;gap:16px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{font-weight:700;font-size:14px;color:var(--navy)}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;font-size:16px;font-family:var(--sans);
+    border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+    transition:border-color .2s, box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy);
+    box-shadow:0 0 0 3px rgba(18,38,63,.12)}
+  textarea{min-height:110px;resize:vertical}
+  .send{border:none;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;background:linear-gradient(120deg,var(--amber2),var(--amber));
+    color:#2A1D06;font-weight:700;font-size:17px;padding:16px;border-radius:12px;
+    box-shadow:0 14px 30px -12px rgba(209,143,40,.65);transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .fmsg{display:none;padding:14px 16px;border-radius:10px;font-weight:600}
+  .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
+  .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
+  @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+  footer{background:var(--navy2);color:#7D8FA5;font-size:14px;padding:30px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* mobile sticky call bar */
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+      align-items:center;justify-content:center;gap:10px;background:linear-gradient(120deg,var(--amber2),var(--amber));
+      color:#2A1D06;font-weight:700;font-size:17px;padding:15px;border-radius:14px;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.4)}
+    body{padding-bottom:74px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#12263F"/><path d="M16 6c3.2 4.4 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 2.8-6.6 6-11Z" fill="#E8A33D"/></svg>
+      A Titlestad
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#avtale">Serviceavtale</a>
+      <a href="#om">Om oss</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="callbtn" href="tel:55100606">☎ 55 10 06 06</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker rv">Autorisert service · Bergen siden 1995</span>
+      <h1 class="rv">Varme du kan <em>stole på.</em></h1>
+      <p class="lead rv">Service og vedlikehold av el-kjeler og fyringsanlegg — utført av samme
+        firma, med samme grundighet, i over tretti år. Vi holder Bergen varm.</p>
+      <div class="hero-ctas rv">
+        <a class="callbtn amber" href="tel:55100606">☎ Ring 55 10 06 06</a>
+        <a class="ghostbtn" href="#kontakt">Bestill service</a>
+      </div>
+      <div class="est rv">
+        <span><b data-count="30">0</b>år i drift</span>
+        <span><b data-count="1995">1900</b>etablert</span>
+        <span><b>AS</b>solid selskap</span>
+      </div>
+    </div>
+    <div class="hv rv">
+      <div class="hv-img"><img src="images/hero.jpg" alt="Moderne el-kjele med kobberrør, fagmessig installert"></div>
+      <div class="dial" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <defs><linearGradient id="heatg" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#12263F"/><stop offset="1" stop-color="#E8A33D"/>
+          </linearGradient></defs>
+          <path class="dial-arc" d="M28 96 A 46 46 0 1 1 92 96"/>
+          <path class="dial-val" id="dialVal" d="M28 96 A 46 46 0 1 1 92 96"/>
+          <text class="deg" x="60" y="66" text-anchor="middle"><tspan id="degN">5</tspan>°</text>
+          <text class="lbl" x="60" y="86" text-anchor="middle">INNETEMPERATUR</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Autorisert virksomhet</span>
+    <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Over 30 år i drift</span>
+    <span><svg viewBox="0 0 24 24"><path d="M20 12c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8c2.5 0 4.7 1.1 6.2 2.9"/><path d="M20 4v5h-5"/></svg>Faste serviceavtaler</span>
+    <span><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Hele Bergen og omegn</span>
+  </div>
+</div>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="sec-k rv">Tjenester</div>
+    <h2 class="sec-t rv">Alt innen drift av varmeanlegg</h2>
+    <p class="sec-p rv">Fra årlig service til akutt feilretting — vi kjenner anleggene i Bergen
+      bedre enn noen, fordi vi har installert og vedlikeholdt dem i tre tiår.</p>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 7h6M9 11h6"/><circle cx="12" cy="16.5" r="1.8"/></svg></div>
+        <h3>Service av el-kjeler</h3>
+        <p>Årlig kontroll, rens og optimalisering — kjelen varer lenger og bruker mindre strøm.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20 20 4"/><path d="M8 4h12v12"/><path d="M4 14v6h6"/></svg></div>
+        <h3>Utfasing av oljefyr</h3>
+        <p>Trygg overgang fra olje til elektrisk — vi demonterer, leverer og setter i drift.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 3v4M16 3v4"/><rect x="4" y="6" width="16" height="15" rx="2"/><path d="m9 14 2 2 4-4"/></svg></div>
+        <h3>Vedlikeholdsavtale</h3>
+        <p>Fast årlig kontroll til avtalt tid. Du slipper å huske det — vi ringer deg.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+        <h3>Akutt feilretting</h3>
+        <p>Kald kjele midt i vinteren? Ring oss — vi prioriterer anlegg uten varme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avtale" style="padding-top:0">
+  <div class="wrap">
+    <div class="avtale rv">
+      <div>
+        <h2>Serviceavtale — så er varmen aldri din bekymring</h2>
+        <p>Én fast årlig kontroll, utført av folk som har fulgt anlegget ditt i årevis.
+          Pris avtales ved befaring — ingen overraskelser.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Årlig kontroll og rens av kjelen</li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Kontroll av sikkerhetsventiler og styring</li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Prioritert utrykning ved feil</li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Vi ringer deg når det er tid — du slipper å huske</li>
+        </ul>
+        <a class="callbtn amber" href="#kontakt">Be om tilbud på avtale</a>
+      </div>
+      <div class="av-img"><img src="images/radiator.jpg" alt="Varm radiator ved vindu en kald vinterdag"></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="akutt rv">
+      <div>
+        <h3>Streiker fyren? Vi rykker ut.</h3>
+        <p>Anlegg uten varme prioriteres alltid først — hele Bergen og omegn.</p>
+      </div>
+      <a class="callbtn amber" href="tel:55100606">☎ 55 10 06 06</a>
+    </div>
+  </div>
+</section>
+
+<section id="om" style="padding-top:0">
+  <div class="wrap about-grid">
+    <div class="ab-img rv">
+      <img src="images/hero.jpg" alt="Fagmessig installert varmeanlegg" id="abImg">
+      <span class="badge1995">Siden 1995</span>
+    </div>
+    <div class="about rv">
+      <div class="sec-k">Om oss</div>
+      <h2 class="sec-t">Tre tiår med varme i Bergen</h2>
+      <p style="color:var(--dim)">A Titlestad AS har levert salg og service på fyringsanlegg og
+        elektrokjeler siden 1995. Kundene våre har fulgt oss i årevis — fordi anleggene virker,
+        og fordi vi kommer når vi sier vi skal.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/></svg>
+          Autorisert virksomhet<small>Godkjent for arbeid på varmeanlegg</small></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+          Lokalt eid og drevet<small>Nesttun — vi er naboene dine</small></li>
+        <li><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+          Solid drift, år etter år<small>Trygghet i at vi også finnes neste vinter</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="sec-k rv">Kontakt</div>
+    <h2 class="sec-t rv">Bestill service eller befaring</h2>
+    <p class="sec-p rv">Ring oss direkte, eller send inn skjemaet — så tar vi kontakt.</p>
+    <div class="k-grid">
+      <div class="k-info rv">
+        <div><b>Telefon</b><a href="tel:55100606">55 10 06 06</a></div>
+        <div><b>Område</b>Bergen, Nesttun og omegn</div>
+        <div><b>Org.nr</b>959 643 350</div>
+        <div><b>Akutt?</b>Anlegg uten varme prioriteres først — ring oss.</div>
+      </div>
+      <form id="leadForm" class="rv" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <div><label>Adresse (for befaring)<input type="text" name="Adresse" autocomplete="street-address"></label></div>
+        <div><label>Hva gjelder det?
+          <select name="Hva gjelder det">
+            <option>Service på el-kjele</option>
+            <option>Utfasing av oljefyr</option>
+            <option>Serviceavtale</option>
+            <option>Akutt — anlegget er nede</option>
+            <option>Annet</option>
+          </select></label></div>
+        <div><label>Melding<textarea name="Melding" placeholder="Fortell kort om anlegget …"></textarea></label></div>
+        <button class="send" type="submit" id="sendBtn">Send forespørsel →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© A Titlestad AS · Org.nr 959 643 350</span>
+    <span>Nesttun · Bergen</span>
+  </div>
+</footer>
+
+<a class="mcall" href="tel:55100606">☎ Ring 55 10 06 06</a>
+
+<script>
+  // reveals
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // thermostat dial: arc + degrees animate up to 22° when hero is seen
+  const dv = document.getElementById('dialVal');
+  const degN = document.getElementById('degN');
+  const L = dv.getTotalLength();
+  dv.style.strokeDasharray = L;
+  dv.style.strokeDashoffset = L;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function runDial(){
+    const target = 22, max = 30;
+    dv.style.strokeDashoffset = L * (1 - target / max);
+    if (reduced){ degN.textContent = target; return; }
+    const t0 = performance.now();
+    (function tick(t){
+      const p = Math.min(1, (t - t0) / 1500);
+      degN.textContent = Math.round(5 + (target - 5) * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+  const dio = new IntersectionObserver((es) => { if (es[0].isIntersecting){ runDial(); dio.disconnect(); } });
+  dio.observe(document.querySelector('.dial'));
+
+  // stat counters
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = +el.dataset.count, start = +el.textContent;
+    const cio = new IntersectionObserver((es) => {
+      if (!es[0].isIntersecting) return;
+      cio.disconnect();
+      if (reduced){ el.textContent = target; return; }
+      const t0 = performance.now();
+      (function tick(t){
+        const p = Math.min(1, (t - t0) / 1400);
+        el.textContent = Math.round(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+    cio.observe(el);
+  });
+
+  // form → dinnettside lead-worker
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så tar vi kontakt.';
+      return;
+    }
+    data['Kilde'] = 'demo:a-titlestad';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi ringer deg for å avtale tid.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt. Ring oss gjerne direkte på 55 10 06 06.';
+    }
+    btn.disabled = false; btn.textContent = 'Send forespørsel →';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2Partner AS — Håndverkeren i Heimdal. Små og store jobber.</title>
+<meta name="description" content="Snekkerarbeid, montering, oppussing og småjobber i Heimdal og Trondheim sør. Ring 91 64 74 76 — vi tar jobbene de andre ikke har tid til.">
+<meta property="og:title" content="2Partner — Håndverkeren i Heimdal">
+<meta property="og:description" content="Små og store jobber i Trondheim sør. Ring 91 64 74 76.">
+<meta name="theme-color" content="#2E2A25">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232E2A25'/%3E%3Cpath d='M8 20l8-8 3-1 1-3 3 3-3 1-1 3-8 8H8v-3Z' fill='%23D97706'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F3F0; --card:#FFFFFF; --ink:#2E2A25; --dim:#6E675E; --line:#E4DFD7;
+    --amber:#D97706; --amber2:#B45E04; --deep:#2E2A25;
+    --disp:'Sora',sans-serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:16.5px;line-height:1.68;color:var(--ink);background:var(--bg)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.14;color:var(--ink)}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important;transition:none!important}
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,243,240,.93);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .logo{font-family:var(--disp);font-weight:800;font-size:21px;display:flex;align-items:center;gap:10px}
+  .logo svg{width:32px;height:32px;flex-shrink:0}
+  .logo em{font-style:normal;color:var(--amber)}
+  .nav-links{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15px;color:var(--dim)}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;
+    padding:12px 22px;border-radius:99px;font-size:15.5px;white-space:nowrap;
+    transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.solid{background:linear-gradient(120deg,var(--amber2),var(--amber));color:#fff;
+    box-shadow:0 12px 26px -10px rgba(217,119,6,.55)}
+  .btn.dark{background:var(--deep);color:#fff}
+  .btn.ghost{border:2px solid var(--deep);color:var(--deep)}
+  .btn.ghost:hover{background:var(--deep);color:#fff}
+  @media(max-width:880px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{overflow:hidden;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;
+    padding:66px 0 84px}
+  .kick{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);
+    border-radius:99px;padding:8px 16px;font-weight:700;font-size:13.5px;color:var(--amber2);margin-bottom:20px}
+  .kick i{width:8px;height:8px;border-radius:50%;background:#34B36B;box-shadow:0 0 10px #34B36B;
+    animation:blip 1.6s infinite}
+  @keyframes blip{50%{opacity:.4}}
+  .hero h1{font-size:clamp(36px,5.2vw,58px);font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--amber);position:relative}
+  .hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:12px;overflow:visible}
+  .hero h1 em path{fill:none;stroke:var(--amber);stroke-width:4;stroke-linecap:round;opacity:.55}
+  .hero p.lead{font-size:clamp(16.5px,1.6vw,19.5px);color:var(--dim);max-width:47ch;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-ctas .btn{font-size:16.5px;padding:14px 26px}
+
+  /* hero visual: photo + ticking checklist */
+  .hv{position:relative}
+  .hv-img{border-radius:24px;overflow:hidden;aspect-ratio:16/12;
+    box-shadow:0 32px 70px -30px rgba(46,42,37,.45)}
+  .hv-img img{width:100%;height:100%;object-fit:cover}
+  .todo{position:absolute;left:-30px;bottom:-30px;width:min(280px,80%);background:#fff;
+    border-radius:18px;padding:20px 22px;box-shadow:0 26px 56px -20px rgba(46,42,37,.45)}
+  .todo h5{font-family:var(--disp);font-weight:700;font-size:13.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+  .todo div{display:flex;align-items:center;gap:11px;padding:7px 0;font-weight:600;font-size:14.5px}
+  .todo .box{width:22px;height:22px;border-radius:7px;border:2px solid var(--line);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s}
+  .todo .box svg{width:13px;height:13px;stroke:#fff;stroke-width:3;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.4);
+    transition:opacity .3s,transform .3s}
+  .todo div.done .box{background:#34B36B;border-color:#34B36B}
+  .todo div.done .box svg{opacity:1;transform:scale(1)}
+  .todo div.done span{text-decoration:line-through;color:var(--dim)}
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:42px;padding:46px 0 62px}
+    .todo{left:auto;right:6px;bottom:-26px}
+  }
+
+  section{padding:82px 0}
+  .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--amber2);margin-bottom:12px}
+  .sec-t{font-size:clamp(27px,3.4vw,40px);font-weight:800;margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:58ch;margin-bottom:42px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 22px;
+    transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-5px) rotate(-.4deg);box-shadow:0 24px 44px -22px rgba(46,42,37,.3)}
+  .card .ic{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#FFF4E3,#FDE7C7);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card .ic svg{width:24px;height:24px;stroke:var(--amber2);fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:17.5px;font-weight:700;margin-bottom:8px}
+  .card p{color:var(--dim);font-size:14.5px}
+
+  /* pricing / how */
+  .pris{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .p-card{border-radius:22px;padding:38px 34px;position:relative;overflow:hidden}
+  .p-card.a{background:var(--deep);color:#F0EBE3}
+  .p-card.a::after{content:"";position:absolute;right:-70px;top:-70px;width:220px;height:220px;
+    border-radius:50%;background:radial-gradient(circle,rgba(217,119,6,.4),transparent 65%)}
+  .p-card.a h3{color:#fff}
+  .p-card.b{background:var(--card);border:1px solid var(--line)}
+  .p-card h3{font-size:23px;font-weight:800;margin-bottom:12px}
+  .p-card p{color:inherit;opacity:.75;margin-bottom:18px;font-size:15.5px}
+  .p-card ul{list-style:none;display:grid;gap:11px}
+  .p-card li{display:flex;gap:11px;align-items:flex-start;font-weight:600;font-size:15px}
+  .p-card li svg{width:19px;height:19px;stroke:var(--amber);fill:none;stroke-width:2.4;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:3px}
+  @media(max-width:820px){.pris{grid-template-columns:1fr}}
+
+  /* area */
+  .omr{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .omr b{background:#fff;border:1px solid var(--line);font-weight:600;font-size:14px;
+    padding:8px 16px;border-radius:99px;transition:border-color .2s,color .2s}
+  .omr b:hover{border-color:var(--amber);color:var(--amber2)}
+
+  /* contact */
+  .kontakt{background:#fff;border-top:1px solid var(--line)}
+  .k-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:54px}
+  .k-info div{margin-bottom:22px}
+  .k-info b{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--amber2);margin-bottom:4px}
+  .k-info a{font-weight:700}
+  form{display:grid;gap:15px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  label{font-weight:700;font-size:13.5px}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;font-size:16px;font-family:var(--sans);
+    border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);
+    transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--amber);
+    box-shadow:0 0 0 3px rgba(217,119,6,.15)}
+  textarea{min-height:104px;resize:vertical}
+  .photo-hint{display:flex;align-items:center;gap:10px;border:1.5px dashed var(--line);
+    border-radius:12px;padding:13px 14px;color:var(--dim);font-size:14px;font-weight:500}
+  .photo-hint svg{width:20px;height:20px;stroke:var(--amber2);fill:none;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .send{border:none;cursor:pointer;font-family:var(--disp);display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;background:linear-gradient(120deg,var(--amber2),var(--amber));
+    color:#fff;font-weight:700;font-size:16.5px;padding:16px;border-radius:99px;
+    box-shadow:0 14px 30px -12px rgba(217,119,6,.6);transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .fmsg{display:none;padding:14px 16px;border-radius:12px;font-weight:600}
+  .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
+  .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
+  @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+  footer{background:var(--deep);color:#9C948A;font-size:14px;padding:28px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+      align-items:center;justify-content:center;gap:10px;
+      background:linear-gradient(120deg,var(--amber2),var(--amber));color:#fff;
+      font-weight:700;font-size:17px;padding:15px;border-radius:99px;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.35)}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#2E2A25"/><path d="M8 20l8-8 3-1 1-3 3 3-3 1-1 3-8 8H8v-3Z" fill="#D97706"/></svg>
+      2<em>Partner</em>
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Dette fikser vi</a>
+      <a href="#pris">Slik funker det</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn solid" href="tel:91647476">☎ 91 64 74 76</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kick rv"><i></i>Ledig kapasitet i Heimdal og Trondheim sør</span>
+      <h1 class="rv">Håndverkeren som tar<br><em>hele lista di
+        <svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M3 9 C 60 3, 140 11, 197 5"/></svg>
+      </em></h1>
+      <p class="lead rv">Snekkerarbeid, montering og alle småjobbene du aldri rekker.
+        Én telefon til 2Partner — så er lista tom.</p>
+      <div class="hero-ctas rv">
+        <a class="btn solid" href="tel:91647476">☎ Ring 91 64 74 76</a>
+        <a class="btn ghost" href="#kontakt">Send oss jobblista</a>
+      </div>
+    </div>
+    <div class="hv rv">
+      <div class="hv-img"><img src="images/hero.jpg" alt="Snekkerbenk med verktøy og treverk i varmt lys"></div>
+      <div class="todo" id="todo" aria-hidden="true">
+        <h5>Ukens liste</h5>
+        <div><span class="box"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg></span><span>Montere kjøkken</span></div>
+        <div><span class="box"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg></span><span>Nye lister i stua</span></div>
+        <div><span class="box"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg></span><span>Fikse knirkete dør</span></div>
+        <div><span class="box"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg></span><span>Henge opp hyller</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tjenester" style="padding-top:100px">
+  <div class="wrap">
+    <div class="sec-k rv">Dette fikser vi</div>
+    <h2 class="sec-t rv">Ingen jobb er for liten</h2>
+    <p class="sec-p rv">De store firmaene gidder ikke småjobbene. Vi lever av dem —
+      og gjør dem skikkelig.</p>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20 20 4"/><path d="M14 4h6v6"/><path d="m7 13 4 4"/></svg></div>
+        <h3>Snekkerarbeid</h3><p>Lister, terrasser, vegger, dører — treverk er hjemmebanen vår.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/></svg></div>
+        <h3>Montering</h3><p>Kjøkken, garderober, flatpakker — vi har verktøyet og tålmodigheten.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Oppussing</h3><p>Rom for rom — riving, bygging, maling og finish som holder.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.6 4.6 0 0 0-6.1 5.7L3 17.6 6.4 21l5.6-5.6a4.6 4.6 0 0 0 5.7-6.1l-2.9 2.9-2.4-.6-.6-2.4 2.9-2.9Z"/></svg></div>
+        <h3>Vedlikehold</h3><p>Fast vaktmestertjeneste for hjem, sameie og næring.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Småjobbene</h3><p>Hylla, døra, håndtaket, listen — send lista, vi tar alt på én dag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pris" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-k rv">Slik funker det</div>
+    <h2 class="sec-t rv">Enkelt og forutsigbart</h2>
+    <p class="sec-p rv">Du skal vite hva det koster før vi begynner — ikke etterpå.</p>
+    <div class="pris">
+      <div class="p-card a rv">
+        <h3>Fast timepris</h3>
+        <p>Samme pris hele uka. Materialer til innkjøpspris med kvittering.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Ingen oppstartsgebyr i Heimdal-området</li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Pris avtales før jobben starter</li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Samlerabatt: flere småjobber samme dag</li>
+        </ul>
+      </div>
+      <div class="p-card b rv">
+        <h3>Sånn går det til</h3>
+        <ul style="gap:16px">
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>1. Send lista</b> — ring eller bruk skjemaet, gjerne med bilder</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>2. Få pris og tid</b> — som regel samme dag</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>3. Vi kommer og fikser</b> — og rydder etter oss</span></li>
+        </ul>
+        <p style="margin:22px 0 0;font-size:14px">Serviceområde:</p>
+        <div class="omr">
+          <b>Heimdal</b><b>Tiller</b><b>Kattem</b><b>Flatåsen</b><b>Byåsen</b><b>Trondheim sentrum</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="sec-k rv">Kontakt</div>
+    <h2 class="sec-t rv">Send oss jobblista</h2>
+    <p class="sec-p rv">Beskriv jobben — eller lim inn hele lista. Vi svarer med pris og tidspunkt.</p>
+    <div class="k-grid">
+      <div class="k-info rv">
+        <div><b>Telefon</b><a href="tel:91647476">91 64 74 76</a></div>
+        <div><b>Område</b>Heimdal og Trondheim sør</div>
+        <div><b>Org.nr</b>937 467 206</div>
+        <div><b>Tips</b>Flere småjobber samme dag = bedre pris.</div>
+      </div>
+      <form id="leadForm" class="rv" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <div><label>Hvor?<input type="text" name="Adresse" placeholder="Adresse eller bydel"></label></div>
+        <div><label>Hva skal gjøres?<textarea name="Melding" placeholder="F.eks. «Montere 2 garderobeskap, bytte lister i gangen, fikse dør som subber …»"></textarea></label></div>
+        <div class="photo-hint">
+          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M9 6l1.5-2h3L15 6"/></svg>
+          Har du bilder av jobben? Send dem på SMS til 91 64 74 76 etterpå.
+        </div>
+        <button class="send" type="submit" id="sendBtn">Send jobblista →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2Partner AS · Org.nr 937 467 206</span>
+    <span>Heimdal · Trondheim</span>
+  </div>
+</footer>
+
+<a class="mcall" href="tel:91647476">☎ Ring 91 64 74 76</a>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // the checklist ticks itself when it scrolls into view
+  const todo = document.getElementById('todo');
+  const tio = new IntersectionObserver((es) => {
+    if (!es[0].isIntersecting) return;
+    tio.disconnect();
+    [...todo.querySelectorAll('div')].forEach((row, i) => {
+      setTimeout(() => row.classList.add('done'), 600 + i * 650);
+    });
+  }, {threshold:.4});
+  tio.observe(todo);
+
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så tar vi kontakt.';
+      return;
+    }
+    data['Kilde'] = 'demo:2partner';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi ringer deg med pris og tidspunkt.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt. Ring oss gjerne på 91 64 74 76.';
+    }
+    btn.disabled = false; btn.textContent = 'Send jobblista →';
+  });
+</script>
+</body>
+</html>

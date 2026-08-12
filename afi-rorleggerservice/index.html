@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFI Rørleggerservice AS — Autorisert rørlegger i Bergen siden 1996</title>
+<meta name="description" content="Autorisert rørleggervirksomhet i Ulset/Bergen siden 1996. Bad, varme, service og akutt rørhjelp. Ring 55 18 70 67.">
+<meta property="og:title" content="AFI Rørleggerservice — Autorisert rørlegger i Bergen">
+<meta property="og:description" content="Autorisert rørleggervirksomhet siden 1996. Ring 55 18 70 67.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314213D'/%3E%3Cpath d='M10 22V13a6 6 0 0 1 12 0v2h-4v-2a2 2 0 0 0-4 0v9h-4Z' fill='%23C6753B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#14213D; --navy2:#0C1526; --copper:#C6753B; --copper2:#A85E2B;
+    --paper:#F8F6F2; --card:#FFFFFF; --ink:#232E45; --dim:#5D6982; --line:#E4E0D8;
+    --slab:'Bitter',Georgia,serif; --sans:'Source Sans 3',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink);background:var(--paper)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--slab);color:var(--navy);line-height:1.15}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.93);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:26px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--slab);font-weight:800;
+    font-size:20px;color:var(--navy)}
+  .logo b{color:var(--copper)}
+  .logo svg{width:30px;height:30px;flex-shrink:0}
+  .nav-links{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15.5px;color:var(--dim)}
+  .nav-links a:hover{color:var(--navy)}
+  .callbtn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
+    font-weight:700;padding:11px 20px;border-radius:10px;font-size:15.5px;white-space:nowrap;
+    box-shadow:0 8px 20px -8px rgba(20,33,61,.5);transition:transform .2s}
+  .callbtn:hover{transform:translateY(-1px)}
+  .callbtn.copper{background:linear-gradient(120deg,var(--copper2),var(--copper));color:#fff}
+  @media(max-width:860px){.nav-links{display:none}}
+  @media(max-width:520px){
+    .logo b{display:none}
+    .logo{font-size:19px}
+    .nav .callbtn{padding:10px 14px;font-size:14px}
+  }
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:
+    linear-gradient(180deg,#FFFFFF 0%,var(--paper) 100%)}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center;padding:70px 0 86px}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--copper2);margin-bottom:18px}
+  .kick::before{content:"";width:26px;height:2px;background:var(--copper)}
+  .hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--copper);border-bottom:5px solid rgba(198,117,59,.35)}
+  .hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--dim);max-width:50ch;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .ghostbtn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--navy);
+    color:var(--navy);font-weight:700;padding:10px 20px;border-radius:10px;font-size:15.5px;
+    transition:background .2s,color .2s}
+  .ghostbtn:hover{background:var(--navy);color:#fff}
+
+  .hv{position:relative}
+  .hv-img{border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(20,33,61,.5);
+    aspect-ratio:16/11;background:linear-gradient(140deg,#1D2C4E,#0C1526)}
+  .hv-img img{width:100%;height:100%;object-fit:cover}
+  /* rotating authorization seal */
+  .seal{position:absolute;left:-38px;top:-38px;width:150px;height:150px;filter:drop-shadow(0 16px 34px rgba(20,33,61,.4))}
+  .seal .ring{animation:sealspin 26s linear infinite;transform-origin:50% 50%}
+  @keyframes sealspin{to{transform:rotate(360deg)}}
+  .seal text{font-family:var(--sans);font-weight:700;font-size:10.2px;letter-spacing:.22em;fill:#fff}
+  .seal .mid{font-family:var(--slab);font-weight:800;font-size:20px;fill:#fff;letter-spacing:0}
+  .seal .yr{font-size:11px;fill:var(--copper);font-weight:700;letter-spacing:.14em}
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:46px 0 60px}
+    .seal{left:auto;right:8px;top:-30px;width:112px;height:112px}
+  }
+
+  .trust{background:var(--navy);color:#C4CFE2}
+  .trust .wrap{display:flex;gap:14px 42px;flex-wrap:wrap;justify-content:center;padding:16px 24px;
+    font-weight:600;font-size:14.5px}
+  .trust span{display:inline-flex;align-items:center;gap:9px}
+  .trust svg{width:16px;height:16px;stroke:var(--copper);fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+  section{padding:84px 0}
+  .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--copper2);margin-bottom:12px}
+  .sec-t{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:60ch;margin-bottom:44px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+    position:relative;overflow:hidden;transition:transform .25s, box-shadow .25s}
+  .card::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:4px;
+    background:linear-gradient(90deg,var(--copper2),var(--copper));transition:right .4s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -22px rgba(20,33,61,.35)}
+  .card:hover::after{right:0}
+  .card .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#1D2C4E,var(--navy));margin-bottom:18px}
+  .card .ic svg{width:23px;height:23px;stroke:var(--copper);fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:20px;margin-bottom:9px}
+  .card p{color:var(--dim);font-size:15.5px}
+
+  /* pipes divider */
+  .pipes{height:70px;position:relative;overflow:hidden;opacity:.5}
+  .pipes svg{position:absolute;inset:0;width:100%;height:100%}
+  .pipes path{fill:none;stroke:var(--copper);stroke-width:2;stroke-dasharray:4 40;
+    animation:pflow 3s linear infinite}
+  @keyframes pflow{to{stroke-dashoffset:-88}}
+  .pipes .base{stroke:rgba(198,117,59,.25);stroke-dasharray:none;animation:none}
+
+  /* emergency */
+  .akutt{background:linear-gradient(130deg,var(--navy),var(--navy2));border-radius:22px;color:#fff;
+    padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;
+    position:relative;overflow:hidden}
+  .akutt::before{content:"";position:absolute;right:-100px;top:-100px;width:300px;height:300px;
+    border-radius:50%;background:radial-gradient(circle,rgba(198,117,59,.3),transparent 65%);
+    animation:aglow 3.6s ease-in-out infinite}
+  @keyframes aglow{50%{opacity:.5;transform:scale(1.12)}}
+  .akutt h2{color:#fff;font-size:clamp(24px,3vw,34px);margin-bottom:10px}
+  .akutt p{color:#AAB8D0;margin-bottom:0}
+  .akutt-cta{text-align:center}
+  .akutt-cta .callbtn{font-size:19px;padding:16px 30px}
+  .akutt-cta small{display:block;margin-top:10px;color:#AAB8D0;font-weight:600}
+  @media(max-width:820px){.akutt{grid-template-columns:1fr;padding:34px 26px}}
+
+  /* reviews */
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .rev{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;
+    display:flex;flex-direction:column;gap:14px}
+  .rev .stars{color:var(--copper);letter-spacing:3px;font-size:15px}
+  .rev blockquote{font-family:var(--slab);font-weight:600;font-size:17px;color:var(--navy);line-height:1.5}
+  .rev figcaption{color:var(--dim);font-size:14.5px;font-weight:600}
+
+  /* pipe detail split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .sp-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;
+    box-shadow:0 26px 60px -26px rgba(20,33,61,.4)}
+  .sp-img img{width:100%;height:100%;object-fit:cover}
+  .split ul{list-style:none;display:grid;gap:14px;margin-top:22px}
+  .split li{display:flex;gap:13px;align-items:flex-start;font-weight:600}
+  .split li svg{width:20px;height:20px;stroke:var(--copper2);fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
+  .split li small{display:block;font-weight:400;color:var(--dim);font-size:15px}
+  @media(max-width:880px){.split{grid-template-columns:1fr;gap:34px}}
+
+  /* contact */
+  .kontakt{background:#fff;border-top:1px solid var(--line)}
+  .k-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px}
+  .k-info div{margin-bottom:22px}
+  .k-info b{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--copper2);margin-bottom:4px}
+  .k-info a{font-weight:700;color:var(--navy)}
+  form{display:grid;gap:16px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{font-weight:700;font-size:14px;color:var(--navy)}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;font-size:16px;font-family:var(--sans);
+    border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);
+    transition:border-color .2s, box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--copper);
+    box-shadow:0 0 0 3px rgba(198,117,59,.15)}
+  textarea{min-height:110px;resize:vertical}
+  .send{border:none;cursor:pointer;font-family:var(--sans);display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;background:linear-gradient(120deg,var(--copper2),var(--copper));
+    color:#fff;font-weight:700;font-size:17px;padding:16px;border-radius:12px;
+    box-shadow:0 14px 30px -12px rgba(168,94,43,.6);transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .fmsg{display:none;padding:14px 16px;border-radius:10px;font-weight:600}
+  .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
+  .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
+  @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+  footer{background:var(--navy2);color:#7A88A3;font-size:14px;padding:30px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+      align-items:center;justify-content:center;gap:10px;
+      background:linear-gradient(120deg,var(--copper2),var(--copper));color:#fff;
+      font-weight:700;font-size:17px;padding:15px;border-radius:14px;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.4)}
+    body{padding-bottom:74px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#14213D"/><path d="M10 22V13a6 6 0 0 1 12 0v2h-4v-2a2 2 0 0 0-4 0v9h-4Z" fill="#C6753B"/></svg>
+      AFI <b>Rørleggerservice</b>
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#akutt">Akutt hjelp</a>
+      <a href="#om">Om oss</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="callbtn" href="tel:55187067">☎ 55 18 70 67</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kick rv">Ulset · Bergen</span>
+      <h1 class="rv">Autorisert rørlegger <em>siden 1996</em></h1>
+      <p class="lead rv">Tretti år med bad, varme og rør i Bergen. Autorisasjonen betyr at
+        arbeidet er dokumentert, forsikret og gjort riktig — første gang.</p>
+      <div class="hero-ctas rv">
+        <a class="callbtn copper" href="tel:55187067">☎ Ring 55 18 70 67</a>
+        <a class="ghostbtn" href="#kontakt">Få pristilbud</a>
+      </div>
+    </div>
+    <div class="hv rv">
+      <div class="hv-img"><img src="images/hero.jpg" alt="Moderne bad med sorte og messingdetaljer, fagmessig utført"></div>
+      <svg class="seal" viewBox="0 0 150 150" aria-label="Autorisert rørleggerbedrift siden 1996">
+        <circle cx="75" cy="75" r="73" fill="#14213D"/>
+        <circle cx="75" cy="75" r="66" fill="none" stroke="#C6753B" stroke-width="1.5" stroke-dasharray="3 5"/>
+        <g class="ring">
+          <defs><path id="sealpath" d="M75 18 a57 57 0 1 1 -.01 0"/></defs>
+          <text><textPath href="#sealpath">AUTORISERT RØRLEGGERBEDRIFT · BERGEN · </textPath></text>
+        </g>
+        <text class="mid" x="75" y="72" text-anchor="middle">AFI</text>
+        <text class="yr" x="75" y="92" text-anchor="middle">SIDEN 1996</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Autorisert virksomhet</span>
+    <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Etablert 1996</span>
+    <span><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg>Bad og våtrom</span>
+    <span><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>Rask respons</span>
+  </div>
+</div>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="sec-k rv">Tjenester</div>
+    <h2 class="sec-t rv">Fra dryppende kran til komplett bad</h2>
+    <p class="sec-p rv">Ingen jobb er for liten — og badet ditt er ikke for stort. Autorisert
+      arbeid betyr dokumentasjon du kan vise forsikringsselskapet og kjøperen den dagen du selger.</p>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M7 9h10l-1.5 11h-7L7 9Z"/><path d="M9 3h6"/></svg></div>
+        <h3>Rørleggerarbeid</h3>
+        <p>Kraner, avløp, lekkasjer, vannrør — alt det daglige, gjort skikkelig.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Bad og våtrom</h3>
+        <p>Komplett bad fra riving til fliser — med våtromsdokumentasjon i orden.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c2.8 3.8 5 6.6 5 9.5a5 5 0 0 1-10 0C7 9.6 9.2 6.8 12 3Z"/><path d="M12 18v3"/></svg></div>
+        <h3>Varme og bereder</h3>
+        <p>Varmtvannsberedere, gulvvarme og varmeanlegg — installasjon og bytte.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.6 4.6 0 0 0-6.1 5.7L3 17.6 6.4 21l5.6-5.6a4.6 4.6 0 0 0 5.7-6.1l-2.9 2.9-2.4-.6-.6-2.4 2.9-2.9Z"/></svg></div>
+        <h3>Service og vedlikehold</h3>
+        <p>Fast servicepartner for borettslag og næring — avtaler som holder rørene tette.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pipes" aria-hidden="true">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path class="base" d="M0 35 H 480 Q 500 35 500 25 V 15 M 500 25 Q 500 35 520 35 H 1200"/>
+    <path d="M0 35 H 480 Q 500 35 500 25 V 15"/>
+    <path style="animation-delay:-1.4s" d="M500 25 Q 500 35 520 35 H 1200"/>
+  </svg>
+</div>
+
+<section id="akutt" style="padding-top:40px">
+  <div class="wrap">
+    <div class="akutt rv">
+      <div>
+        <h2>Vannlekkasje? Steng hovedkranen — og ring oss.</h2>
+        <p>Vi vet hva vannskader koster. Akutte lekkasjer prioriteres foran alt annet,
+          i hele Bergen og omegn.</p>
+      </div>
+      <div class="akutt-cta">
+        <a class="callbtn copper" href="tel:55187067">☎ 55 18 70 67</a>
+        <small>Svar fra folk som kan rør — ikke sentralbord</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-k rv">Kundene sier</div>
+    <h2 class="sec-t rv">Rykte bygget over tretti år</h2>
+    <p class="sec-p rv" style="font-size:14px">Eksempler på tilbakemeldinger — erstattes med bedriftens egne referanser.</p>
+    <div class="reviews">
+      <figure class="rev rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>«Kom samme dag da berederen røk. Ryddige, presise og hyggelige folk.»</blockquote>
+        <figcaption>Boligeier, Åsane</figcaption>
+      </figure>
+      <figure class="rev rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>«De har fulgt badet vårt fra første befaring til siste flis. Alt dokumentert.»</blockquote>
+        <figcaption>Familie, Ulset</figcaption>
+      </figure>
+      <figure class="rev rv">
+        <div class="stars">★★★★★</div>
+        <blockquote>«Fast rørlegger for borettslaget i mange år — det er en grunn til det.»</blockquote>
+        <figcaption>Styreleder, Bergen</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="om" style="padding-top:0">
+  <div class="wrap split">
+    <div class="sp-img rv"><img src="images/pipes.jpg" alt="Nye kobberrør og messingkoblinger, fagmessig montert"></div>
+    <div class="rv">
+      <div class="sec-k">Hvorfor autorisert?</div>
+      <h2 class="sec-t">Papirene i orden — og arbeid som varer</h2>
+      <p style="color:var(--dim)">Hvem som helst kan kalle seg rørlegger. Autorisasjonen er
+        beviset på at vi er godkjent for jobben — og forsikringen din bryr seg om akkurat det.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Dokumentert arbeid<small>Samsvarserklæring på alt vi gjør</small></li>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Gyldig ved forsikringssak<small>Uautorisert arbeid kan koste deg oppgjøret</small></li>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Verdi ved salg av bolig<small>Kjøper og takstmann spør etter papirene</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="sec-k rv">Kontakt</div>
+    <h2 class="sec-t rv">Få et uforpliktende pristilbud</h2>
+    <p class="sec-p rv">Ring, eller beskriv jobben i skjemaet — vi svarer raskt.</p>
+    <div class="k-grid">
+      <div class="k-info rv">
+        <div><b>Telefon</b><a href="tel:55187067">55 18 70 67</a></div>
+        <div><b>Område</b>Ulset, Åsane og hele Bergen</div>
+        <div><b>Org.nr</b>976 463 056</div>
+        <div><b>Akutt lekkasje?</b>Ring — vi prioriterer vannskader.</div>
+      </div>
+      <form id="leadForm" class="rv" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <div><label>Hva trenger du hjelp med?
+          <select name="Hva gjelder det">
+            <option>Rørleggerarbeid / reparasjon</option>
+            <option>Bad / våtrom</option>
+            <option>Varmtvannsbereder / varme</option>
+            <option>Serviceavtale (borettslag/næring)</option>
+            <option>Akutt lekkasje</option>
+          </select></label></div>
+        <div><label>Beskriv jobben<textarea name="Melding" placeholder="F.eks. «Berederen lekker fra bunnen …»"></textarea></label></div>
+        <button class="send" type="submit" id="sendBtn">Send forespørsel →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© AFI Rørleggerservice AS · Org.nr 976 463 056</span>
+    <span>Ulset · Bergen</span>
+  </div>
+</footer>
+
+<a class="mcall" href="tel:55187067">☎ Ring 55 18 70 67</a>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så tar vi kontakt.';
+      return;
+    }
+    data['Kilde'] = 'demo:afi-rorleggerservice';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi ringer deg for å avtale befaring.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt. Ring oss gjerne på 55 18 70 67.';
+    }
+    btn.disabled = false; btn.textContent = 'Send forespørsel →';
+  });
+</script>
+</body>
+</html>

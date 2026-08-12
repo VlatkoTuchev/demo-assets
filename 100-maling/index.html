@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>100% Maling AS — Maler i Bergen. 100 % fornøyd.</title>
+<meta name="description" content="Malerfirma i Bergen siden 2018 — innvendig og utvendig maling, tapetsering og sparkling. Gratis befaring og fast pris.">
+<meta property="og:title" content="100% Maling — Maler i Bergen">
+<meta property="og:description" content="Innvendig og utvendig maling, tapet og sparkling. Gratis befaring.">
+<meta name="theme-color" content="#20242B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23FFFFFF'/%3E%3Cpath d='M6 8h20v6H6z' fill='%23577A64'/%3E%3Cpath d='M14 14h4v5l2 3v4h-8v-4l2-3v-5Z' fill='%2320242B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --bg:#FAFAF8; --ink:#20242B; --dim:#666E7A; --line:#E7E7E2;
+    --sage:#577A64; --sage2:#40604C; --terra:#C96F4A; --ocean:#3D6B8E; --butter:#E3B23C;
+    --disp:'Outfit',sans-serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:16.5px;line-height:1.66;color:var(--ink);background:var(--bg)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.12;color:var(--ink)}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.94);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .logo{font-family:var(--disp);font-weight:800;font-size:21px;display:flex;align-items:center;gap:10px}
+  .logo .chip{display:inline-flex;gap:3px}
+  .logo .chip i{width:9px;height:20px;border-radius:3px}
+  .logo .chip i:nth-child(1){background:var(--sage)}
+  .logo .chip i:nth-child(2){background:var(--terra)}
+  .logo .chip i:nth-child(3){background:var(--ocean)}
+  .nav-links{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15px;color:var(--dim)}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;
+    padding:12px 22px;border-radius:11px;font-size:15.5px;white-space:nowrap;
+    transition:transform .2s,box-shadow .2s;font-family:var(--disp)}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.solid{background:linear-gradient(120deg,var(--sage2),var(--sage));color:#fff;
+    box-shadow:0 12px 26px -10px rgba(87,122,100,.55)}
+  .btn.ghost{border:2px solid var(--ink);color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:#fff}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;
+    padding:68px 0 84px}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--sage2);margin-bottom:18px}
+  .kick i{display:inline-flex;gap:3px}
+  .kick i b{width:7px;height:14px;border-radius:2px}
+  .kick i b:nth-child(1){background:var(--sage)}
+  .kick i b:nth-child(2){background:var(--terra)}
+  .kick i b:nth-child(3){background:var(--ocean)}
+  .hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:800;margin-bottom:20px}
+  .hero h1 .swipe{position:relative;display:inline-block;color:#fff;padding:0 .18em;z-index:1;white-space:nowrap}
+  .hero h1 .swipe::before{content:"";position:absolute;inset:.04em 0;z-index:-1;border-radius:.12em;
+    background:linear-gradient(100deg,var(--sage2),var(--sage));transform-origin:0 50%;transform:scaleX(0);
+    transition:transform 1s cubic-bezier(.6,.05,.2,1) .3s}
+  .hero h1 .swipe.on::before{transform:scaleX(1)}
+  .hero p.lead{font-size:clamp(16.5px,1.6vw,19.5px);color:var(--dim);max-width:47ch;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-ctas .btn{font-size:16.5px;padding:14px 26px}
+  .hv{position:relative}
+  .hv-img{border-radius:22px;overflow:hidden;aspect-ratio:16/12;
+    box-shadow:0 34px 74px -30px rgba(32,36,43,.4)}
+  .hv-img img{width:100%;height:100%;object-fit:cover}
+  .drips{position:absolute;left:26px;top:-2px;display:flex;gap:14px}
+  .drips i{width:10px;border-radius:0 0 6px 6px;animation:drip 3.4s ease-in-out infinite}
+  .drips i:nth-child(1){height:44px;background:var(--sage)}
+  .drips i:nth-child(2){height:66px;background:var(--terra);animation-delay:.5s}
+  .drips i:nth-child(3){height:32px;background:var(--butter);animation-delay:1s}
+  @keyframes drip{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.12)}}
+  .drips i{transform-origin:top}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;padding:46px 0 62px}}
+
+  section{padding:84px 0}
+  .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sage2);margin-bottom:12px}
+  .sec-t{font-size:clamp(27px,3.4vw,40px);font-weight:800;margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:58ch;margin-bottom:42px}
+
+  /* paint-chip service cards */
+  .chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .pc{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    transition:transform .25s,box-shadow .25s}
+  .pc:hover{transform:translateY(-6px);box-shadow:0 26px 48px -22px rgba(32,36,43,.3)}
+  .pc .swatch{height:86px;position:relative}
+  .pc .swatch::after{content:attr(data-code);position:absolute;right:12px;bottom:8px;
+    font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.85)}
+  .pc.s1 .swatch{background:linear-gradient(120deg,#40604C,#577A64)}
+  .pc.s2 .swatch{background:linear-gradient(120deg,#A85835,#C96F4A)}
+  .pc.s3 .swatch{background:linear-gradient(120deg,#2E5674,#3D6B8E)}
+  .pc.s4 .swatch{background:linear-gradient(120deg,#C79A2A,#E3B23C)}
+  .pc .body{padding:22px}
+  .pc h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  .pc p{color:var(--dim);font-size:14.5px}
+
+  /* before/after */
+  .ba-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .ba{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:5/5.4;cursor:ew-resize;
+    box-shadow:0 34px 74px -30px rgba(32,36,43,.45);user-select:none;touch-action:pan-y}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+  .ba .before{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+  .ba .bar{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;background:#fff;
+    transform:translateX(-50%);box-shadow:0 0 18px rgba(0,0,0,.5);pointer-events:none}
+  .ba .knob{position:absolute;top:50%;left:var(--pos,50%);transform:translate(-50%,-50%);
+    width:46px;height:46px;border-radius:50%;background:#fff;pointer-events:none;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .ba .knob svg{width:22px;height:22px;stroke:var(--ink);stroke-width:2.4;fill:none;
+    stroke-linecap:round;stroke-linejoin:round}
+  .ba .tag{position:absolute;top:14px;font-family:var(--disp);font-weight:700;font-size:12px;
+    letter-spacing:.14em;padding:6px 12px;border-radius:99px;pointer-events:none}
+  .ba .t1{left:14px;background:rgba(32,36,43,.8);color:#fff}
+  .ba .t2{right:14px;background:rgba(255,255,255,.92);color:var(--ink)}
+  .ba-side ul{list-style:none;display:grid;gap:14px;margin-top:24px}
+  .ba-side li{display:flex;gap:13px;align-items:flex-start;font-weight:600}
+  .ba-side li svg{width:20px;height:20px;stroke:var(--sage2);fill:none;stroke-width:2.4;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:4px}
+  .ba-side li small{display:block;font-weight:400;color:var(--dim);font-size:15px}
+  @media(max-width:880px){.ba-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* color help */
+  .farge{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .f-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center}
+  .f-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3;
+    box-shadow:0 30px 64px -28px rgba(32,36,43,.35)}
+  .f-img img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:880px){.f-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* contact */
+  .kontakt{position:relative;overflow:hidden}
+  .kontakt::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;
+    background:linear-gradient(90deg,var(--sage) 0 25%,var(--terra) 0 50%,var(--ocean) 0 75%,var(--butter) 0)}
+  .k-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:54px}
+  .k-info div{margin-bottom:22px}
+  .k-info b{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--sage2);margin-bottom:4px}
+  form{display:grid;gap:15px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  label{font-weight:700;font-size:13.5px}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;font-size:16px;font-family:var(--sans);
+    border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);
+    transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sage);
+    box-shadow:0 0 0 3px rgba(87,122,100,.15)}
+  textarea{min-height:108px;resize:vertical}
+  .send{border:none;cursor:pointer;font-family:var(--disp);display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;background:linear-gradient(120deg,var(--sage2),var(--sage));
+    color:#fff;font-weight:700;font-size:16.5px;padding:16px;border-radius:12px;
+    box-shadow:0 14px 30px -12px rgba(64,96,76,.6);transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .fmsg{display:none;padding:14px 16px;border-radius:11px;font-weight:600}
+  .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
+  .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
+  @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+  footer{background:var(--ink);color:#9AA1AB;font-size:14px;padding:28px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+      align-items:center;justify-content:center;gap:10px;
+      background:linear-gradient(120deg,var(--sage2),var(--sage));color:#fff;
+      font-family:var(--disp);font-weight:700;font-size:16.5px;padding:15px;border-radius:14px;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.35)}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="chip"><i></i><i></i><i></i></span>
+      100% Maling
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#for-etter">Før / etter</a>
+      <a href="#farger">Fargehjelp</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn solid" href="#kontakt">Gratis befaring</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kick rv"><i><b></b><b></b><b></b></i>Malerfirma · Bergen · siden 2018</span>
+      <h1 class="rv">Vi maler til du er<br><span class="swipe" id="swipe">100 % fornøyd</span></h1>
+      <p class="lead rv">Innvendig og utvendig maling, tapet og sparkling — utført av malere som
+        bryr seg om linjene dine, kantene dine og fargene dine.</p>
+      <div class="hero-ctas rv">
+        <a class="btn solid" href="#kontakt">Få gratis befaring</a>
+        <a class="btn ghost" href="#for-etter">Se forskjellen</a>
+      </div>
+    </div>
+    <div class="hv rv">
+      <div class="hv-img"><img src="images/hero.jpg" alt="Lyst rom under maling — vegg i dyp grønnfarge, malerutstyr"></div>
+      <div class="drips" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="sec-k rv">Tjenester</div>
+    <h2 class="sec-t rv">Velg fra viften</h2>
+    <p class="sec-p rv">Fire ting vi kan bedre enn de fleste — hver med samme standard:
+      rene linjer, tette strøk og ryddig etterlatt.</p>
+    <div class="chips">
+      <div class="pc s1 rv">
+        <div class="swatch" data-code="INNE·01"></div>
+        <div class="body"><h3>Innvendig maling</h3>
+        <p>Vegger, tak, lister og dører — presise kanter og støvfritt utstyr.</p></div>
+      </div>
+      <div class="pc s2 rv">
+        <div class="swatch" data-code="UTE·02"></div>
+        <div class="body"><h3>Utvendig maling</h3>
+        <p>Fasade som tåler bergensvær — grundig forarbeid, riktig produkt.</p></div>
+      </div>
+      <div class="pc s3 rv">
+        <div class="swatch" data-code="TAPET·03"></div>
+        <div class="body"><h3>Tapetsering</h3>
+        <p>Mønster i flukt og usynlige skjøter — tapet er håndverk, ikke hastverk.</p></div>
+      </div>
+      <div class="pc s4 rv">
+        <div class="swatch" data-code="SPARKEL·04"></div>
+        <div class="body"><h3>Sparkling</h3>
+        <p>Plane vegger er halve resultatet — vi sparkler og sliper til det er perfekt.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="for-etter" style="padding-top:0">
+  <div class="wrap ba-grid">
+    <div class="ba rv" id="ba" style="--pos:50%">
+      <img class="after" src="images/after.jpg" alt="Nymalt vegg i dyp salviegrønn med rene kanter">
+      <img class="before" src="images/before.jpg" alt="Samme vegg før maling — slitt og flekkete">
+      <span class="bar"></span>
+      <span class="knob"><svg viewBox="0 0 24 24"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+      <span class="tag t1">FØR</span>
+      <span class="tag t2">ETTER</span>
+    </div>
+    <div class="ba-side rv">
+      <div class="sec-k">Før / etter</div>
+      <h2 class="sec-t">Ett strøk sier mer<br>enn tusen ord</h2>
+      <p style="color:var(--dim)">Dra i skyvelinjen. Det er samme vegg — forskjellen er
+        forarbeid, verktøy og en maler som ikke gir seg før det er rett.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Grundig forarbeid<small>Vask, sparkling og grunning — det er der resultatet avgjøres</small></li>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Tildekket og ryddig<small>Vi dekker gulv og møbler, og rydder etter oss hver dag</small></li>
+        <li><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>
+          Fast pris etter befaring<small>Gratis befaring i hele Bergen — skriftlig tilbud dagen etter</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="farge" id="farger">
+  <div class="wrap f-grid">
+    <div class="f-img rv"><img src="images/swatches.jpg" alt="Fargevifte og malingsprøver på hvitt bord"></div>
+    <div class="rv">
+      <div class="sec-k">Fargehjelp</div>
+      <h2 class="sec-t">Usikker på fargen?<br>Det er jobben vår.</h2>
+      <p style="color:var(--dim);margin-bottom:18px">Vi tar med fargeviften på befaringen og
+        maler opp prøveflater på veggen din — i ditt eget lys. Da velger du riktig
+        første gang, og slipper å male om.</p>
+      <p style="color:var(--dim)">Vi samarbeider med de store norske fargeleverandørene og
+        vet hvilke produkter som faktisk tåler vestlandsværet — ute som inne.</p>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt" id="kontakt">
+  <div class="wrap">
+    <div class="sec-k rv">Kontakt</div>
+    <h2 class="sec-t rv">Få gratis befaring</h2>
+    <p class="sec-p rv">Fortell oss hva som skal males — vi kommer på befaring og gir deg
+      fast pris. Helt uforpliktende.</p>
+    <div class="k-grid">
+      <div class="k-info rv">
+        <div><b>Område</b>Bergen og omegn</div>
+        <div><b>Org.nr</b>921 549 741</div>
+        <div><b>Etablert</b>2018 — malere med fagbrev</div>
+      </div>
+      <form id="leadForm" class="rv" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <div class="frow">
+          <div><label>Adresse<input type="text" name="Adresse" placeholder="Hvor skal det males?"></label></div>
+          <div><label>Hva gjelder det?
+            <select name="Tjeneste">
+              <option>Innvendig maling</option><option>Utvendig maling</option>
+              <option>Tapetsering</option><option>Sparkling</option><option>Flere ting</option>
+            </select></label></div>
+        </div>
+        <div><label>Beskriv jobben<textarea name="Melding" placeholder="F.eks. «Male stue og gang, ca. 60 m² veggflate, ønsker hjelp med fargevalg …»"></textarea></label></div>
+        <button class="send" type="submit" id="sendBtn">Be om gratis befaring →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 100% Maling AS · Org.nr 921 549 741</span>
+    <span>Mathopen · Bergen</span>
+  </div>
+</footer>
+
+<a class="mcall" href="#kontakt">Få gratis befaring</a>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // headline paint swipe
+  const swipe = document.getElementById('swipe');
+  const wio = new IntersectionObserver((es) => {
+    if (es[0].isIntersecting){ swipe.classList.add('on'); wio.disconnect(); }
+  }, {threshold:.6});
+  wio.observe(swipe);
+
+  // before/after slider (drag + intro sweep)
+  const ba = document.getElementById('ba');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let dragging = false;
+  function setPos(clientX){
+    const r = ba.getBoundingClientRect();
+    const p = Math.max(4, Math.min(96, ((clientX - r.left) / r.width) * 100));
+    ba.style.setProperty('--pos', p + '%');
+  }
+  ba.addEventListener('pointerdown', (e) => { dragging = true; ba.setPointerCapture(e.pointerId); setPos(e.clientX); });
+  ba.addEventListener('pointermove', (e) => { if (dragging) setPos(e.clientX); });
+  ba.addEventListener('pointerup', () => dragging = false);
+  ba.addEventListener('pointercancel', () => dragging = false);
+  const bio = new IntersectionObserver((es) => {
+    if (!es[0].isIntersecting) return;
+    bio.disconnect();
+    if (reduced) return;
+    const t0 = performance.now(), from = 50;
+    (function sweep(t){
+      if (dragging) return;
+      const p = (t - t0) / 2600;
+      if (p >= 1){ ba.style.setProperty('--pos', '50%'); return; }
+      const v = from + Math.sin(p * Math.PI * 2) * 26;
+      ba.style.setProperty('--pos', v + '%');
+      requestAnimationFrame(sweep);
+    })(t0);
+  }, {threshold:.5});
+  bio.observe(ba);
+
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så tar vi kontakt.';
+      return;
+    }
+    data['Kilde'] = 'demo:100-maling';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi kontakter deg for å avtale befaring.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt — prøv igjen om et øyeblikk.';
+    }
+    btn.disabled = false; btn.textContent = 'Be om gratis befaring →';
+  });
+</script>
+</body>
+</html>

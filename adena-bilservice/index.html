@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adena Bilservice AS — Bilverksted på Kalbakken, Oslo</title>
+<meta name="description" content="Service, reparasjon, EU-kontroll og dekkskift på Kalbakken i Oslo. Bestill time på nett eller ring 929 11 121.">
+<meta property="og:title" content="Adena Bilservice — Bilverksted på Kalbakken">
+<meta property="og:description" content="Service, reparasjon og EU-kontroll i Oslo. Ring 929 11 121.">
+<meta name="theme-color" content="#17191C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317191C'/%3E%3Cpath d='M7 19l2-6a3 3 0 0 1 2.8-2h8.4a3 3 0 0 1 2.8 2l2 6' fill='none' stroke='%23FF6A1F' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='10.5' cy='21.5' r='2.5' fill='%23FF6A1F'/%3E%3Ccircle cx='21.5' cy='21.5' r='2.5' fill='%23FF6A1F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17191C; --bg2:#101214; --card:#1F2226; --card2:#26292E;
+    --orange:#FF6A1F; --orange2:#E5540A; --ink:#E8EAED; --dim:#9AA2AC; --line:#2E3237;
+    --disp:'Archivo',sans-serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-size:16.5px;line-height:1.65;color:var(--ink);background:var(--bg)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  /* hazard stripe */
+  .hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--orange) 0 14px,#17191C 14px 28px)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(23,25,28,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:22px;padding:13px 0}
+  .logo{font-family:var(--disp);font-weight:900;font-size:21px;letter-spacing:.02em;
+    display:flex;align-items:center;gap:10px;text-transform:uppercase}
+  .logo i{width:10px;height:10px;background:var(--orange);border-radius:2px;transform:rotate(45deg);flex-shrink:0}
+  .logo span{color:var(--orange)}
+  .nav-links{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:14.5px;color:var(--dim)}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;
+    padding:11px 20px;border-radius:9px;font-size:15px;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.solid{background:linear-gradient(120deg,var(--orange2),var(--orange));color:#fff;
+    box-shadow:0 10px 26px -10px rgba(255,106,31,.6)}
+  .btn.ghost{border:1.5px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--orange);color:var(--orange)}
+  @media(max-width:900px){.nav-links{display:none}}
+  @media(max-width:560px){
+    .nav .btn.ghost{display:none}
+    .logo{font-size:17px}
+    .nav .btn.solid{padding:10px 15px;font-size:14px}
+  }
+
+  /* hero */
+  .hero{position:relative;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url("images/hero.jpg") center 60%/cover no-repeat}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(100deg,rgba(16,18,20,.96) 8%,rgba(16,18,20,.82) 45%,rgba(16,18,20,.35) 100%)}
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;
+    gap:44px;align-items:center;padding:88px 0 96px}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;
+    font-size:12.5px;letter-spacing:.24em;color:var(--orange);margin-bottom:16px;text-transform:uppercase}
+  .kick::before{content:"//";opacity:.7}
+  .hero h1{font-size:clamp(36px,5.4vw,62px);font-weight:900;margin-bottom:18px}
+  .hero h1 span{color:var(--orange)}
+  .hero p.lead{font-size:clamp(16px,1.5vw,19px);color:var(--dim);max-width:48ch;margin-bottom:28px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .hero-ctas .btn{font-size:16.5px;padding:14px 26px}
+  .marks{display:flex;gap:10px;flex-wrap:wrap}
+  .marks b{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--dim);
+    font-weight:600;font-size:13px;padding:7px 13px;border-radius:99px}
+
+  /* tach dial */
+  .tach{justify-self:end;width:min(300px,68vw);background:rgba(16,18,20,.72);border:1px solid var(--line);
+    border-radius:20px;padding:26px;backdrop-filter:blur(8px);text-align:center}
+  .tach svg{width:100%;height:auto}
+  .t-arc{fill:none;stroke:#2E3237;stroke-width:9;stroke-linecap:round}
+  .t-val{fill:none;stroke:url(#tg);stroke-width:9;stroke-linecap:round;
+    transition:stroke-dashoffset 1.5s cubic-bezier(.3,.8,.3,1)}
+  .t-needle{stroke:#fff;stroke-width:3;stroke-linecap:round;transform-origin:100px 96px;
+    transform:rotate(-118deg);transition:transform 1.5s cubic-bezier(.3,.8,.3,1)}
+  .tach h4{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.06em;
+    text-transform:uppercase;margin-top:10px}
+  .tach small{color:var(--dim);font-weight:600;font-size:12.5px}
+  @media(max-width:920px){
+    .hero-in{grid-template-columns:1fr;padding:60px 0 72px}
+    .tach{justify-self:start}
+  }
+
+  /* trust icons strip */
+  .why{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .why .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;padding:0}
+  .why div{padding:26px 24px;display:flex;gap:14px;align-items:center}
+  .why svg{width:26px;height:26px;stroke:var(--orange);fill:none;stroke-width:2;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .why b{display:block;font-family:var(--disp);font-size:14.5px;letter-spacing:.04em;text-transform:uppercase}
+  .why small{color:var(--dim);font-size:13.5px}
+
+  section{padding:84px 0}
+  .sec-k{font-family:var(--disp);font-weight:700;font-size:12.5px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+  .sec-k::before{content:"// "}
+  .sec-t{font-size:clamp(26px,3.4vw,40px);font-weight:900;margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:60ch;margin-bottom:42px}
+
+  .grid6{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .svc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;
+    position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+  .svc:hover{transform:translateY(-4px);border-color:var(--orange)}
+  .svc .ic{width:44px;height:44px;border-radius:10px;background:var(--card2);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .svc .ic svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .svc h3{font-size:16.5px;font-weight:800;margin-bottom:8px}
+  .svc p{color:var(--dim);font-size:14.5px}
+
+  /* booking + info */
+  .book{background:var(--bg2);border-top:1px solid var(--line)}
+  .b-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:start}
+  form{display:grid;gap:15px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  label{font-weight:600;font-size:13.5px;color:var(--ink)}
+  input,select,textarea{width:100%;margin-top:6px;padding:13px 14px;font-size:16px;font-family:var(--sans);
+    border:1.5px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);
+    transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange);
+    box-shadow:0 0 0 3px rgba(255,106,31,.18)}
+  input::placeholder,textarea::placeholder{color:#5C646E}
+  textarea{min-height:96px;resize:vertical}
+  .send{border:none;cursor:pointer;font-family:var(--disp);text-transform:uppercase;letter-spacing:.05em;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(120deg,var(--orange2),var(--orange));color:#fff;font-weight:800;
+    font-size:16px;padding:16px;border-radius:11px;box-shadow:0 14px 32px -12px rgba(255,106,31,.6);
+    transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .fmsg{display:none;padding:14px 16px;border-radius:10px;font-weight:600}
+  .fmsg.ok{display:block;background:rgba(46,204,113,.12);color:#6BE39C;border:1px solid rgba(46,204,113,.35)}
+  .fmsg.err{display:block;background:rgba(255,90,70,.12);color:#FF9C8B;border:1px solid rgba(255,90,70,.35)}
+
+  .info-card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .map{aspect-ratio:16/9;background:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1.4px) 0 0/18px 18px,
+    linear-gradient(130deg,#20242B,#15181D);position:relative}
+  .map .pin{position:absolute;left:56%;top:44%;transform:translate(-50%,-100%)}
+  .map .pin i{display:block;width:16px;height:16px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+    background:var(--orange);box-shadow:0 0 18px rgba(255,106,31,.8)}
+  .map .pin span{position:absolute;top:-34px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    background:#101214;border:1px solid var(--line);font-size:12px;font-weight:600;
+    padding:5px 10px;border-radius:8px}
+  .map .ring{position:absolute;left:56%;top:44%;width:60px;height:60px;border-radius:50%;
+    border:2px solid rgba(255,106,31,.5);transform:translate(-50%,-50%);animation:mring 2s ease-out infinite}
+  @keyframes mring{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(-50%,-50%) scale(1.4);opacity:0}}
+  .info-rows{padding:24px}
+  .info-rows div{display:flex;justify-content:space-between;gap:14px;padding:11px 0;
+    border-bottom:1px solid var(--line);font-size:15px}
+  .info-rows div:last-child{border:none}
+  .info-rows b{color:var(--dim);font-weight:600}
+  .info-rows a{color:var(--orange);font-weight:700}
+  @media(max-width:900px){.b-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+  footer{background:var(--bg2);color:#6B747E;font-size:14px;padding:28px 0;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;gap:10px}
+    .mcall a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+      font-weight:700;font-size:15.5px;padding:14px;border-radius:12px}
+    .mcall .c1{background:linear-gradient(120deg,var(--orange2),var(--orange));color:#fff;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.5)}
+    .mcall .c2{background:#fff;color:#17191C}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<div class="hazard"></div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i></i>Adena<span>Bilservice</span></a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#booking">Bestill time</a>
+      <a href="#finn">Finn oss</a>
+    </nav>
+    <a class="btn ghost" href="tel:92911121">☎ 929 11 121</a>
+    <a class="btn solid" href="#booking">Bestill time</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <div>
+      <span class="kick rv">Stanseveien 6 · Kalbakken · Oslo</span>
+      <h1 class="rv">Verkstedet som<br><span>holder deg på veien</span></h1>
+      <p class="lead rv">Service, reparasjon og EU-kontroll for alle bilmerker — ærlige priser,
+        rask time og beskjed før vi gjør noe som koster ekstra.</p>
+      <div class="hero-ctas rv">
+        <a class="btn solid" href="#booking">Bestill time nå</a>
+        <a class="btn ghost" href="tel:92911121">☎ Ring verkstedet</a>
+      </div>
+      <div class="marks rv">
+        <b>Alle bilmerker</b><b>EU-kontroll</b><b>Dekk og felg</b><b>Diagnose</b>
+      </div>
+    </div>
+    <div class="tach rv">
+      <svg viewBox="0 0 200 130">
+        <defs><linearGradient id="tg" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#E5540A"/><stop offset="1" stop-color="#FFB37E"/>
+        </linearGradient></defs>
+        <path class="t-arc" d="M24 96 A 80 80 0 1 1 176 96"/>
+        <path class="t-val" id="tVal" d="M24 96 A 80 80 0 1 1 176 96"/>
+        <line class="t-needle" id="tNeedle" x1="100" y1="96" x2="100" y2="34"/>
+        <circle cx="100" cy="96" r="7" fill="#FF6A1F"/>
+      </svg>
+      <h4>Klar for sesongen?</h4>
+      <small>Bestill service før køen kommer</small>
+    </div>
+  </div>
+</section>
+<div class="hazard"></div>
+
+<div class="why">
+  <div class="wrap">
+    <div class="rv">
+      <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      <div><b>Ærlig pris</b><small>Beskjed før ekstra arbeid</small></div>
+    </div>
+    <div class="rv">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <div><b>Rask time</b><small>Som regel samme uke</small></div>
+    </div>
+    <div class="rv">
+      <svg viewBox="0 0 24 24"><path d="M7 19l2-6a3 3 0 0 1 2.8-2h4.4a3 3 0 0 1 2.8 2l2 6"/><circle cx="9.5" cy="20" r="1.8"/><circle cx="18.5" cy="20" r="1.8"/></svg>
+      <div><b>Alle merker</b><small>Personbil og varebil</small></div>
+    </div>
+    <div class="rv">
+      <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <div><b>Lett å nå</b><small>Rett ved Kalbakken</small></div>
+    </div>
+  </div>
+</div>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="sec-k rv">Tjenester</div>
+    <h2 class="sec-t rv">Alt bilen din trenger</h2>
+    <p class="sec-p rv">Ett verksted for hele bilholdet — fra oljeskift til feilsøking
+      av elektronikk.</p>
+    <div class="grid6">
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.6 4.6 0 0 0-6.1 5.7L3 17.6 6.4 21l5.6-5.6a4.6 4.6 0 0 0 5.7-6.1l-2.9 2.9-2.4-.6-.6-2.4 2.9-2.9Z"/></svg></div>
+        <h3>Service</h3><p>Full service etter fabrikkens program — stempel i serviceheftet.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.6"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div>
+        <h3>Reparasjon</h3><p>Bremser, clutch, hjullager, eksos — vi fikser det som er slitt.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.3"/><path d="M4 4v4.5h4.5"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>EU-kontroll</h3><p>Vi tar kontrollen og utbedrer eventuelle feil på samme sted.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 8 8M12 8v4l2.5 2.5"/></svg></div>
+        <h3>Dekkskift</h3><p>Skift, balansering og dekkhotell — klar for sesongen på 30 minutter.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 9h3M8 13h6"/><path d="M12 17v4M8 21h8"/></svg></div>
+        <h3>Diagnose</h3><p>Motorlampe? Vi leser feilkoder og finner årsaken — ikke bare symptomet.</p>
+      </div>
+      <div class="svc rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="m5 13 3-8h8l3 8"/><rect x="4" y="13" width="16" height="6" rx="2"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></div>
+        <h3>Klargjøring og salg</h3><p>Bilen klargjort for salg — pluss hjelp med kjøp og bildeler.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="book" id="booking" style="position:relative">
+  <div class="wrap">
+    <div class="sec-k rv">Booking</div>
+    <h2 class="sec-t rv">Bestill time</h2>
+    <p class="sec-p rv">Fortell oss hva bilen trenger, så bekrefter vi time på telefon —
+      som regel samme dag.</p>
+    <div class="b-grid">
+      <form id="leadForm" class="rv" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <div class="frow">
+          <div><label>Bilmerke og modell<input type="text" name="Bilmerke" placeholder="F.eks. VW Golf 2018"></label></div>
+          <div><label>Reg.nr<input type="text" name="Regnr" placeholder="AB 12345" style="text-transform:uppercase"></label></div>
+        </div>
+        <div class="frow">
+          <div><label>Hva trenger bilen?
+            <select name="Tjeneste">
+              <option>Service</option><option>Reparasjon</option><option>EU-kontroll</option>
+              <option>Dekkskift</option><option>Diagnose / motorlampe</option><option>Annet</option>
+            </select></label></div>
+          <div><label>Ønsket dag<input type="text" name="Ønsket dato" placeholder="F.eks. torsdag"></label></div>
+        </div>
+        <div><label>Beskrivelse<textarea name="Melding" placeholder="F.eks. «Ulyd fra venstre framhjul ved bremsing …»"></textarea></label></div>
+        <button class="send" type="submit" id="sendBtn">Send bestilling →</button>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+      <div class="info-card rv" id="finn">
+        <div class="map">
+          <span class="ring"></span>
+          <span class="pin"><i></i><span>Stanseveien 6</span></span>
+        </div>
+        <div class="info-rows">
+          <div><b>Adresse</b><span>Stanseveien 6, 0975 Oslo</span></div>
+          <div><b>Telefon</b><a href="tel:92911121">929 11 121</a></div>
+          <div><b>E-post</b><a href="mailto:post@adenabilservice.no">post@adenabilservice.no</a></div>
+          <div><b>Åpningstid</b><span>Man–fre 08–16</span></div>
+          <div><b>Org.nr</b><span>936 575 595</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard"></div>
+<footer>
+  <div class="wrap">
+    <span>© Adena Bilservice AS · Org.nr 936 575 595</span>
+    <span>Stanseveien 6 · Kalbakken · Oslo</span>
+  </div>
+</footer>
+
+<div class="mcall">
+  <a class="c1" href="tel:92911121">☎ Ring</a>
+  <a class="c2" href="#booking">Bestill time</a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // tach: arc fills + needle sweeps when visible
+  const tVal = document.getElementById('tVal');
+  const tNeedle = document.getElementById('tNeedle');
+  const tL = tVal.getTotalLength();
+  tVal.style.strokeDasharray = tL;
+  tVal.style.strokeDashoffset = tL;
+  const tio = new IntersectionObserver((es) => {
+    if (!es[0].isIntersecting) return;
+    tio.disconnect();
+    requestAnimationFrame(() => {
+      tVal.style.strokeDashoffset = tL * 0.18;
+      tNeedle.style.transform = 'rotate(96deg)';
+    });
+  });
+  tio.observe(document.querySelector('.tach'));
+
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så bekrefter vi timen.';
+      return;
+    }
+    data['Kilde'] = 'demo:adena-bilservice';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi ringer deg og bekrefter timen.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt. Ring oss gjerne på 929 11 121.';
+    }
+    btn.disabled = false; btn.textContent = 'Send bestilling →';
+  });
+</script>
+</body>
+</html>

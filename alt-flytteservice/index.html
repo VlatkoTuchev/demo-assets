@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A L T Flytte- og Transportservice — Flyttehjelp i Oslo siden 2002</title>
+<meta name="description" content="Trygg og punktlig flyttehjelp i Oslo — privatflytting, bedriftsflytting, pakking og bortkjøring. Få pris på 2 minutter eller ring 22 19 06 90.">
+<meta property="og:title" content="A L T Flytteservice — Flyttehjelp i Oslo">
+<meta property="og:description" content="Trygt, punktlig og godt priset — siden 2002. Ring 22 19 06 90.">
+<meta name="theme-color" content="#16295F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316295F'/%3E%3Cpath d='M5 20V12h12v8' fill='%23fff'/%3E%3Cpath d='M17 14h5l3 3v3h-8v-6Z' fill='%23FFB238'/%3E%3Ccircle cx='10' cy='21.5' r='2.2' fill='%23FFB238'/%3E%3Ccircle cx='22' cy='21.5' r='2.2' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1D3A8F; --blue2:#16295F; --sky:#EDF2FC; --bg:#F4F6FB; --card:#FFFFFF;
+    --sun:#FFB238; --sun2:#E89A18; --ink:#1C2745; --dim:#5C6884; --line:#DFE5F0;
+    --font:'Manrope',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);font-size:16.5px;line-height:1.66;color:var(--ink);background:var(--bg)}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{line-height:1.14;color:var(--blue2);font-weight:800}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(244,246,251,.93);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px;color:var(--blue2)}
+  .logo svg{width:32px;height:32px;flex-shrink:0}
+  .logo em{font-style:normal;color:var(--sun2)}
+  .nav-links{display:flex;gap:24px;margin-left:auto;font-weight:600;font-size:15px;color:var(--dim)}
+  .nav-links a:hover{color:var(--blue2)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;
+    padding:12px 22px;border-radius:12px;font-size:15.5px;white-space:nowrap;
+    transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.solid{background:linear-gradient(120deg,var(--blue2),var(--blue));color:#fff;
+    box-shadow:0 12px 26px -10px rgba(29,58,143,.5)}
+  .btn.sun{background:linear-gradient(120deg,var(--sun2),var(--sun));color:#3A2703;
+    box-shadow:0 12px 26px -10px rgba(232,154,24,.55)}
+  .btn.ghost{border:2px solid var(--blue2);color:var(--blue2)}
+  .btn.ghost:hover{background:var(--blue2);color:#fff}
+  @media(max-width:880px){.nav-links{display:none}}
+  @media(max-width:460px){
+    .logo em{display:none}
+    .nav .btn{padding:10px 15px;font-size:14px}
+  }
+
+  /* hero with quote form centerpiece */
+  .hero{position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(175deg,#FFFFFF 0%,var(--bg) 70%)}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr .92fr;
+    gap:52px;align-items:center;padding:64px 0 76px}
+  .kick{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);
+    border-radius:99px;padding:8px 16px;font-weight:700;font-size:13.5px;color:var(--blue);margin-bottom:20px}
+  .kick svg{width:15px;height:15px;stroke:var(--sun2);fill:none;stroke-width:2.4;stroke-linecap:round}
+  .hero h1{font-size:clamp(34px,4.8vw,54px);margin-bottom:18px}
+  .hero h1 em{font-style:normal;color:var(--blue);position:relative;white-space:nowrap}
+  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:12px;
+    background:rgba(255,178,56,.4);z-index:-1;border-radius:3px}
+  .hero p.lead{font-size:clamp(16.5px,1.55vw,19px);color:var(--dim);max-width:46ch;margin-bottom:26px}
+  .points{display:grid;gap:12px;margin-bottom:28px}
+  .points span{display:flex;gap:11px;align-items:center;font-weight:700;font-size:15.5px}
+  .points svg{width:20px;height:20px;stroke:#2BA35F;fill:none;stroke-width:2.6;
+    stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .hero-photo{border-radius:18px;overflow:hidden;aspect-ratio:16/9;margin-top:6px;
+    box-shadow:0 26px 60px -26px rgba(22,41,95,.4)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+
+  .quote{background:var(--card);border-radius:22px;padding:30px 28px;
+    box-shadow:0 36px 80px -30px rgba(22,41,95,.45), 0 0 0 1px var(--line)}
+  .quote h2{font-size:21px;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .quote h2 i{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+    border-radius:10px;background:linear-gradient(135deg,var(--blue2),var(--blue));font-style:normal;
+    font-size:16px;flex-shrink:0}
+  .quote .sub{color:var(--dim);font-size:14px;font-weight:600;margin-bottom:18px}
+  form{display:grid;gap:13px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  label{font-weight:700;font-size:13px;color:var(--blue2)}
+  input,select,textarea{width:100%;margin-top:5px;padding:12px 13px;font-size:16px;font-family:var(--font);
+    border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);
+    transition:border-color .2s,box-shadow .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(29,58,143,.13)}
+  .send{border:none;cursor:pointer;font-family:var(--font);display:inline-flex;align-items:center;
+    justify-content:center;gap:10px;background:linear-gradient(120deg,var(--sun2),var(--sun));
+    color:#3A2703;font-weight:800;font-size:16.5px;padding:15px;border-radius:12px;
+    box-shadow:0 14px 30px -12px rgba(232,154,24,.6);transition:transform .2s}
+  .send:hover{transform:translateY(-1px)}
+  .send[disabled]{opacity:.6;transform:none}
+  .q-note{text-align:center;color:var(--dim);font-size:13px;font-weight:600}
+  .fmsg{display:none;padding:13px 15px;border-radius:10px;font-weight:600;font-size:14.5px}
+  .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
+  .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;gap:38px;padding:44px 0 60px}
+    .frow{grid-template-columns:1fr}
+  }
+
+  /* van road */
+  .road{position:relative;height:92px;background:var(--blue2);overflow:hidden}
+  .road::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;
+    background:repeating-linear-gradient(90deg,#8FA3D9 0 26px,transparent 26px 52px)}
+  .van{position:absolute;top:50%;left:0;transform:translate(-90px,-58%);will-change:transform}
+  .van svg{width:92px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}
+
+  section{padding:82px 0}
+  .sec-k{font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--sun2);margin-bottom:12px}
+  .sec-t{font-size:clamp(27px,3.4vw,40px);margin-bottom:14px}
+  .sec-p{color:var(--dim);max-width:58ch;margin-bottom:42px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px;
+    transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 24px 44px -22px rgba(22,41,95,.3)}
+  .card .ic{width:48px;height:48px;border-radius:13px;background:var(--sky);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card .ic svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--dim);font-size:14.5px}
+
+  /* steps */
+  .hvordan{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stepgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:st}
+  .st{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:28px 24px;position:relative}
+  .st::before{counter-increment:st;content:counter(st);position:absolute;top:-16px;left:22px;
+    width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--sun2),var(--sun));
+    color:#3A2703;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;
+    box-shadow:0 8px 18px -6px rgba(232,154,24,.6)}
+  .st b{display:block;font-size:17px;color:var(--blue2);margin:6px 0 8px;font-weight:800}
+  .st p{color:var(--dim);font-size:14.5px}
+  @media(max-width:820px){.stepgrid{grid-template-columns:1fr;gap:26px}}
+
+  .badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
+  .badges b{display:inline-flex;align-items:center;gap:9px;background:var(--card);
+    border:1px solid var(--line);border-radius:99px;padding:10px 18px;font-weight:700;font-size:14px}
+  .badges svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round}
+
+  /* contact strip */
+  .ring{background:linear-gradient(130deg,var(--blue2),var(--blue));border-radius:22px;color:#fff;
+    padding:42px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+    position:relative;overflow:hidden}
+  .ring::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;
+    border-radius:50%;background:radial-gradient(circle,rgba(255,178,56,.35),transparent 65%)}
+  .ring h2{color:#fff;font-size:clamp(22px,2.8vw,32px);margin-bottom:6px}
+  .ring p{color:#B9C6E8;font-size:15.5px}
+  .ring .btn{font-size:18px;padding:15px 28px;position:relative;z-index:2}
+
+  footer{background:var(--blue2);color:#8FA0C8;font-size:14px;padding:28px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .mcall{display:none}
+  @media(max-width:700px){
+    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+      align-items:center;justify-content:center;gap:10px;
+      background:linear-gradient(120deg,var(--sun2),var(--sun));color:#3A2703;
+      font-weight:800;font-size:17px;padding:15px;border-radius:14px;
+      box-shadow:0 16px 34px -10px rgba(0,0,0,.35)}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#16295F"/><path d="M5 20V12h12v8" fill="#fff"/><path d="M17 14h5l3 3v3h-8v-6Z" fill="#FFB238"/><circle cx="10" cy="21.5" r="2.2" fill="#FFB238"/><circle cx="22" cy="21.5" r="2.2" fill="#fff"/></svg>
+      ALT <em>Flytteservice</em>
+    </a>
+    <nav class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#hvordan">Slik foregår det</a>
+      <a href="#pris">Få pris</a>
+    </nav>
+    <a class="btn solid" href="tel:22190690">☎ 22 19 06 90</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kick rv">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        Flyttehjelp i Oslo siden 2002
+      </span>
+      <h1 class="rv">Vi bærer.<br>Du <em>flytter inn.</em></h1>
+      <p class="lead rv">Trygg og punktlig flyttehjelp fra folk som har båret Oslo inn og ut av
+        leiligheter i over tjue år. Fast pris mulig — alltid uten stress.</p>
+      <div class="points rv">
+        <span><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Forsikret under hele flyttingen</span>
+        <span><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Erfarne folk — ikke innleid tilfeldig hjelp</span>
+        <span><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Fastpris mulig etter kort befaring</span>
+      </div>
+      <div class="hero-photo rv"><img src="images/hero.jpg" alt="Flyttekasser i lys Oslo-leilighet på flyttedagen"></div>
+    </div>
+    <div class="quote rv" id="pris">
+      <h2><i>📦</i>Få pris på flyttingen</h2>
+      <div class="sub">Svar samme dag — helt uforpliktende</div>
+      <form id="leadForm" novalidate>
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="frow">
+          <div><label>Fra adresse<input type="text" name="Fra adresse" placeholder="Gate, bydel" required></label></div>
+          <div><label>Til adresse<input type="text" name="Til adresse" placeholder="Gate, sted" required></label></div>
+        </div>
+        <div class="frow">
+          <div><label>Boligstørrelse
+            <select name="Boligstørrelse">
+              <option>1-roms</option><option>2-roms</option><option>3-roms</option>
+              <option>4-roms+</option><option>Hus / rekkehus</option><option>Kontor / næring</option>
+            </select></label></div>
+          <div><label>Ønsket dato<input type="text" name="Ønsket dato" placeholder="F.eks. 28. august"></label></div>
+        </div>
+        <div class="frow">
+          <div><label>Navn<input type="text" name="Navn" required autocomplete="name"></label></div>
+          <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel"></label></div>
+        </div>
+        <button class="send" type="submit" id="sendBtn">Få pris på flyttingen →</button>
+        <div class="q-note">…eller ring oss direkte: <a href="tel:22190690" style="color:var(--blue);font-weight:800">22 19 06 90</a></div>
+        <div class="fmsg" id="fmsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="road" id="road" aria-hidden="true">
+  <div class="van" id="van">
+    <svg viewBox="0 0 92 44">
+      <rect x="2" y="8" width="52" height="24" rx="4" fill="#fff"/>
+      <path d="M54 14h18l12 10v8H54V14Z" fill="#FFB238"/>
+      <path d="M60 17h10l7 6H60v-6Z" fill="#16295F" opacity=".85"/>
+      <circle cx="18" cy="34" r="6.5" fill="#1C2745"/><circle cx="18" cy="34" r="2.8" fill="#8FA3D9"/>
+      <circle cx="70" cy="34" r="6.5" fill="#1C2745"/><circle cx="70" cy="34" r="2.8" fill="#8FA3D9"/>
+      <text x="9" y="25" font-family="Manrope,sans-serif" font-size="9" font-weight="800" fill="#16295F">A L T</text>
+    </svg>
+  </div>
+</div>
+
+<section id="tjenester">
+  <div class="wrap">
+    <div class="sec-k rv">Tjenester</div>
+    <h2 class="sec-t rv">Alt innen flytting — derav navnet</h2>
+    <p class="sec-p rv">Fra én sofa over gaten til hele kontoret over byen.</p>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Privatflytting</h3><p>Leilighet, hus eller hybel — vi bærer, kjører og setter på plass.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Bedriftsflytting</h3><p>Kontor og lager flyttet utenom arbeidstid — mandag er alt på plass.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+        <h3>Pakking</h3><p>Vi pakker forsvarlig i kasser og materiell — og pakker ut om du vil.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7V9Z"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17.5" cy="18.5" r="1.8"/></svg></div>
+        <h3>Bortkjøring</h3><p>Det som ikke skal med, kjører vi til gjenbruk eller avfallsmottak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hvordan" id="hvordan">
+  <div class="wrap">
+    <div class="sec-k rv">Slik foregår det</div>
+    <h2 class="sec-t rv">Tre steg — null stress</h2>
+    <p class="sec-p rv">Du bestemmer hvor mye vi skal gjøre. Noen vil bare ha muskler og bil —
+      andre vil slippe å løfte en eneste kasse.</p>
+    <div class="stepgrid">
+      <div class="st rv"><b>Fortell om flyttingen</b><p>Send skjemaet eller ring. Ved større jobber tar vi en rask befaring — gjerne på video.</p></div>
+      <div class="st rv"><b>Få pris og dato</b><p>Tydelig pris, gjerne fastpris. Vi holder datoen vi lover — det er derfor folk anbefaler oss.</p></div>
+      <div class="st rv"><b>Vi flytter deg</b><p>Vi stiller med bil, tepper, stropper og godt humør. Alt er forsikret underveis.</p></div>
+    </div>
+    <div class="badges rv">
+      <b><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z"/></svg>Forsikret gods</b>
+      <b><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Punktlige — siden 2002</b>
+      <b><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>Fastpris mulig</b>
+      <b><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Hele Oslo og omegn</b>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="ring rv">
+      <div>
+        <h2>Flytter du snart?</h2>
+        <p>Ring oss — du snakker direkte med den som faktisk kommer og flytter deg.</p>
+      </div>
+      <a class="btn sun" href="tel:22190690">☎ 22 19 06 90</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© A L T Flytte- og Transportservice · Org.nr 985 205 922</span>
+    <span>Oslo</span>
+  </div>
+</footer>
+
+<a class="mcall" href="tel:22190690">☎ Ring 22 19 06 90</a>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // the van drives across the road as you scroll past it
+  const road = document.getElementById('road');
+  const van = document.getElementById('van');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced){
+    let ticking = false;
+    function drive(){
+      ticking = false;
+      const r = road.getBoundingClientRect();
+      const vh = innerHeight;
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+      const x = -100 + p * (road.offsetWidth + 200);
+      van.style.transform = `translate(${x}px,-58%)`;
+    }
+    addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(drive); } },
+      {passive:true});
+    drive();
+  } else {
+    van.style.transform = 'translate(40vw,-58%)';
+  }
+
+  const form = document.getElementById('leadForm');
+  const btn = document.getElementById('sendBtn');
+  const fmsg = document.getElementById('fmsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data['Navn'] || !data['Telefon']){
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Fyll inn navn og telefon, så sender vi deg pris.';
+      return;
+    }
+    data['Kilde'] = 'demo:alt-flytteservice';
+    btn.disabled = true; btn.textContent = 'Sender …';
+    try {
+      const r = await fetch('https://dinnettside-lead.lead-worker.workers.dev', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      const res = await r.json();
+      if (res.success === 'true'){
+        fmsg.className = 'fmsg ok';
+        fmsg.textContent = 'Takk! Vi ringer deg med pris — som regel samme dag.';
+        form.reset();
+      } else { throw new Error(res.message); }
+    } catch {
+      fmsg.className = 'fmsg err';
+      fmsg.textContent = 'Noe gikk galt. Ring oss gjerne på 22 19 06 90.';
+    }
+    btn.disabled = false; btn.textContent = 'Få pris på flyttingen →';
+  });
+</script>
+</body>
+</html>
