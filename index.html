@@ -68,10 +68,14 @@
   .brand b{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.02em}
   .nav a.link{text-decoration:none;font-weight:500;font-size:15px;color:var(--dim);transition:color .2s}
   .nav a.link:hover{color:var(--ink)}
-  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-  .lang button{background:none;border:none;color:var(--dim);font-family:var(--mono);font-size:11px;
-    letter-spacing:.1em;padding:8px 12px;cursor:pointer;transition:.2s}
-  .lang button.on{background:var(--ink);color:var(--bg)}
+  .lang{display:flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:999px;
+    background:rgba(238,241,248,.05)}
+  .lang button{background:none;border:none;border-radius:999px;color:var(--dim);
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.1em;padding:7px 11px;cursor:pointer;transition:.25s}
+  .lang button:hover{color:var(--ink)}
+  .lang button.on{background:var(--aurora);color:#06281B;font-weight:700;
+    box-shadow:0 2px 12px -2px rgba(99,242,185,.5)}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;
     background:var(--ink);color:var(--bg);text-decoration:none;border:none;cursor:pointer;
@@ -83,6 +87,13 @@
   .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
   .btn.ghost:hover{border-color:rgba(238,241,248,.3);box-shadow:none}
   @media(max-width:860px){.nav a.link{display:none}}
+  @media(max-width:640px){
+    .nav{gap:10px;height:64px}
+    .brand b{font-size:17px}
+    .brand-dot{width:11px;height:11px}
+    .lang button{padding:9px 10px;font-size:10px;min-height:34px}
+    .nav .btn{padding:10px 14px;font-size:13px;gap:6px}
+  }
 
   /* ---------- hero ---------- */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
@@ -153,9 +164,10 @@
   .frame-view .scene{visibility:hidden;
     width:128%;height:128%;transform:scale(.78125);transform-origin:0 0}
   @media(max-width:860px){
-    .frame-zone{width:96vw;margin-top:74px}
-    .frame{transform:rotateX(3deg)}
-    .frame-view{height:60svh}
+    .frame-zone{width:96vw;margin-top:70px}
+    .frame{transform:rotateX(2.5deg)}
+    .frame-view{height:68svh}
+    .frame-view .scene{width:116%;height:116%;transform:scale(.8621)}
   }
 
   /* --- reel chrome: captions + counter --- */
@@ -221,7 +233,7 @@
     align-items:center;padding:0 6vw;gap:3vw}
   .sa-left h4{font-family:var(--serif);font-style:italic;font-weight:600;
     font-size:clamp(30px,4.6vw,62px);line-height:1.04}
-  .sa-left p{margin-top:2vh;font-size:clamp(11px,1.15vw,15px);color:#7A644E;max-width:30ch}
+  .sa-left p{margin-top:2vh;font-size:clamp(11px,1.15vw,15px);color:#5C4733;max-width:30ch}
   .sa-book{display:inline-block;margin-top:3vh;background:#33261B;color:#F1E8DC;border-radius:999px;
     padding:1.6vh 2.4vw;font-size:clamp(10px,1.05vw,13px);letter-spacing:.14em;text-transform:uppercase}
   .sa-mid{width:min(30vw,380px)}
@@ -275,7 +287,30 @@
     padding:1.2vh 1.6vw;border-radius:999px}
 
   /* ---------- SCENE 4 · KAFÉ FJELL (responsive morph) ---------- */
-  .s-kafe .sc-bg{background:radial-gradient(ellipse at 30% 20%,#2B2018 0%,#191009 70%)}
+  .s-kafe .sc-bg{
+    background:
+      radial-gradient(ellipse at 28% 18%, rgba(199,123,59,.22), transparent 55%),
+      linear-gradient(rgba(20,13,8,.86), rgba(16,10,6,.92)),
+      url("assets/site_kafe.jpg") center 40%/cover no-repeat;
+    animation:kbpan 22s ease-in-out infinite alternate}
+  @keyframes kbpan{from{background-position:28% 18%, 0 0, 50% 38%}to{background-position:28% 18%, 0 0, 50% 52%}}
+  .ka-glow{position:absolute;left:14%;bottom:8%;width:44%;height:44%;pointer-events:none;
+    background:radial-gradient(circle,rgba(232,176,75,.14),transparent 62%);
+    animation:candle 4.5s ease-in-out infinite}
+  @keyframes candle{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+  .ka-flourish{display:block;width:min(200px,40%);height:auto;margin-top:1.6vh}
+  .ka-flourish path{fill:none;stroke:#E8B04B;stroke-width:3;stroke-linecap:round;
+    filter:drop-shadow(0 0 6px rgba(232,176,75,.5))}
+  .ka-steam{position:absolute;left:0;right:0;top:-26px;height:40px;pointer-events:none}
+  .ka-steam span{position:absolute;bottom:0;width:10px;height:34px;border-radius:50%;
+    background:radial-gradient(ellipse at 50% 100%, rgba(255,244,225,.5), transparent 70%);
+    filter:blur(5px);opacity:0;animation:steam 4s ease-in-out infinite}
+  .ka-steam span:nth-child(1){left:38%;animation-delay:0s}
+  .ka-steam span:nth-child(2){left:50%;animation-delay:1.3s;height:42px}
+  .ka-steam span:nth-child(3){left:61%;animation-delay:2.4s}
+  @keyframes steam{0%{opacity:0;transform:translateY(8px) scaleX(1)}
+    35%{opacity:.85}70%{opacity:.25;transform:translateY(-22px) scaleX(1.6)}
+    100%{opacity:0;transform:translateY(-34px) scaleX(2)}}
   .s-kafe{color:#F2E6D8}
   .ka-inner{position:absolute;inset:0;display:flex;flex-direction:column}
   .ka-nav{display:flex;justify-content:space-between;align-items:center;padding:3.4vh 5% 2.4vh;
@@ -289,10 +324,12 @@
   .ka-menu div{display:flex;align-items:baseline;gap:8px;margin-bottom:3%}
   .ka-menu div i{flex:1;border-bottom:1px dotted rgba(203,180,156,.4);transform:translateY(-3px)}
   .ka-menu b{color:#E8B04B;font-weight:600}
-  .ka-photo{align-self:stretch;margin:6% 0;border-radius:14px;
+  .ka-photo{position:relative;align-self:stretch;margin:6% 0;border-radius:16px;
+    transform:rotate(-1.6deg);
     background:url("assets/site_kafe.jpg") center/cover no-repeat,
       radial-gradient(circle at 35% 35%, #C77B3B 0%, #8A4E22 45%, #4A2A14 100%);
-    box-shadow:inset 0 0 0 1px rgba(242,230,216,.15), 0 24px 50px -22px rgba(0,0,0,.8)}
+    box-shadow:0 0 0 1px rgba(242,230,216,.16), 0 0 0 5px rgba(232,176,75,.14),
+      0 30px 60px -24px rgba(0,0,0,.85)}
   .ka-phone{position:absolute;right:6%;bottom:-4%;z-index:9;width:clamp(150px,17vw,215px);aspect-ratio:.5;
     background:#12100D;border-radius:26px;padding:9px;
     box-shadow:0 34px 70px -24px rgba(0,0,0,.85),0 0 0 1px rgba(242,230,216,.2)}
@@ -532,20 +569,24 @@
   @media(max-width:860px){
     .fj-links,.sa-links,.ka-links{display:none}
     .sa-grid{grid-template-columns:1fr;gap:2vh;text-align:center;padding-top:2vh}
-    .sa-arch{width:56vw;top:56%}
-    .sa-mid{width:min(72vw,340px);margin:0 auto}
-    .sa-left p{margin-left:auto;margin-right:auto}
+    .sa-arch{width:58vw;top:34%;opacity:.55}
+    .sa-mid{display:none}
+    .sa-left p{margin-left:auto;margin-right:auto;
+      background:rgba(241,232,220,.88);backdrop-filter:blur(6px);
+      border-radius:12px;padding:10px 14px}
+    .sa-price{background:rgba(241,232,220,.88);backdrop-filter:blur(6px);
+      border-radius:14px;padding:14px 18px;width:min(78vw,360px);margin:0 auto}
     .ro-grid{grid-template-columns:1fr;gap:3vh;text-align:center}
     .ro-form{justify-self:center;max-width:86vw}
     .ro-left h4{font-size:clamp(26px,7vw,40px)}
-    .ka-body{grid-template-columns:1fr;gap:3%}
-    .ka-photo{display:none}
+    .ka-body{grid-template-columns:1fr;gap:2%}
+    .ka-photo{display:block;height:21vh;align-self:auto;order:-1;margin:2% 0 4%}
     .ka-device{width:88vw;height:60svh}
     .cap-box{max-width:70vw}
   }
 
   @media (prefers-reduced-motion: reduce){
-    .marquee-track,.grain,.glow,.hero-hint span{animation:none}
+    .marquee-track,.grain,.glow,.hero-hint span,.s-kafe .sc-bg,.ka-glow,.ka-steam span{animation:none}
     .hero h1 .ch{transform:none}
     .hero p.lead,.hero-ctas,.rv{opacity:1;transform:none}
   }
@@ -696,6 +737,7 @@
       <!-- SCENE 4: Kafé Fjell -->
       <div class="scene s-kafe" id="sc4" aria-hidden="true">
         <div class="sc-bg"></div>
+        <div class="ka-glow"></div>
         <div class="ka-inner">
           <div class="ka-nav">
             <span class="ka-logo">Kafé Fjell</span>
@@ -704,6 +746,9 @@
           <div class="ka-body">
             <div>
               <h4 id="kaH4" data-i18n-html="ka_h4">Brent i byen,<br>servert med utsikt</h4>
+              <svg class="ka-flourish" viewBox="0 0 220 22" aria-hidden="true">
+                <path id="kaFlourish" d="M4 15 C 52 4, 118 22, 158 10 C 178 4, 200 8, 216 6"/>
+              </svg>
               <div class="ka-menu" id="kaMenu">
                 <div><span data-i18n="ka_m1">Fjellbrygg filter</span><i></i><b>49,-</b></div>
                 <div><span data-i18n="ka_m2">Kanelsnurr</span><i></i><b>39,-</b></div>
@@ -711,7 +756,7 @@
                 <div><span data-i18n="ka_m4">Toast med brunost</span><i></i><b>79,-</b></div>
               </div>
             </div>
-            <div class="ka-photo" id="kaPhoto"></div>
+            <div class="ka-photo" id="kaPhoto"><div class="ka-steam"><span></span><span></span><span></span></div></div>
           </div>
         </div>
         <div class="ka-phone" id="kaPhone">
@@ -1263,8 +1308,12 @@ if (!reduced){
   gsap.set('#roSend', {scale:1});
   // scene 4
   gsap.set('#kaMenu div', {opacity:0, x:-24});
-  gsap.set('#kaPhoto', {opacity:0, scale:.85});
+  gsap.set('#kaPhoto', {opacity:0, scale:.85, rotate:3});
   gsap.set('#kaPhone', {y:'130%', rotate:6});
+  const kaFl = document.getElementById('kaFlourish');
+  const kaFlL = kaFl.getTotalLength();
+  kaFl.style.strokeDasharray = kaFlL;
+  kaFl.style.strokeDashoffset = kaFlL;
 
   const capDur = .45;
   function capIn(tl, i, at){
@@ -1352,7 +1401,8 @@ if (!reduced){
     .to('#sc3', {autoAlpha:0, duration:.5}, 't34+=.8')
     .to('#sc4', {autoAlpha:1, duration:.7}, 't34+=.7')
     .to('#kaMenu div', {opacity:1, x:0, duration:.6, stagger:.14}, 't34+=1.5')
-    .to('#kaPhoto', {opacity:1, scale:1, duration:.9}, 't34+=1.7');
+    .to('#kaPhoto', {opacity:1, scale:1, rotate:-1.6, duration:.9}, 't34+=1.7')
+    .to('#kaFlourish', {strokeDashoffset:0, duration:.9, ease:'power2.inOut'}, 't34+=2.1');
   capIn(tl, 3, 't34+=1.4');
 
   /* ---- SCENE 4: the same site slides in as a phone ---- */
