@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Om oss — Østlandet Maskin og Anlegg AS</title>
+<meta name="description" content="ØMA er seks fagfolk med base i Disenå. Grunnarbeid, drenering, murer og vinterdrift på Øvre Romerike — se folkene, maskinene og jobbene våre.">
+<meta name="theme-color" content="#101112">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='18' height='18' transform='rotate(45 16 16)' fill='%23101112' stroke='%23C69A2E' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Schibsted+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#101112; --coal:#1A1C1E; --coal2:#212426;
+    --stone:#EDEAE3; --stone2:#E3DED2; --stonecard:#E8E3D8;
+    --brass:#C69A2E; --brass2:#E2B84B;
+    --ink:#1C1D1E; --ink2:#4E4C47; --mist:#A9ABAC; --mist2:#7E8082;
+    --lined:rgba(255,255,255,.13); --linel:rgba(28,29,30,.14);
+    --disp:"Big Shoulders Display",sans-serif;
+    --sans:"Schibsted Grotesk",sans-serif;
+    --mono:"IBM Plex Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{font-family:var(--sans);font-size:16.5px;line-height:1.65;color:var(--ink);background:var(--stone)}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--brass);color:var(--void)}
+  h1,h2,h3{font-family:var(--disp);text-transform:uppercase;line-height:.96;letter-spacing:.005em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.25,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{transition:none;opacity:1;transform:none}
+  }
+
+  /* header */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(16,17,18,.86);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--lined);color:#EFEFEC}
+  .nav .wrap{display:flex;align-items:center;gap:26px;height:64px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;
+    font-size:19px;text-transform:uppercase;letter-spacing:.04em;line-height:1.04}
+  .logo-dia{width:44px;height:44px;flex-shrink:0;background:#fff;
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .logo-dia img{width:100%;height:100%;object-fit:cover}
+  .logo small{display:block;font-family:var(--mono);font-weight:400;font-size:9px;
+    letter-spacing:.3em;color:var(--brass);text-transform:uppercase}
+  .nav-links{display:flex;gap:22px;margin-left:auto;font-weight:500;font-size:14.5px;color:#C9CBCC}
+  .nav-links a:hover{color:var(--brass2)}
+  .nav-links a.on{color:var(--brass2);border-bottom:2px solid var(--brass)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    font-family:var(--sans);padding:13px 22px;border-radius:4px;font-size:15.5px;
+    white-space:nowrap;transition:transform .18s,box-shadow .18s,background .18s;cursor:pointer}
+  .btn.gold{background:var(--brass);color:var(--void);box-shadow:0 6px 18px rgba(198,154,46,.24)}
+  .btn.gold:hover{transform:translateY(-2px);background:var(--brass2)}
+  .btn.ghostd{border:1.5px solid var(--lined);color:#EFEFEC}
+  .btn.ghostd:hover{border-color:var(--brass);color:var(--brass2)}
+  .nav .btn{padding:11px 18px;font-size:14.5px}
+  @media (max-width:920px){
+    .nav-links{display:none}
+    .nav .wrap{gap:12px}
+    .logo{font-size:15px}
+    .logo-dia{width:38px;height:38px}
+    .nav .btn{margin-left:auto;padding:11px 13px}
+    .nav .btn span{display:none}
+  }
+
+  /* compact hero */
+  .ohero{position:relative;background:var(--void);color:#F2F1ED;overflow:clip;padding:84px 0 72px}
+  .ohero .kotes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.85}
+  .ohero .kotes path{fill:none;stroke:var(--brass);stroke-width:1;opacity:.14}
+  .kick{display:block;font-family:var(--mono);font-weight:500;font-size:12.5px;
+    letter-spacing:.24em;color:var(--brass2);text-transform:uppercase;margin-bottom:18px}
+  .ohero h1{font-size:clamp(46px,6.4vw,86px);font-weight:800;margin-bottom:18px;max-width:14ch}
+  .ohero h1 em{font-style:normal;color:var(--brass2)}
+  .ohero p.lead{font-size:clamp(16.5px,1.55vw,19px);color:#C7C8C6;max-width:56ch}
+  .facts{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:26px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;color:var(--mist)}
+  .facts b{color:var(--brass2);font-weight:500}
+  @media (max-width:920px){.ohero{padding:56px 0 56px}}
+
+  /* sections */
+  .sec{padding:92px 0}
+  .sec-k{display:block;font-family:var(--mono);font-weight:500;font-size:12.5px;
+    letter-spacing:.24em;text-transform:uppercase;color:#96700F;margin-bottom:14px}
+  .sec-t{font-size:clamp(36px,4.4vw,58px);font-weight:800;margin-bottom:16px}
+  .sec-p{max-width:62ch;color:var(--ink2)}
+  .dark{background:var(--void);color:#F0EFEA}
+  .dark .sec-k{color:var(--brass2)}
+  .dark .sec-p{color:#BEBFBC}
+  @media (max-width:920px){.sec{padding:64px 0}}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .sp-img{position:relative}
+  .sp-img img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+  .sp-img::after{content:"";position:absolute;inset:0;pointer-events:none;
+    border:1px solid rgba(198,154,46,.55)}
+  .sp-img .notch{position:absolute;width:13px;height:13px;background:var(--brass);
+    transform:rotate(45deg);top:-6px;left:-6px}
+  .sp-cap{margin-top:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;
+    color:var(--mist2);text-transform:uppercase}
+  .feats{list-style:none;margin-top:26px;display:grid;gap:18px}
+  .feats li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;font-weight:700}
+  .feats li small{display:block;font-weight:400;color:var(--ink2);font-size:15px;margin-top:2px}
+  .dark .feats li small{color:#B4B5B2}
+  .feats .dmk{width:10px;height:10px;background:var(--brass);transform:rotate(45deg);margin-top:7px}
+  @media (max-width:920px){
+    .split{grid-template-columns:1fr;gap:30px}
+    .split.rev .sp-img{order:-1}
+  }
+
+  /* machines strip */
+  .mstrip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;background:rgba(157,124,44,.36);
+    padding:3px;margin-top:44px}
+  .mstrip figure{position:relative;overflow:hidden;background:var(--coal)}
+  .mstrip img{width:100%;height:340px;object-fit:cover;transition:transform .5s ease}
+  .mstrip figure:hover img{transform:scale(1.045)}
+  .mstrip figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 13px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:#E9E8E3;background:linear-gradient(transparent,rgba(16,17,18,.88) 38%)}
+  @media (max-width:920px){
+    .mstrip{grid-template-columns:1fr}
+    .mstrip img{height:250px}
+  }
+
+  /* Hilton chapters */
+  .chaps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;margin-top:48px}
+  .chap{background:#FBFAF6;border:1px solid var(--linel);display:flex;flex-direction:column}
+  .chap img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .chap .cb{padding:20px 20px 22px}
+  .chap b.no{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.2em;color:#96700F}
+  .chap h3{font-size:22px;margin:6px 0 7px}
+  .chap p{font-size:14.5px;color:var(--ink2);line-height:1.55}
+  .chap a.cl{margin-top:10px;display:inline-block;font-family:var(--mono);font-size:11px;
+    letter-spacing:.14em;color:#96700F;text-transform:uppercase;
+    border-bottom:1px solid rgba(150,112,15,.4)}
+  @media (max-width:920px){.chaps{grid-template-columns:1fr;gap:20px}}
+
+  /* references */
+  .refs{list-style:none;margin-top:40px;display:grid;gap:0;border-top:1px solid var(--lined)}
+  .refs li{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:baseline;
+    padding:17px 4px;border-bottom:1px solid var(--lined)}
+  .refs .dmk{width:9px;height:9px;background:var(--brass);transform:rotate(45deg);align-self:center}
+  .refs b{font-weight:700}
+  .refs small{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--mist2);
+    text-transform:uppercase;text-align:right}
+  @media (max-width:920px){
+    .refs li{grid-template-columns:auto 1fr}
+    .refs small{grid-column:2;text-align:left}
+  }
+
+  /* hiring band */
+  .hire{background:var(--stone2)}
+  .hire .wrap{display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .hire h2{font-size:clamp(30px,3.6vw,46px)}
+  .hire p{color:var(--ink2);max-width:52ch}
+  @media (max-width:920px){.hire .wrap{flex-direction:column;align-items:flex-start}}
+
+  /* photo library */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:40px 0 0}
+  .fbtn{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    padding:9px 16px;border:1px solid var(--lined);background:none;color:#C9CBCC;cursor:pointer;
+    transition:color .2s,border-color .2s,background .2s}
+  .fbtn:hover{border-color:var(--brass);color:var(--brass2)}
+  .fbtn.on{background:var(--brass);border-color:var(--brass);color:var(--void);font-weight:500}
+  .lib{margin-top:26px;background:rgba(157,124,44,.36);padding:3px;display:grid;gap:3px;
+    grid-template-columns:repeat(3,1fr);grid-auto-rows:300px}
+  .ltile{position:relative;display:block;overflow:hidden;background:var(--coal);cursor:zoom-in;
+    border:0;padding:0;text-align:inherit;font:inherit}
+  .ltile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .ltile:hover img{transform:scale(1.045)}
+  .ltile::after{content:"";position:absolute;inset:0;border:1px solid transparent;
+    transition:border-color .25s;pointer-events:none}
+  .ltile:hover::after{border-color:rgba(226,184,75,.85)}
+  .lcap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;
+    padding:9px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+    text-transform:uppercase;color:#E9E8E3;
+    background:linear-gradient(transparent,rgba(16,17,18,.88) 38%)}
+  .lcap i{font-style:normal;color:var(--brass2);flex-shrink:0}
+  .ltile.hide{display:none}
+  .lib .ltile{opacity:0;transform:translateY(-14px)}
+  .lib.go .ltile{opacity:1;transform:none;
+    transition:opacity .45s ease,transform .55s cubic-bezier(.22,.9,.3,1.12)}
+  .lib.go .ltile:nth-child(3n+2){transition-delay:.1s}
+  .lib.go .ltile:nth-child(3n){transition-delay:.2s}
+  @media (prefers-reduced-motion: reduce){
+    .lib .ltile{opacity:1;transform:none;transition:none}
+    .ltile img{transition:none}
+  }
+  @media (max-width:920px){
+    .lib{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
+  }
+  @media (max-width:560px){
+    .lib{grid-template-columns:1fr;grid-auto-rows:280px}
+  }
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:90;background:rgba(12,13,14,.94);display:none;
+    align-items:center;justify-content:center;padding:30px 18px 74px}
+  .lb.open{display:flex}
+  .lb img{max-width:min(94vw,900px);max-height:76vh;object-fit:contain;
+    border:1px solid rgba(198,154,46,.5)}
+  .lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:14px;align-items:center;
+    justify-content:center;padding:16px;font-family:var(--mono);font-size:12px;
+    letter-spacing:.12em;color:#D9D8D3;text-transform:uppercase;flex-wrap:wrap;text-align:center}
+  .lb-bar i{font-style:normal;color:var(--brass2)}
+  .lb-bar a{color:var(--brass2);border-bottom:1px solid rgba(226,184,75,.45)}
+  .lb-x,.lb-p,.lb-n{position:absolute;background:none;border:1px solid rgba(255,255,255,.3);
+    color:#EFEFEC;width:46px;height:46px;cursor:pointer;font-size:19px;font-family:var(--sans);
+    display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+  .lb-x:hover,.lb-p:hover,.lb-n:hover{border-color:var(--brass);color:var(--brass2)}
+  .lb-x{top:18px;right:18px}
+  .lb-p{left:14px;top:50%;transform:translateY(-50%)}
+  .lb-n{right:14px;top:50%;transform:translateY(-50%)}
+  @media (max-width:700px){.lb-p,.lb-n{display:none}}
+
+  /* CTA band */
+  .cta{background:var(--void);color:#F0EFEA;text-align:center}
+  .cta h2{font-size:clamp(36px,5vw,62px);margin-bottom:14px}
+  .cta p{color:#BEBFBC;max-width:52ch;margin:0 auto 30px}
+  .cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--void);color:var(--mist);font-size:13.5px;padding:26px 0;
+    border-top:1px solid var(--lined)}
+  footer .wrap{display:flex;gap:8px 26px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  footer i{width:8px;height:8px;background:var(--brass);transform:rotate(45deg);
+    display:inline-block;font-style:normal}
+
+  a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Østlandet Maskin og Anlegg — til forsiden">
+      <span class="logo-dia"><img src="../images/logo.jpg" alt=""></span>
+      <span>Østlandet<br>Maskin og Anlegg<small>Maskinentreprenør · Disenå</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Hovedmeny">
+      <a href="../#tjenester">Tjenester</a>
+      <a href="../#naturstein">Naturstein</a>
+      <a href="../#prosjekter">Prosjekter</a>
+      <a class="on" href="./" aria-current="page">Om oss</a>
+      <a href="../#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn gold" href="tel:91110834" aria-label="Ring 911 10 834">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+      <span>911 10 834</span>
+    </a>
+  </div>
+</header>
+
+<section class="ohero">
+  <svg class="kotes" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-60 140 C 240 80, 470 200, 760 155 S 1240 80, 1520 140"/>
+    <path d="M-60 300 C 260 230, 520 360, 810 310 S 1260 240, 1520 300"/>
+    <path d="M-60 470 C 230 400, 540 540, 860 480 S 1290 410, 1520 470"/>
+  </svg>
+  <div class="wrap">
+    <span class="kick rv">Om oss</span>
+    <h1 class="rv">Folk, maskiner og <em>ryddige jobber</em></h1>
+    <p class="lead rv">Østlandet Maskin og Anlegg AS — ØMA blant venner — er seks fagfolk med
+      base i Disenå i Sør-Odal. Siden 2021 har vi gravd, drenert, murt og brøytet oss gjennom
+      Øvre Romerike og Glåmdalen — for byggherrer, borettslag, bønder og folk som skal
+      bygge noe som varer.</p>
+    <div class="facts rv">
+      <span><b>ORG.NR</b> 827 126 152</span>
+      <span><b>ETABLERT</b> 2021</span>
+      <span><b>ANSATTE</b> 6</span>
+      <span><b>BASE</b> DISENÅ, SØR-ODAL</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="historie">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="sec-k">Historien</span>
+      <h2 class="sec-t">Fra første<br>spadetak</h2>
+      <p class="sec-p">ØMA ble startet i 2021 med en enkel idé: gjør grunnarbeidet skikkelig,
+        rydd opp etter deg, og si ærlig ifra om hva jobben krever. Siden har laget vokst til
+        seks fagfolk — og jobbene fra små gårdsplasser til fylkesveger, borettslag og
+        boligfelt.</p>
+      <ul class="feats">
+        <li><span class="dmk"></span><span>Presis utførelse
+          <small>Riktig fall, riktig nivå, riktig første gang — det er billigst for alle</small></span></li>
+        <li><span class="dmk"></span><span>Ryddig byggeplass
+          <small>Vi leverer fra oss en plass det er godt å ta i bruk — og rydder etter oss</small></span></li>
+        <li><span class="dmk"></span><span>Ærlige svar
+          <small>Du får vite hva jobben krever før vi starter — ikke etterpå</small></span></li>
+      </ul>
+    </div>
+    <div class="sp-img rv"><span class="notch"></span>
+      <img src="../images/l-oma-hitachi.jpg" alt="ØMAs gravemaskin med firmalogo på siden, i arbeid på snødekt anlegg">
+      <div class="sp-cap">Maskina med merket på — ØMA på jobb</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="maskiner">
+  <div class="wrap">
+    <span class="sec-k rv">Maskiner og utstyr</span>
+    <h2 class="sec-t rv">Utstyrt for hele jobben</h2>
+    <p class="sec-p rv">Beltegravere, hjulgraver, traktor med henger og brøyteutstyr — pluss
+      pickup og mannskap som flytter seg dit jobben er. Egne maskiner betyr at vi aldri
+      venter på innleid utstyr, og at du slipper å betale for det.</p>
+    <div class="mstrip rv">
+      <figure><img src="../images/l-volvo-pickup.jpg" alt="Hjulgraver og ØMA-pickup på anleggsveg">
+        <figcaption>Hjulgraver og pickup — klare for oppdrag</figcaption></figure>
+      <figure><img src="../images/l-snofall.jpg" alt="Traktor med utstyr i tett snøvær">
+        <figcaption>Traktor og brøyteutstyr — vinterdrift</figcaption></figure>
+      <figure><img src="../images/l-oma-pickup.jpg" alt="ØMAs pickup med diamantlogo på døra i snøvær">
+        <figcaption>ØMA-bilen — du ser oss i nabolaget</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="hilton">
+  <div class="wrap">
+    <span class="sec-k rv">Ett borettslag — hele jobben</span>
+    <h2 class="sec-t rv">Hilton, Kløfta: tre kapitler</h2>
+    <p class="sec-p rv">Et borettslag trengte nye uteområder: gamle terrasser revet, grunnmur
+      drenert, og alt bygget opp igjen. Vi tok hele jobben — fra riving til ferdig terrasse.
+      Slik så det ut, del for del, fra våre egne oppdateringer underveis.</p>
+    <div class="chaps">
+      <div class="chap rv">
+        <img src="../images/p-fiberduk.jpg" alt="Fiberduk og bærelag lagt langs boligblokken">
+        <div class="cb"><b class="no">DEL 1</b>
+          <h3>Riving og drenering</h3>
+          <p>Gamle terrasser ut, grøft langs hele langsiden, ny drenering og grunnmursplate —
+            tørt fundament før noe nytt bygges.</p>
+          <a class="cl" href="https://www.instagram.com/p/CqIvlZlIQ6W/" target="_blank" rel="noopener">Se innlegget →</a>
+        </div>
+      </div>
+      <div class="chap rv">
+        <img src="../images/l-terrasse-bjelker.jpg" alt="Nytt bjelkelag for terrasser langs blokka">
+        <div class="cb"><b class="no">DEL 2</b>
+          <h3>Fundament og bjelkelag</h3>
+          <p>Stolper, bæring og bjelkelag i rette linjer — grunnarbeid og presisjon er samme
+            håndverk, over som under bakken.</p>
+          <a class="cl" href="https://www.instagram.com/p/CqIwIhdojgM/" target="_blank" rel="noopener">Se innlegget →</a>
+        </div>
+      </div>
+      <div class="chap rv">
+        <img src="../images/l-terrasse-ferdig.jpg" alt="Ferdig ny treterrasse med levegg">
+        <div class="cb"><b class="no">DEL 3</b>
+          <h3>Nye terrasser</h3>
+          <p>Ferdige terrasser med levegger — klare for sommeren. Én aktør, ett ansvar,
+            fornøyd borettslag.</p>
+          <a class="cl" href="https://www.instagram.com/p/CqIwSwZo1Ov/" target="_blank" rel="noopener">Se innlegget →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="oppdrag">
+  <div class="wrap">
+    <span class="sec-k rv">Utvalgte oppdrag</span>
+    <h2 class="sec-t rv">Jobber vi er stolte av</h2>
+    <ul class="refs rv">
+      <li><span class="dmk"></span><b>Gjenoppbygging av fylkesvegen i Skrukkelia etter uværet «Hans»</b>
+        <small>For Hadeland Maskindrift</small></li>
+      <li><span class="dmk"></span><b>Hilton borettslag, Kløfta — drenering, grunnarbeid og nye terrasser</b>
+        <small>Del 1–3 · 2023</small></li>
+      <li><span class="dmk"></span><b>Første spadetak: 5 nye tomannsboliger på Fåmyrsrøet</b>
+        <small>Nannestad</small></li>
+      <li><span class="dmk"></span><b>Fibergraving langs veg — kilometervis med grøft og trekkerør</b>
+        <small>HomeNet · TT Kabel og Anlegg · Bracom</small></li>
+      <li><span class="dmk"></span><b>Boring under veg — samarbeid med spesialister</b>
+        <small>Veflen Entreprenør</small></li>
+      <li><span class="dmk"></span><b>Masseutskiftning, granittmur og ny innkjørsel</b>
+        <small>Privat · se før/etter på forsiden</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec hire" id="jobb">
+  <div class="wrap">
+    <div class="rv">
+      <span class="sec-k">Jobb hos oss</span>
+      <h2>ØMA vokser — vi søker erfarne tømrere</h2>
+      <p>Vi bygger opp egen tømreravdeling og trenger flere dyktige folk på laget.
+        Fast ansettelse, ordnede forhold og varierte jobber.</p>
+    </div>
+    <a class="btn gold rv" href="mailto:post@omanlegg.no?subject=Jobb%20hos%20%C3%98MA">Send en søknad</a>
+  </div>
+</section>
+
+<section class="sec dark" id="bilder">
+  <div class="wrap">
+    <span class="sec-k rv">Bildebiblioteket</span>
+    <h2 class="sec-t rv">Hverdagen vår, i bilder</h2>
+    <p class="sec-p rv">Alt her er ekte — fra våre egne oppdateringer på
+      <a href="https://www.instagram.com/omanlegg/" target="_blank" rel="noopener" style="color:var(--brass2);font-weight:700;border-bottom:1px solid rgba(226,184,75,.45)">@omanlegg</a>.
+      Trykk på et bilde for å se det større.</p>
+
+    <div class="filters rv" role="group" aria-label="Filtrer bilder">
+      <button class="fbtn on" data-f="alle" type="button">Alle</button>
+      <button class="fbtn" data-f="vinter" type="button">Vinterdrift</button>
+      <button class="fbtn" data-f="fiber" type="button">Fiber og kabel</button>
+      <button class="fbtn" data-f="mur" type="button">Murer og plasser</button>
+      <button class="fbtn" data-f="veg" type="button">Veg og grunnarbeid</button>
+      <button class="fbtn" data-f="dren" type="button">Drenering</button>
+      <button class="fbtn" data-f="bygg" type="button">Terrasser og bygg</button>
+    </div>
+
+    <div class="lib go" id="lib">
+      <button class="ltile" type="button" data-cat="vinter" data-url="https://www.instagram.com/p/C0_2iIsI5IA/" data-cap="Vinterdrift — vi gnager på til jul" data-l="86">
+        <img src="../images/p-natt.jpg" alt="Gravemaskin i snøvær på nattskift"><span class="lcap"><i>♥ 86</i>Nattskift i snøvær</span></button>
+      <button class="ltile" type="button" data-cat="vinter" data-url="https://www.instagram.com/p/C1MqZkKI9NK/" data-cap="God jul fra maskina" data-l="59">
+        <img src="../images/l-vinter-graving.jpg" alt="Gravemaskin i vinterlandskap"><span class="lcap"><i>♥ 59</i>God jul fra maskina</span></button>
+      <button class="ltile" type="button" data-cat="vinter" data-url="https://www.instagram.com/p/C0XcNAiov2a/" data-cap="Anleggslivet — natt og snø" data-l="16">
+        <img src="../images/l-natt-sno.jpg" alt="Skuffe med snø i mørket"><span class="lcap"><i>♥ 16</i>Anleggslivet — natt og snø</span></button>
+      <button class="ltile" type="button" data-cat="vinter" data-url="https://www.instagram.com/p/CzvjFB8oVFs/" data-cap="Vinterveg gjennom skogen" data-l="13">
+        <img src="../images/l-vinterskog.jpg" alt="Gravemaskin på snødekt skogsveg"><span class="lcap"><i>♥ 13</i>Vinterveg gjennom skogen</span></button>
+      <button class="ltile" type="button" data-cat="vinter" data-url="https://www.instagram.com/p/CrbW2O9o1zW/" data-cap="Snøvær på anlegget" data-l="12">
+        <img src="../images/l-snofall.jpg" alt="Traktor i tett snøvær"><span class="lcap"><i>♥ 12</i>Snøvær på anlegget</span></button>
+
+      <button class="ltile" type="button" data-cat="fiber" data-url="https://www.instagram.com/p/Cl5easHoer0/" data-cap="Fibergrøft i soloppgang" data-l="19">
+        <img src="../images/p-soloppgang.jpg" alt="Traktor med henger i frostrøyk ved soloppgang"><span class="lcap"><i>♥ 19</i>Fibergrøft i soloppgang</span></button>
+      <button class="ltile" type="button" data-cat="fiber" data-url="https://www.instagram.com/p/Cl5easHoer0/" data-cap="Fibergrøft i skumringen" data-l="19">
+        <img src="../images/l-fiber-skumring.jpg" alt="Gravemaskin i silhuett mot kveldshimmel"><span class="lcap"><i>♥ 19</i>Fibergrøft i skumringen</span></button>
+      <button class="ltile" type="button" data-cat="fiber" data-url="https://www.instagram.com/p/ClqV23UoZcv/" data-cap="Trekkerør på plass" data-l="17">
+        <img src="../images/l-fiber-ror.jpg" alt="Oransje trekkerør i grøft"><span class="lcap"><i>♥ 17</i>Trekkerør på plass</span></button>
+      <button class="ltile" type="button" data-cat="fiber" data-url="https://www.instagram.com/p/Ckh3eOtD09y/" data-cap="Fiber langs veg" data-l="16">
+        <img src="../images/l-fiber-veg.jpg" alt="Hjulgraver arbeider langs våt veg"><span class="lcap"><i>♥ 16</i>Fiber langs veg</span></button>
+
+      <button class="ltile" type="button" data-cat="mur" data-url="https://www.instagram.com/p/Ck9GcazLSPw/" data-cap="Ny innkjørsel — ferdig resultat" data-l="19">
+        <img src="../images/etter.jpg" alt="Ny asfaltert innkjørsel med granittmur"><span class="lcap"><i>♥ 19</i>Ny innkjørsel — ferdig</span></button>
+      <button class="ltile" type="button" data-cat="mur" data-url="https://www.instagram.com/p/Ck9GcazLSPw/" data-cap="Granittmur under bygging" data-l="19">
+        <img src="../images/mur-foto.jpg" alt="Granittmur under bygging med gravemaskin"><span class="lcap"><i>♥ 19</i>Granittmur under bygging</span></button>
+      <button class="ltile" type="button" data-cat="mur" data-url="https://www.instagram.com/p/Ck9GcazLSPw/" data-cap="Belegningsstein — stein for stein" data-l="19">
+        <img src="../images/p-belegg.jpg" alt="Belegningsstein legges med rettholt"><span class="lcap"><i>♥ 19</i>Belegningsstein legges</span></button>
+      <button class="ltile" type="button" data-cat="mur" data-url="https://www.instagram.com/p/Ck9GcazLSPw/" data-cap="Ferdig gårdsplass i belegningsstein" data-l="19">
+        <img src="../images/gard-foto.jpg" alt="Ferdig lagt belegningsstein på gårdsplass"><span class="lcap"><i>♥ 19</i>Ferdig gårdsplass</span></button>
+
+      <button class="ltile" type="button" data-cat="veg" data-url="https://www.instagram.com/p/CyyFzhcILQd/" data-cap="Fylkesvegen i Skrukkelia — etter «Hans»" data-l="18">
+        <img src="../images/p-fjellveg.jpg" alt="Gravemaskin bygger fylkesveg i tåke"><span class="lcap"><i>♥ 18</i>Skrukkelia etter «Hans»</span></button>
+      <button class="ltile" type="button" data-cat="veg" data-url="https://www.instagram.com/p/CyyFzhcILQd/" data-cap="Massetransport til fjells" data-l="18">
+        <img src="../images/l-fjell-transport.jpg" alt="Lastebil og gravemaskin på fjellveg i tåke"><span class="lcap"><i>♥ 18</i>Massetransport til fjells</span></button>
+      <button class="ltile" type="button" data-cat="veg" data-url="https://www.instagram.com/p/CzvjFB8oVFs/" data-cap="Ny stikkrenne lagt og sikret" data-l="13">
+        <img src="../images/l-stikkrenne.jpg" alt="Ny stikkrenne omfylt med pukk"><span class="lcap"><i>♥ 13</i>Ny stikkrenne</span></button>
+      <button class="ltile" type="button" data-cat="veg" data-url="https://www.instagram.com/p/ClqV23UoZcv/" data-cap="Rigg og sikring langs veg" data-l="17">
+        <img src="../images/l-kranbil.jpg" alt="Kranbil med sikring på veg"><span class="lcap"><i>♥ 17</i>Rigg og sikring langs veg</span></button>
+      <button class="ltile" type="button" data-cat="veg" data-url="https://www.instagram.com/p/CzMNUxNIbrZ/" data-cap="Oppbygging av veg, lag for lag" data-l="14">
+        <img src="../images/l-pukkveg.jpg" alt="Gravemaskin på nylagt pukk"><span class="lcap"><i>♥ 14</i>Veg bygges lag for lag</span></button>
+
+      <button class="ltile" type="button" data-cat="dren" data-url="https://www.instagram.com/p/CqIvlZlIQ6W/" data-cap="Fiberduk og bærelag — Hilton borettslag" data-l="15">
+        <img src="../images/p-fiberduk.jpg" alt="Fiberduk og bærelag langs boligblokk"><span class="lcap"><i>♥ 15</i>Fiberduk og bærelag</span></button>
+      <button class="ltile" type="button" data-cat="dren" data-url="https://www.instagram.com/p/CqIvlZlIQ6W/" data-cap="Grunnmur sikret og drenert" data-l="15">
+        <img src="../images/l-drenering-vegg.jpg" alt="Grunnmursplate montert langs kjellervegg"><span class="lcap"><i>♥ 15</i>Grunnmur sikret og drenert</span></button>
+      <button class="ltile" type="button" data-cat="dren" data-url="https://www.instagram.com/p/CqIvlZlIQ6W/" data-cap="Drensrør og pukk — det du ikke ser" data-l="15">
+        <img src="../images/l-drenering-ror.jpg" alt="Drensrør og overvannsrør i pukk"><span class="lcap"><i>♥ 15</i>Drensrør og pukk</span></button>
+
+      <button class="ltile" type="button" data-cat="bygg" data-url="https://www.instagram.com/p/CqIwIhdojgM/" data-cap="Hilton del 2 — bjelkelag for nye terrasser" data-l="10">
+        <img src="../images/l-terrasse-bjelker.jpg" alt="Nytt bjelkelag for terrasser"><span class="lcap"><i>♥ 10</i>Bjelkelag for terrasser</span></button>
+      <button class="ltile" type="button" data-cat="bygg" data-url="https://www.instagram.com/p/CqIwIhdojgM/" data-cap="Stolper og bæring i rette linjer" data-l="10">
+        <img src="../images/l-terrasse-stolper.jpg" alt="Stolperekker for nye terrasser"><span class="lcap"><i>♥ 10</i>Stolper og bæring</span></button>
+      <button class="ltile" type="button" data-cat="bygg" data-url="https://www.instagram.com/p/CqIwSwZo1Ov/" data-cap="Nye terrasser — ferdig levert" data-l="11">
+        <img src="../images/l-terrasse-ferdig.jpg" alt="Ferdig treterrasse med levegg"><span class="lcap"><i>♥ 11</i>Nye terrasser — ferdig</span></button>
+      <button class="ltile" type="button" data-cat="bygg" data-url="https://www.instagram.com/p/Cq7eRk4IOsS/" data-cap="Første spadetak — 5 tomannsboliger, Nannestad" data-l="10">
+        <img src="../images/l-nannestad.jpg" alt="Gravemaskin tar første spadetak på boligfelt"><span class="lcap"><i>♥ 10</i>Første spadetak, Nannestad</span></button>
+    </div>
+  </div>
+</section>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildevisning">
+  <button class="lb-x" id="lbX" type="button" aria-label="Lukk">✕</button>
+  <button class="lb-p" id="lbP" type="button" aria-label="Forrige bilde">‹</button>
+  <button class="lb-n" id="lbN" type="button" aria-label="Neste bilde">›</button>
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+  <div class="lb-bar"><i id="lbL"></i><span id="lbC"></span><a id="lbA" href="#" target="_blank" rel="noopener">Se på Instagram →</a></div>
+</div>
+
+<section class="sec cta">
+  <div class="wrap">
+    <h2 class="rv">Skal du i gang med noe?</h2>
+    <p class="rv">Ring, eller be om befaring — vi kommer, ser og måler, og gir deg
+      et ærlig svar på hva jobben krever.</p>
+    <div class="row rv">
+      <a class="btn gold" href="tel:91110834">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+        911 10 834</a>
+      <a class="btn ghostd" href="../#kontakt">Be om befaring</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><i></i>&nbsp; © Østlandet Maskin og Anlegg AS · Org.nr 827 126 152</span>
+    <span>Gjersøybråtavegen 292 · 2114 Disenå</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // library filter
+  const lib = document.getElementById('lib');
+  const tiles = [...lib.querySelectorAll('.ltile')];
+  document.querySelectorAll('.fbtn').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.fbtn').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    lib.classList.remove('go');
+    tiles.forEach(t => t.classList.toggle('hide', f !== 'alle' && t.dataset.cat !== f));
+    void lib.offsetWidth;               // restart the settle animation
+    lib.classList.add('go');
+  }));
+
+  // lightbox
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbC = document.getElementById('lbC');
+  const lbL = document.getElementById('lbL');
+  const lbA = document.getElementById('lbA');
+  let cur = -1;
+  const visible = () => tiles.filter(t => !t.classList.contains('hide'));
+  const show = (t) => {
+    const v = visible();
+    cur = v.indexOf(t);
+    const img = t.querySelector('img');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbC.textContent = t.dataset.cap;
+    lbL.textContent = '♥ ' + t.dataset.l;
+    lbA.href = t.dataset.url;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const step = (d) => {
+    const v = visible();
+    if (!v.length) return;
+    show(v[(cur + d + v.length) % v.length]);
+  };
+  const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  tiles.forEach(t => t.addEventListener('click', () => show(t)));
+  document.getElementById('lbX').addEventListener('click', close);
+  document.getElementById('lbP').addEventListener('click', () => step(-1));
+  document.getElementById('lbN').addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+</script>
+</body>
+</html>
