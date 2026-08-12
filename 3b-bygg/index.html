@@ -35,7 +35,7 @@
 
   header{position:sticky;top:0;z-index:50;background:rgba(246,244,241,.93);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .nav{display:flex;align-items:center;gap:24px;padding-top:14px;padding-bottom:14px}
   .logo{font-family:var(--disp);font-weight:700;font-size:21px;display:flex;align-items:center;gap:10px;
     color:var(--slate)}
   .logo svg{width:31px;height:31px;flex-shrink:0}
@@ -57,7 +57,7 @@
   .hero-bg{position:absolute;inset:0;background:url("images/hero.jpg") center 40%/cover no-repeat}
   .hero-bg::after{content:"";position:absolute;inset:0;
     background:linear-gradient(100deg,rgba(31,34,38,.95) 12%,rgba(31,34,38,.78) 50%,rgba(31,34,38,.4) 100%)}
-  .hero-in{position:relative;z-index:2;max-width:660px;padding:92px 0 100px}
+  .hero-in{position:relative;z-index:2;max-width:660px;padding-top:92px;padding-bottom:100px}
   .kick{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--timber);margin-bottom:18px}
   .kick::before{content:"";width:26px;height:2px;background:var(--timber)}
@@ -76,7 +76,7 @@
   .trust svg{width:16px;height:16px;stroke:var(--timber);fill:none;stroke-width:2.2;
     stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-  section{padding:84px 0}
+  section{padding-top:84px;padding-bottom:84px}
   .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--timber2);margin-bottom:12px}
   .sec-t{font-size:clamp(27px,3.4vw,40px);font-weight:700;margin-bottom:14px}
@@ -173,7 +173,7 @@
   .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
   @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
 
-  footer{background:var(--slate2);color:#8B929C;font-size:14px;padding:28px 0}
+  footer{background:var(--slate2);color:#8B929C;font-size:14px;padding-top:28px;padding-bottom:28px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   .mcall{display:none}

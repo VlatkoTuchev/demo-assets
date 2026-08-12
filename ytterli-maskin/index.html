@@ -36,7 +36,7 @@
 
   header{position:sticky;top:0;z-index:50;background:rgba(28,30,33,.94);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--lined);color:var(--inkd)}
-  .nav{display:flex;align-items:center;gap:24px;padding:13px 0}
+  .nav{display:flex;align-items:center;gap:24px;padding-top:13px;padding-bottom:13px}
   .logo{font-family:var(--disp);font-weight:800;font-size:23px;text-transform:uppercase;
     letter-spacing:.03em;display:flex;align-items:center;gap:11px}
   .logo i{width:22px;height:14px;background:var(--yel);font-style:normal;flex-shrink:0;
@@ -65,7 +65,7 @@
   .hero-bg{position:absolute;inset:0;background:url("images/hero.jpg") center 62%/cover no-repeat}
   .hero-bg::after{content:"";position:absolute;inset:0;
     background:linear-gradient(100deg,rgba(19,21,24,.94) 10%,rgba(19,21,24,.72) 48%,rgba(19,21,24,.28) 100%)}
-  .hero-in{position:relative;z-index:2;max-width:680px;padding:96px 0 110px}
+  .hero-in{position:relative;z-index:2;max-width:680px;padding-top:96px;padding-bottom:110px}
   .kick{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;
     font-size:15px;letter-spacing:.22em;color:var(--yel);margin-bottom:16px;text-transform:uppercase}
   .kick::before{content:"";width:26px;height:3px;background:var(--yel)}
@@ -94,7 +94,7 @@
   .t-lbl{font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;fill:#7A7E85;font-weight:600}
   .t-lbl.y{fill:var(--yel)}
 
-  section{padding:84px 0}
+  section{padding-top:84px;padding-bottom:84px}
   .sec-k{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.22em;
     text-transform:uppercase;color:var(--yel2);margin-bottom:10px}
   .sec-t{font-size:clamp(30px,4vw,48px);font-weight:800;margin-bottom:14px}
@@ -170,7 +170,7 @@
   .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
   @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
 
-  footer{background:var(--coal2);color:#787D84;font-size:14px;padding:28px 0}
+  footer{background:var(--coal2);color:#787D84;font-size:14px;padding-top:28px;padding-bottom:28px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   .mcall{display:none}

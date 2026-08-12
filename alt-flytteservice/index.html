@@ -35,7 +35,7 @@
 
   header{position:sticky;top:0;z-index:50;background:rgba(244,246,251,.93);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .nav{display:flex;align-items:center;gap:24px;padding-top:14px;padding-bottom:14px}
   .logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px;color:var(--blue2)}
   .logo svg{width:32px;height:32px;flex-shrink:0}
   .logo em{font-style:normal;color:var(--sun2)}
@@ -62,7 +62,7 @@
   .hero::before{content:"";position:absolute;inset:0;
     background:linear-gradient(175deg,#FFFFFF 0%,var(--bg) 70%)}
   .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr .92fr;
-    gap:52px;align-items:center;padding:64px 0 76px}
+    gap:52px;align-items:center;padding-top:64px;padding-bottom:76px}
   .kick{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);
     border-radius:99px;padding:8px 16px;font-weight:700;font-size:13.5px;color:var(--blue);margin-bottom:20px}
   .kick svg{width:15px;height:15px;stroke:var(--sun2);fill:none;stroke-width:2.4;stroke-linecap:round}
@@ -105,7 +105,7 @@
   .fmsg.ok{display:block;background:#EAF7EF;color:#116B37;border:1px solid #BFE5CD}
   .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
   @media(max-width:920px){
-    .hero-grid{grid-template-columns:1fr;gap:38px;padding:44px 0 60px}
+    .hero-grid{grid-template-columns:1fr;gap:38px;padding-top:44px;padding-bottom:60px}
     .frow{grid-template-columns:1fr}
   }
 
@@ -116,7 +116,7 @@
   .van{position:absolute;top:50%;left:0;transform:translate(-90px,-58%);will-change:transform}
   .van svg{width:92px;height:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}
 
-  section{padding:82px 0}
+  section{padding-top:82px;padding-bottom:82px}
   .sec-k{font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--sun2);margin-bottom:12px}
   .sec-t{font-size:clamp(27px,3.4vw,40px);margin-bottom:14px}
@@ -161,7 +161,7 @@
   .ring p{color:#B9C6E8;font-size:15.5px}
   .ring .btn{font-size:18px;padding:15px 28px;position:relative;z-index:2}
 
-  footer{background:var(--blue2);color:#8FA0C8;font-size:14px;padding:28px 0}
+  footer{background:var(--blue2);color:#8FA0C8;font-size:14px;padding-top:28px;padding-bottom:28px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   .mcall{display:none}

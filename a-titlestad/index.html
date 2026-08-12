@@ -38,7 +38,7 @@
   /* header */
   header{position:sticky;top:0;z-index:50;background:rgba(247,249,251,.92);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:28px;padding:14px 0}
+  .nav{display:flex;align-items:center;gap:28px;padding-top:14px;padding-bottom:14px}
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;
     font-size:21px;color:var(--navy)}
   .logo svg{width:30px;height:30px;flex-shrink:0}
@@ -54,7 +54,7 @@
   /* hero */
   .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFFFFF 0%,var(--paper) 100%)}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
-    padding:72px 0 84px}
+    padding-top:72px;padding-bottom:84px}
   .kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13.5px;
     letter-spacing:.14em;text-transform:uppercase;color:var(--amber2);margin-bottom:18px}
   .kicker::before{content:"";width:26px;height:2px;background:var(--amber)}
@@ -84,7 +84,7 @@
   .dial-val{fill:none;stroke:url(#heatg);stroke-width:7;stroke-linecap:round;
     transition:stroke-dashoffset 1.6s cubic-bezier(.25,.7,.3,1)}
   @media(max-width:920px){
-    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 64px}
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding-top:48px;padding-bottom:64px}
     .dial{left:auto;right:10px;bottom:-28px;width:128px;height:128px}
     .dial .deg{font-size:26px}
   }
@@ -98,7 +98,7 @@
     stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
   /* sections */
-  section{padding:84px 0}
+  section{padding-top:84px;padding-bottom:84px}
   .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--amber2);margin-bottom:12px}
   .sec-t{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px}
@@ -186,7 +186,7 @@
   .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
   @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
 
-  footer{background:var(--navy2);color:#7D8FA5;font-size:14px;padding:30px 0}
+  footer{background:var(--navy2);color:#7D8FA5;font-size:14px;padding-top:30px;padding-bottom:30px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   /* mobile sticky call bar */

@@ -35,7 +35,7 @@
 
   header{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.94);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;gap:24px;padding:14px 0}
+  .nav{display:flex;align-items:center;gap:24px;padding-top:14px;padding-bottom:14px}
   .logo{font-family:var(--disp);font-weight:800;font-size:21px;display:flex;align-items:center;gap:10px}
   .logo .chip{display:inline-flex;gap:3px}
   .logo .chip i{width:9px;height:20px;border-radius:3px}
@@ -57,7 +57,7 @@
   /* hero */
   .hero{position:relative;overflow:hidden;background:#fff}
   .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center;
-    padding:68px 0 84px}
+    padding-top:68px;padding-bottom:84px}
   .kick{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;
     letter-spacing:.16em;text-transform:uppercase;color:var(--sage2);margin-bottom:18px}
   .kick i{display:inline-flex;gap:3px}
@@ -85,9 +85,9 @@
   .drips i:nth-child(3){height:32px;background:var(--butter);animation-delay:1s}
   @keyframes drip{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.12)}}
   .drips i{transform-origin:top}
-  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;padding:46px 0 62px}}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px;padding-top:46px;padding-bottom:62px}}
 
-  section{padding:84px 0}
+  section{padding-top:84px;padding-bottom:84px}
   .sec-k{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--sage2);margin-bottom:12px}
   .sec-t{font-size:clamp(27px,3.4vw,40px);font-weight:800;margin-bottom:14px}
@@ -169,7 +169,7 @@
   .fmsg.err{display:block;background:#FDEEEC;color:#93261C;border:1px solid #F2C7C2}
   @media(max-width:880px){.k-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
 
-  footer{background:var(--ink);color:#9AA1AB;font-size:14px;padding:28px 0}
+  footer{background:var(--ink);color:#9AA1AB;font-size:14px;padding-top:28px;padding-bottom:28px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   .mcall{display:none}
