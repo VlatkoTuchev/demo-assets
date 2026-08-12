@@ -185,16 +185,6 @@
 
   footer{background:var(--navy2);color:#7A88A3;font-size:14px;padding-top:30px;padding-bottom:30px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-
-  .mcall{display:none}
-  @media(max-width:700px){
-    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
-      align-items:center;justify-content:center;gap:10px;
-      background:linear-gradient(120deg,var(--copper2),var(--copper));color:#fff;
-      font-weight:700;font-size:17px;padding:15px;border-radius:14px;
-      box-shadow:0 16px 34px -10px rgba(0,0,0,.4)}
-    body{padding-bottom:74px}
-  }
 </style>
 </head>
 <body>
@@ -393,7 +383,6 @@
   </div>
 </footer>
 
-<a class="mcall" href="tel:55187067">☎ Ring 55 18 70 67</a>
 
 <script>
   const io = new IntersectionObserver((es) => es.forEach(e => {

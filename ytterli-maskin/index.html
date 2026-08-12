@@ -176,17 +176,6 @@
 
   footer{background:var(--coal2);color:#787D84;font-size:14px;padding-top:28px;padding-bottom:28px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
-
-  .mcall{display:none}
-  @media(max-width:700px){
-    .mcall{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
-      align-items:center;justify-content:center;gap:10px;
-      background:linear-gradient(120deg,var(--yel2),var(--yel));color:#231800;
-      font-family:var(--disp);text-transform:uppercase;letter-spacing:.05em;
-      font-weight:800;font-size:17px;padding:15px;border-radius:12px;
-      box-shadow:0 16px 34px -10px rgba(0,0,0,.45)}
-    body{padding-bottom:76px}
-  }
 </style>
 </head>
 <body>
@@ -361,7 +350,6 @@
   </div>
 </footer>
 
-<a class="mcall" href="tel:98082929">☎ 980 82 929</a>
 
 <script>
   const io = new IntersectionObserver((es) => es.forEach(e => {
