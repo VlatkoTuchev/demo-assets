@@ -262,26 +262,34 @@
     letter-spacing:.1em;padding:1vh 1.6vw;border-radius:999px;animation:pulse 2s infinite}
   @keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,68,56,.13)}}
   .ro-grid{position:relative;z-index:5;flex:1;display:grid;grid-template-columns:1.1fr 1fr;
-    align-items:center;gap:4vw;padding:0 6vw}
+    align-items:center;gap:3.4vw;padding:1vh 5% 0}
   .ro-left h4{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.8vw,64px);line-height:1.02}
   .ro-left h4 span{color:#7CC4FF}
-  .ro-phone{display:inline-flex;align-items:center;gap:12px;margin-top:3.4vh;background:#fff;color:#0B1B38;
-    font-family:var(--disp);font-weight:800;font-size:clamp(14px,1.8vw,24px);
-    padding:1.8vh 2.4vw;border-radius:999px;box-shadow:0 18px 44px -18px rgba(0,0,0,.5)}
+  .ro-phone{display:inline-flex;align-items:center;gap:9px;margin-top:2.2vh;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.4);color:#fff;
+    font-family:var(--sans);font-weight:600;font-size:clamp(11px,1.2vw,15.5px);
+    letter-spacing:.02em;padding:1.1vh 1.6vw;border-radius:999px;backdrop-filter:blur(4px)}
   .ro-chips{display:flex;gap:.8vw;margin-top:3vh;flex-wrap:wrap}
   .ro-chips b{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);font-weight:600;
     font-size:clamp(9.5px,1vw,12.5px);padding:.9vh 1.4vw;border-radius:999px}
-  .ro-form{background:#fff;color:#0D1B33;border-radius:18px;padding:3.2vh 2vw;max-width:430px;
-    justify-self:end;width:100%;box-shadow:0 34px 80px -30px rgba(0,0,0,.55);position:relative}
-  .ro-form h5{font-family:var(--disp);font-weight:800;font-size:clamp(13px,1.4vw,18px);margin-bottom:2vh}
-  .ro-field{margin-bottom:1.6vh}
+  .ro-form{background:#fff;color:#0D1B33;border-radius:18px;padding:3vh 1.9vw 2.6vh;max-width:440px;
+    justify-self:end;width:100%;box-shadow:0 34px 80px -30px rgba(0,0,0,.55);position:relative;overflow:hidden}
+  .ro-form::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;
+    background:linear-gradient(90deg,#0E5FD8,#39A0FF 55%,#7CC4FF)}
+  .ro-form h5{font-family:var(--disp);font-weight:800;font-size:clamp(13px,1.4vw,18px);margin-bottom:1.8vh;
+    display:flex;align-items:center;gap:8px}
+  .ro-form h5::before{content:"⚡";font-size:.9em}
+  .ro-field{margin-bottom:1.4vh}
   .ro-field small{display:block;font-weight:600;font-size:clamp(9px,.95vw,12px);margin-bottom:.5vh;color:#40506B}
-  .ro-input{background:#F1F5FB;border:1.5px solid #D9E4F2;border-radius:9px;
+  .ro-input{background:#F3F7FC;border:1.5px solid #DCE6F5;border-radius:10px;
     padding:1.2vh 1vw;font-size:clamp(10.5px,1.1vw,14px);min-height:2.4em;display:flex;align-items:center;overflow:hidden}
   .ro-input span{white-space:nowrap;overflow:hidden;display:inline-block;width:0}
   .ro-input .rcaret{width:2px;height:1.2em;background:#0E5FD8;margin-left:2px;animation:blink 1s steps(1) infinite;flex-shrink:0}
-  .ro-send{width:100%;border:none;background:#0E5FD8;color:#fff;font-family:var(--sans);font-weight:700;
-    font-size:clamp(11px,1.2vw,15px);padding:1.6vh 0;border-radius:10px;margin-top:.6vh}
+  .ro-send{width:100%;border:none;display:flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(100deg,#0E5FD8,#2D7BF2);color:#fff;font-family:var(--sans);font-weight:800;
+    letter-spacing:.02em;font-size:clamp(11.5px,1.25vw,15.5px);padding:1.8vh 0;border-radius:12px;margin-top:.8vh;
+    box-shadow:0 12px 28px -10px rgba(14,95,216,.6)}
+  .ro-send::after{content:"→";font-weight:800}
   .ro-toast{position:absolute;left:50%;top:-3vh;transform:translate(-50%,-100%) scale(.7);opacity:0;
     background:#0E271C;color:#63F2B9;border:1px solid rgba(99,242,185,.4);white-space:nowrap;
     font-family:var(--mono);font-size:clamp(10px,1.05vw,13px);letter-spacing:.08em;
@@ -365,7 +373,12 @@
   .sec-head{max-width:760px;margin-bottom:60px;position:relative;z-index:2}
   .sec-head .mono{display:block;margin-bottom:18px}
   .sec-head h2{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;
-    font-size:clamp(34px,5vw,58px);line-height:1.05}
+    font-size:clamp(34px,5vw,58px);line-height:1.06;text-wrap:balance}
+  @media(max-width:640px){
+    .sec-head h2{font-size:29px;line-height:1.12}
+    .sec-head p{font-size:16px}
+    .sec-head{margin-bottom:40px}
+  }
   .sec-head p{margin-top:18px;color:var(--dim);font-size:18.5px;max-width:56ch}
   .rv{opacity:0;transform:translateY(30px)}
   .glow{position:absolute;border-radius:50%;pointer-events:none;opacity:.5;
@@ -413,13 +426,16 @@
     letter-spacing:.14em;color:#06281B;background:var(--mint);padding:5px 10px;border-radius:999px;
     transform:rotate(6deg);box-shadow:0 6px 18px -6px rgba(99,242,185,.6)}
   @media(max-width:900px){
-    .j-grid{grid-template-columns:1fr;gap:44px}
+    .j-grid{grid-template-columns:1fr;gap:38px}
     .j-path{display:none}
-    .jnode{display:grid;grid-template-columns:112px 1fr;gap:22px;text-align:left;align-items:center}
-    .jnode .j-orb{margin:0}
-    .jnode p{margin:0}
-    .jnode .free{left:78px;top:-8px}
-    .jnode:not(:last-child)::after{content:"";position:absolute;left:55px;top:118px;bottom:-40px;
+    .journey{margin-top:0}
+    .jnode{display:grid;grid-template-columns:92px 1fr;gap:18px;text-align:left;align-items:center;padding-top:0}
+    .jnode .j-orb{margin:0;width:92px;height:92px}
+    .jnode .core{font-size:27px}
+    .jnode h3{font-size:19px;margin-bottom:7px}
+    .jnode p{margin:0;font-size:14px;max-width:none}
+    .jnode .free{left:60px;top:-7px;font-size:9px;padding:4px 8px}
+    .jnode:not(:last-child)::after{content:"";position:absolute;left:45px;top:100px;bottom:-34px;
       width:2px;background:linear-gradient(180deg,rgba(99,242,185,.4),rgba(139,123,255,.2))}
   }
 
@@ -504,7 +520,12 @@
   .pcheck circle{fill:none;stroke:rgba(238,241,248,.14);stroke-width:2}
   .pcheck path{fill:none;stroke:var(--mint);stroke-width:3.4;stroke-linecap:round;
     stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(99,242,185,.6))}
-  @media(max-width:640px){.pline{padding:22px 4px}}
+  @media(max-width:640px){
+    .pline{padding:18px 2px;gap:14px}
+    .pline h3{font-size:20px;line-height:1.3;letter-spacing:0}
+    .pline:hover{transform:none}
+    .pcheck{width:30px}
+  }
 
   /* ---------- contact ---------- */
   #kontakt{overflow:hidden}
@@ -837,7 +858,7 @@
     <div class="wrap">
       <div class="sec-head rv">
         <span class="mono" data-i18n="pr_eyebrow">Slik funker det</span>
-        <h2 data-i18n="pr_title">Null risiko. Null forskudd.</h2>
+        <h2 data-i18n-html="pr_title">Null risiko.<br>Null forskudd.</h2>
       </div>
       <div class="journey">
         <div class="j-path" aria-hidden="true">
@@ -1006,7 +1027,7 @@ const I18N = {
     ou_title:"Din bedrift her?",
     ou_sub:"Vi tegner den neste rundt din bedrift — helt gratis og helt uforpliktende.",
     ou_cta:"Få din gratis demo",
-    pr_eyebrow:"Slik funker det", pr_title:"Null risiko. Null forskudd.", pr_free:"GRATIS",
+    pr_eyebrow:"Slik funker det", pr_title:"Null risiko.<br>Null forskudd.", pr_free:"GRATIS",
     pr1_t:"Vi bygger demoen", pr1_p:"Fortell oss om bedriften — eller la oss finne deg. Innen 24 timer står en ferdig designet nettside klar på nett.",
     pr2_t:"Du ser den live", pr2_p:"Du får en lenke du kan åpne på mobilen, vise til familien og teste selv. Liker du den ikke? Da koster det ingenting.",
     pr3_t:"Betal når du elsker den", pr3_p:"Først når du sier ja, setter vi siden på ditt eget domene — med skjema som sender kundene rett til deg.",
@@ -1060,7 +1081,7 @@ const I18N = {
     ou_title:"Your business here?",
     ou_sub:"We'll draw the next one around your business — completely free, no strings attached.",
     ou_cta:"Get your free demo",
-    pr_eyebrow:"How it works", pr_title:"Zero risk. Zero upfront.", pr_free:"FREE",
+    pr_eyebrow:"How it works", pr_title:"Zero risk.<br>Zero upfront.", pr_free:"FREE",
     pr1_t:"We build the demo", pr1_p:"Tell us about your business — or let us find you. Within 24 hours a fully designed website is live.",
     pr2_t:"You see it live", pr2_p:"You get a link to open on your phone, show your family and try yourself. Don't like it? Then it costs nothing.",
     pr3_t:"Pay when you love it", pr3_p:"Only when you say yes do we put the site on your own domain — with a form that sends customers straight to you.",
