@@ -412,7 +412,7 @@
     justify-content:center;text-align:center;gap:24px;opacity:0;
     transform:translateY(22px) scale(.985);filter:blur(6px);
     transition:opacity .7s ease, transform .7s ease, filter .7s ease;
-    pointer-events:none;padding:44px 72px}
+    pointer-events:none;padding:44px clamp(76px,11%,96px)}
   .ts-card.on{opacity:1;transform:none;filter:blur(0);pointer-events:auto}
   .ts-mark{font-family:var(--serif);font-style:italic;font-size:72px;line-height:.55;height:26px;
     background:var(--aurora);-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -426,23 +426,25 @@
   .ts-who div{text-align:left}
   .ts-who b{display:block;font-size:16px}
   .ts-who span{color:var(--dim);font-size:13.5px}
-  .ts-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
-    width:46px;height:46px;border-radius:50%;border:1px solid var(--line);cursor:pointer;
-    background:rgba(10,13,20,.6);backdrop-filter:blur(8px);color:var(--dim);
-    font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;
-    transition:.3s}
+  .ts-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:8;
+    width:46px;height:46px;border-radius:50%;cursor:pointer;
+    border:1px solid rgba(238,241,248,.22);
+    background:rgba(13,18,32,.85);backdrop-filter:blur(8px);color:var(--ink);
+    font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px -8px rgba(0,0,0,.7);transition:.3s}
   .ts-arrow:hover{color:#06281B;background:var(--mint);border-color:var(--mint);
-    box-shadow:0 0 26px rgba(99,242,185,.45)}
-  .ts-prev{left:-23px}
-  .ts-next{right:-23px}
+    box-shadow:0 0 26px rgba(99,242,185,.5)}
+  .ts-prev{left:16px}
+  .ts-next{right:16px}
   .ts-dots{display:flex;gap:10px;justify-content:center;margin-top:30px}
   .ts-dots button{width:36px;height:4px;border-radius:2px;border:none;cursor:pointer;
     background:rgba(238,241,248,.14);transition:.35s;padding:0}
   .ts-dots button.on{background:var(--aurora);box-shadow:0 0 12px rgba(99,242,185,.5)}
   @media(max-width:700px){
-    .ts-card{padding:38px 26px}
-    .ts-stage{min-height:420px}
-    .ts-prev{left:-8px}.ts-next{right:-8px}
+    .ts-card{padding:32px 22px 74px}
+    .ts-stage{min-height:430px}
+    .ts-arrow{top:auto;bottom:14px;transform:none}
+    .ts-prev{left:14px}.ts-next{right:14px}
     #ord::after{display:none}
   }
 
