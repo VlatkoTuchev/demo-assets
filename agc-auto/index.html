@@ -57,7 +57,9 @@
   }
 
   .hero{position:relative;overflow:hidden;padding-top:0;padding-bottom:0}
-  .hero-bg{position:absolute;inset:0;background:url("images/hero.jpg") center/cover no-repeat}
+  .hero{background:#17181B}
+  .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .hero-bg{position:absolute;inset:0}
   .hero-bg::after{content:"";position:absolute;inset:0;
     background:linear-gradient(100deg,rgba(23,24,27,.97) 10%,rgba(23,24,27,.82) 48%,rgba(23,24,27,.4) 100%)}
   .hero-in{position:relative;z-index:2;max-width:640px;padding-top:92px;padding-bottom:100px}
@@ -187,6 +189,7 @@
 </header>
 
 <section class="hero" id="top">
+  <img class="hero-img" src="images/hero.jpg" alt="" aria-hidden="true">
   <div class="hero-bg"></div>
   <div class="wrap hero-in">
     <span class="kick rv">Hardangervegen 525 · Haukeland · Bergen</span>
