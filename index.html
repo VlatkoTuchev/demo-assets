@@ -195,6 +195,7 @@
   .fj-book{position:relative;z-index:6;margin:4vh auto 0;display:flex;gap:0;align-items:stretch;
     background:#fff;border-radius:14px;overflow:hidden;
     box-shadow:0 24px 60px -24px rgba(35,53,48,.45)}
+  .fj-book{color:#233530}
   .fj-book div{padding:2vh 2.2vw;font-size:clamp(10px,1.05vw,13.5px);border-right:1px solid #E5E1D5;text-align:left}
   .fj-book div small{display:block;letter-spacing:.16em;text-transform:uppercase;font-size:.72em;color:#8A9088;margin-bottom:4px}
   .fj-book div b{font-family:var(--serif);font-weight:500;font-size:1.25em}
@@ -384,8 +385,10 @@
       width:2px;background:linear-gradient(180deg,rgba(99,242,185,.4),rgba(139,123,255,.2))}
   }
 
-  /* testimonials */
-  #ord{background:linear-gradient(180deg,var(--bg),#0C101C 45%,var(--bg))}
+  /* testimonials — overlaps the reel's ending so there is no blank scroll */
+  #ord{background:transparent;position:relative;z-index:70;
+    margin-top:-34svh;padding-top:0}
+  @media (prefers-reduced-motion: reduce){#ord{margin-top:0;padding-top:60px}}
   .ts-wrap{position:relative;z-index:2;max-width:860px;margin:0 auto}
   .ts-stage{position:relative;min-height:300px}
   .ts-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
@@ -1229,7 +1232,7 @@ if (!reduced){
   const tl = gsap.timeline({
     defaults:{ease:'power2.inOut'},
     scrollTrigger:{
-      trigger:'#reel', start:'top top', end:'+=8200',
+      trigger:'#reel', start:'top top', end:'+=8000',
       pin:'.reel-stage', scrub:0.7, anticipatePin:1,
       onUpdate(self){
         bar.style.transform = `scaleX(${self.progress})`;
@@ -1317,7 +1320,7 @@ if (!reduced){
   flash(tl, 't45+=.1');
   tl.to('#frameZone', {y:-110, opacity:0, scale:.93, rotationX:6, duration:1.2, ease:'power2.in'}, 't45+=.2')
     .to('#sc4', {autoAlpha:0, duration:.8}, 't45+=.4')
-    .to({}, {duration:.7}); // breath before unpin
+    .to({}, {duration:.3}); // short breath before unpin
 
   /* igloo-style mouse parallax: scenes and frame react to the cursor */
   if (matchMedia('(hover:hover) and (pointer:fine)').matches){
