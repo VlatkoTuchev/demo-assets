@@ -301,18 +301,11 @@
   }
   @media (prefers-reduced-motion: reduce){.kdrift{display:none}}
   #kontakt .wrap{position:relative}
-  .k-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;margin-top:46px;align-items:start}
-  .k-info{display:grid;gap:14px;align-content:start}
-  .k-info>div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;
-    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
-    border-radius:14px;padding:14px 16px}
-  .k-info .ki{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;
-    justify-content:center;background:linear-gradient(135deg,rgba(67,211,245,.22),rgba(11,114,172,.28));
-    color:var(--cyan2)}
-  .k-info .ki svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;
-    stroke-linecap:round;stroke-linejoin:round}
+  .k-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;margin-top:46px;align-items:start}
+  .k-info{display:grid;gap:17px;align-content:start}
+  .k-info>div{border-left:2.5px solid;border-image:var(--grad) 1;padding-left:15px}
   .k-info b{display:block;font-family:var(--mono);font-weight:500;font-size:10.5px;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--cyan2);margin-bottom:2px}
+    letter-spacing:.2em;text-transform:uppercase;color:var(--cyan2);margin-bottom:1px}
   .k-info span.kv{color:#F0F7FB;font-weight:500;font-size:15.5px}
   .k-info a{color:#fff;font-weight:700;border-bottom:1px solid rgba(67,211,245,.45)}
   .k-info a:hover{color:var(--cyan2)}
@@ -330,17 +323,6 @@
     background:#fff;box-shadow:0 0 0 3.5px rgba(20,180,230,.16)}
   textarea{min-height:104px;resize:vertical}
   .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .fleg{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:9px}
-  .pills{display:flex;flex-wrap:wrap;gap:8px}
-  .pill{position:relative;display:inline-flex;align-items:center;justify-content:center;
-    min-width:106px;padding:10px 15px;border:1.5px solid #D3E2EA;border-radius:999px;
-    font-size:14px;font-weight:500;color:var(--dim2);cursor:pointer;
-    transition:border-color .15s,background .15s,color .15s;margin:0}
-  .pill input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;
-    cursor:pointer;font-size:16px}
-  .pill:hover{border-color:var(--cyan)}
-  .pill.on{background:var(--grad);border-color:transparent;color:#fff;font-weight:700}
-  .pill:has(input:focus-visible){outline:2px solid var(--deep);outline-offset:2px}
   .send{background:var(--grad);color:#fff;border:0;font-weight:700;font-size:16.5px;
     padding:17px 22px;border-radius:13px;cursor:pointer;font-family:var(--sans);
     transition:filter .16s,transform .16s;box-shadow:0 10px 26px rgba(20,150,210,.3)}
@@ -673,20 +655,13 @@
       og får fast pris før vi starter.</p>
     <div class="k-grid">
       <div class="k-info rv">
-        <div><span class="ki"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg></span>
-          <span><b>Telefon</b><span class="kv"><a href="tel:98262417">982 62 417</a></span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
-          <span><b>E-post</b><span class="kv"><a href="mailto:post@smartror.as">post@smartror.as</a></span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-          <span><b>Adresse</b><span class="kv">Basbergveien 163, 3114 Tønsberg</span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4 5.6 4 9s-1.2 6.4-4 9c-2.8-2.6-4-5.6-4-9s1.2-6.4 4-9Z"/></svg></span>
-          <span><b>Område</b><span class="kv">Tønsberg og Vestfold — prosjekter i hele Østlandet</span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2.4"/></svg></span>
-          <span><b>Åpningstider</b><span class="kv">Man–fre 08:00–16:00</span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>
-          <span><b>Følg oss</b><span class="kv"><a href="https://www.facebook.com/smartroras/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/smartroras/" target="_blank" rel="noopener">Instagram</a></span></span></div>
-        <div><span class="ki"><svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/></svg></span>
-          <span><b>Org.nr</b><span class="kv">923 255 788</span></span></div>
+        <div><b>Telefon</b><span class="kv"><a href="tel:98262417">982 62 417</a></span></div>
+        <div><b>E-post</b><span class="kv"><a href="mailto:post@smartror.as">post@smartror.as</a></span></div>
+        <div><b>Adresse</b><span class="kv">Basbergveien 163, 3114 Tønsberg</span></div>
+        <div><b>Område</b><span class="kv">Tønsberg og Vestfold — prosjekter i hele Østlandet</span></div>
+        <div><b>Åpningstider</b><span class="kv">Man–fre 08:00–16:00</span></div>
+        <div><b>Følg oss</b><span class="kv"><a href="https://www.facebook.com/smartroras/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/smartroras/" target="_blank" rel="noopener">Instagram</a></span></div>
+        <div><b>Org.nr</b><span class="kv">923 255 788</span></div>
       </div>
       <form id="leadForm" class="rv" novalidate>
         <div class="f-head">
@@ -698,18 +673,7 @@
           <div><label>Navn<input type="text" name="Navn" required autocomplete="name" placeholder="Ola Nordmann"></label></div>
           <div><label>Telefon<input type="tel" name="Telefon" required autocomplete="tel" placeholder="900 00 000"></label></div>
         </div>
-        <div>
-          <div class="fleg" id="flegT">Hva gjelder det?</div>
-          <div class="pills" role="radiogroup" aria-labelledby="flegT">
-            <label class="pill on"><input type="radio" name="Tjeneste" value="Bad / våtrom" checked>Bad / våtrom</label>
-            <label class="pill"><input type="radio" name="Tjeneste" value="Varmepumpe">Varmepumpe</label>
-            <label class="pill"><input type="radio" name="Tjeneste" value="Gulvvarme">Gulvvarme</label>
-            <label class="pill"><input type="radio" name="Tjeneste" value="Røropplegg">Røropplegg</label>
-            <label class="pill"><input type="radio" name="Tjeneste" value="Sprinkler">Sprinkler</label>
-            <label class="pill"><input type="radio" name="Tjeneste" value="Service / annet">Service / annet</label>
-          </div>
-        </div>
-        <div><label>Beskriv jobben<textarea name="Melding" placeholder="F.eks. «Skal pusse opp badet på ca. 5 m² i Tønsberg — ønsker befaring og fastpris …»"></textarea></label></div>
+                <div><label>Beskriv jobben<textarea name="Melding" placeholder="F.eks. «Skal pusse opp badet på ca. 5 m² i Tønsberg — ønsker befaring og fastpris …»"></textarea></label></div>
         <button class="send" type="submit" id="sendBtn">Be om fast pris →</button>
         <div class="f-trust">
           <b><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></svg>Svar innen én arbeidsdag</b>
@@ -896,12 +860,6 @@
   igrow.addEventListener('scroll', igSync, { passive: true });
   addEventListener('resize', igSync);
   igSync();
-
-  // service pills
-  document.querySelectorAll('.pill input').forEach((r) => r.addEventListener('change', () => {
-    document.querySelectorAll('.pill').forEach(p =>
-      p.classList.toggle('on', p.querySelector('input').checked));
-  }));
 
   // drifting brand pixels in the contact section
   const kd = document.getElementById('kdrift');
