@@ -24,7 +24,7 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{overflow-x:clip}
-  html{background:var(--stone)}
+  html{background:#101112}
   /* defensive: hide elements third-party extensions (translators etc.) inject after the footer */
   footer ~ :not(script):not(#gapfill){display:none !important}
   /* paint the iOS overscroll area below the page in the footer color */
@@ -710,17 +710,22 @@
     fill.setAttribute('aria-hidden', 'true');
     fill.style.cssText = 'height:0;margin:0;padding:0;background:#101112';
     f.after(fill);
-    const fix = () => {
+    const gapNow = () => document.documentElement.scrollHeight
+      - Math.round(f.getBoundingClientRect().bottom + scrollY);
+    const fix = () => {                     // full pass: can grow and shrink
       fill.style.height = '0px';
-      const gap = document.documentElement.scrollHeight
-        - Math.round(f.getBoundingClientRect().bottom + scrollY);
+      const gap = gapNow();
       if (gap > 8) fill.style.height = gap + 'px';
+    };
+    const grow = () => {                    // observer-safe: only extends, so it converges
+      const extra = gapNow() - fill.offsetHeight;
+      if (extra > 8) fill.style.height = (fill.offsetHeight + extra) + 'px';
     };
     addEventListener('load', fix);
     addEventListener('resize', fix);
-    setTimeout(fix, 1200);
-    setTimeout(fix, 3500);
-    setTimeout(fix, 8000);
+    let n = 0;
+    const iv = setInterval(() => { fix(); if (++n > 40) clearInterval(iv); }, 1500);
+    if (window.ResizeObserver) new ResizeObserver(grow).observe(document.body);
   })();
 </script>
 </body>
