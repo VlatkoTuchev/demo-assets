@@ -93,8 +93,8 @@
   .hcard img{width:100%;aspect-ratio:3/4;object-fit:cover}
   .pxgrid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);
     grid-template-rows:repeat(11,1fr);pointer-events:none}
-  .pxgrid span{background:var(--ice);opacity:1}
-  .pxgrid.go span{opacity:0;transition:opacity .5s ease}
+  .pxgrid span{background:var(--ice);opacity:1;transition:opacity .45s ease}
+  .pxgrid.go span{opacity:0}
   .hcap{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;
     background:linear-gradient(transparent,rgba(8,46,64,.85));color:#EAF6FB;
     font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
@@ -329,9 +329,9 @@
         </div>
       </div>
       <div class="hcard rv" id="hcard">
-        <img src="images/hero-bad.jpg" alt="Nytt bad levert av Smart Rør — dusjhjørne med sort ramme og rundt speil med lys">
+        <img id="heroImg" src="images/hero-bad.jpg" alt="Nytt bad levert av Smart Rør — dusjhjørne med sort ramme og rundt speil med lys">
         <div class="pxgrid" id="pxgrid" aria-hidden="true"></div>
-        <div class="hcap">Bad levert av oss — ekte jobb, ekte foto</div>
+        <div class="hcap" id="hcap">Bad levert av oss — ekte jobb, ekte foto</div>
       </div>
     </div>
   </div>
@@ -595,18 +595,56 @@
   }), {threshold:.15});
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // hero photo assembles pixel by pixel, like the logo
+  // hero photo assembles pixel by pixel, like the logo — and rotates through real jobs
   const pxg = document.getElementById('pxgrid');
+  const heroImg = document.getElementById('heroImg');
+  const hcap = document.getElementById('hcap');
+  const hcard = document.getElementById('hcard');
   const COLS = 8, ROWS = 11;
   const frag = document.createDocumentFragment();
   for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
     const s = document.createElement('span');
-    s.style.transitionDelay = (((COLS - c) + r) * 42 + Math.random() * 120) + 'ms';
+    s.style.transitionDelay = (((COLS - c) + r) * 34 + Math.random() * 100) + 'ms';
     frag.appendChild(s);
   }
   pxg.appendChild(frag);
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) pxg.remove();
-  else requestAnimationFrame(() => requestAnimationFrame(() => pxg.classList.add('go')));
+  const SLIDES = [
+    { src: 'images/hero-bad.jpg', cap: 'Bad levert av oss — ekte jobb, ekte foto',
+      alt: 'Nytt bad levert av Smart Rør — dusjhjørne med sort ramme og rundt speil med lys' },
+    { src: 'images/p-bad5.jpg', cap: 'Detaljene teller — eik og servant',
+      alt: 'Baderomsinnredning i eik med servant' },
+    { src: 'images/vp2.jpg', cap: 'Teknisk rom — varmepumpe og bereder',
+      alt: 'Teknisk rom med væske-vann varmepumpe og bereder' },
+    { src: 'images/p-bad4.jpg', cap: 'Våtrom etter normen',
+      alt: 'Bad med dusj og vegghengt toalett' },
+  ];
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    pxg.remove();
+  } else {
+    SLIDES.forEach(s => { const i = new Image(); i.src = s.src; });
+    const PHASE = (COLS + ROWS) * 34 + 100 + 450;   // stagger + fade time
+    const HOLD = 2600;
+    let slide = 0, heroVis = true, cycling = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => pxg.classList.add('go')));
+    const cycle = () => {
+      if (!heroVis) { cycling = false; return; }
+      cycling = true;
+      pxg.classList.remove('go');                    // pixels cover the photo
+      setTimeout(() => {
+        slide = (slide + 1) % SLIDES.length;
+        heroImg.src = SLIDES[slide].src;
+        heroImg.alt = SLIDES[slide].alt;
+        hcap.textContent = SLIDES[slide].cap;
+        pxg.classList.add('go');                     // and reveal the next one
+        setTimeout(() => { if (heroVis) setTimeout(cycle, HOLD); else cycling = false; }, PHASE);
+      }, PHASE + 80);
+    };
+    const hio = new IntersectionObserver((es) => {
+      heroVis = es[0].isIntersecting;
+      if (heroVis && !cycling) { cycling = true; setTimeout(cycle, HOLD); }
+    }, {threshold:.3});
+    hio.observe(hcard);
+  }
 
   // badge ticker: duplicate content for seamless loop
   const tick = document.getElementById('tick');
