@@ -173,8 +173,20 @@
   .lib{margin-top:26px;display:grid;gap:10px;grid-template-columns:repeat(3,1fr);grid-auto-rows:290px}
   .ltile{position:relative;display:block;overflow:hidden;background:var(--ocean2);cursor:zoom-in;
     border:0;padding:0;text-align:inherit;font:inherit;border-radius:14px}
-  .ltile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .ltile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity .8s ease,transform .5s ease}
+  .ltile img.cur{opacity:1}
   .ltile:hover img{transform:scale(1.045)}
+  .lmulti{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:8px;
+    background:rgba(8,46,64,.72);display:flex;align-items:center;justify-content:center;
+    color:#fff;pointer-events:none}
+  .lmulti svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.9;
+    stroke-linecap:round;stroke-linejoin:round}
+  .ldots{position:absolute;left:50%;transform:translateX(-50%);bottom:36px;display:flex;
+    gap:5px;pointer-events:none}
+  .ldots i{width:5.5px;height:5.5px;border-radius:50%;background:rgba(255,255,255,.55);
+    transition:background .3s}
+  .ldots i.on{background:var(--cyan2)}
   .ltile::after{content:"";position:absolute;inset:0;border:1.5px solid transparent;border-radius:14px;
     transition:border-color .25s;pointer-events:none}
   .ltile:hover::after{border-color:rgba(67,211,245,.8)}
@@ -377,64 +389,43 @@
 
     <div class="lib go" id="lib">
       <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/C4a7wygoYa6/" data-cap="Nytt bad — sort dusjramme og lysspeil">
-        <img src="../images/etter-bad.jpg" alt="Nytt bad med sort dusjramme og rundt lysspeil"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/etter-bad.jpg" alt="Nytt bad med sort dusjramme og rundt lysspeil" class="cur"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CXjx9UGKkyj/" data-cap="Frittstående badekar med sort armatur">
-        <img src="../images/h-badekar.jpg" alt="Frittstående badekar med sort armatur"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CXjx9UGKkyj/" data-cap="Rundt lysspeil og sort servant">
-        <img src="../images/h-bad.jpg" alt="Bad med rundt lysspeil og sort servantskål"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CXjx9UGKkyj/" data-cap="Flott bad — ferdigstilt før julefreden">
+        <img src="../images/h-bad.jpg" alt="Bad med rundt lysspeil og sort servantskål" class="cur"><img src="../images/h-badekar.jpg" alt="Frittstående badekar med sort armatur"><img src="../images/h-dusj.jpg" alt="Dusjhjørne med sort armatur"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/Ca7zLP9K3Ps/" data-cap="Kundetoalett hos Modena Restec">
-        <img src="../images/h-toalett.jpg" alt="Mørkt designtoalett med LED-list"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/h-toalett.jpg" alt="Mørkt designtoalett med LED-list" class="cur"><img src="../images/h-toalett3.jpg" alt="Toalett i mørk stein — annen vinkel"><img src="../images/h-toalett2.jpg" alt="Toalett i mørk stein med belyst nisje"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CRYP2ETBXMB/" data-cap="Bad med grønne vegger og glassdusj">
-        <img src="../images/h-bad-gronn.jpg" alt="Bad med grønne vegger og dusj i glass"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CRYP2ETBXMB/" data-cap="Bad, toalettrom og vaskerom">
+        <img src="../images/h-bad-gronn.jpg" alt="Bad med grønne vegger og dusj i glass" class="cur"><img src="../images/h-bad-gronn2.jpg" alt="Grønt bad — dusjsone"><img src="../images/h-bad-gronn3.jpg" alt="Toalettrom i grønt"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Detaljene teller — eik og servant">
-        <img src="../images/p-bad5.jpg" alt="Baderomsinnredning i eik med servant"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Lyst bad med glassdusj">
-        <img src="../images/h-bad-hvit.jpg" alt="Lyst bad med glassdusj og vegghengt toalett"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/C4a7wygoYa6/" data-cap="Badet før vi kom — sånn så det ut">
-        <img src="../images/for-bad.jpg" alt="Gammelt bad med dusjforheng før renovering"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Enda et bad ferdigstilt">
+        <img src="../images/p-bad5.jpg" alt="Baderomsinnredning i eik med servant" class="cur"><img src="../images/h-bad-hvit.jpg" alt="Lyst bad med glassdusj og vegghengt toalett"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cy6TYWAIGTj/" data-cap="Væske/vann varmepumpe med forvarming">
-        <img src="../images/vp.jpg" alt="Væske-vann varmepumpe montert i teknisk rom"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cy6TYWAIGTj/" data-cap="Teknisk rom — komplett levert">
-        <img src="../images/vp2.jpg" alt="Teknisk rom med varmepumpe og bereder"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/vp.jpg" alt="Væske-vann varmepumpe montert i teknisk rom" class="cur"><img src="../images/vp2.jpg" alt="Teknisk rom med varmepumpe og bereder"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cfr2CEpKirN/" data-cap="Bosch Compress med jordkollektor">
-        <img src="../images/h-vp.jpg" alt="Bosch Compress varmepumpe med jordkollektor"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/h-vp.jpg" alt="Bosch Compress varmepumpe med jordkollektor" class="cur"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/CfE36aWr_fj/" data-cap="Gulvvarme lagt i snegle">
-        <img src="../images/h-snegle.jpg" alt="Gulvvarmerør lagt i perfekt snegleform"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/CfE36aWr_fj/" data-cap="Gulvvarme i enebolig — full dekning">
-        <img src="../images/h-gulvvarme.jpg" alt="To rørleggere legger gulvvarme"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/h-snegle.jpg" alt="Gulvvarmerør lagt i perfekt snegleform" class="cur"><img src="../images/h-gulvvarme.jpg" alt="To rørleggere legger gulvvarme"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cjn307cqFNx/" data-cap="Feilsøking med varmekamera">
-        <img src="../images/h-termo.jpg" alt="Varmekamera-bilde av radiator"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/h-termo2.jpg" alt="Radiator fotografert normalt" class="cur"><img src="../images/h-termo.jpg" alt="Samme radiator sett med varmekamera"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/C8C7OODI7oG/" data-cap="Troy signerer lærekontrakt">
-        <img src="../images/team-troy.jpg" alt="Troy signerer lærekontrakt med laget rundt"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/C8C7OODI7oG/" data-cap="Laget og støtteapparatet">
-        <img src="../images/team-hjem.jpg" alt="Smart Rør-laget samlet"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/team-troy.jpg" alt="Troy signerer lærekontrakt med laget rundt" class="cur"><img src="../images/team-hjem.jpg" alt="Smart Rør-laget samlet"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/CeNrkVVqh1A/" data-cap="Ny rørlegger på laget">
-        <img src="../images/h-laget.jpg" alt="Ny rørlegger med Smart Rør-genser"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/h-laget.jpg" alt="Ny rørlegger med Smart Rør-genser" class="cur"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
-      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/CzeR-wtIBIL/" data-cap="DN Gaselle 2023 — 1124 % vekst">
-        <img src="../images/gaselle.jpg" alt="DN Gaselle 2023-diplom"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
-
-      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/CUaIjGrq1nB/" data-cap="Ut med gammel oljefyr">
-        <img src="../images/h-oljefyr.jpg" alt="Gammel oransje oljefyr før utskifting"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/CUaIjGrq1nB/" data-cap="Ut med oljefyr — inn med ny tank">
+        <img src="../images/h-oljefyr.jpg" alt="Gammel oransje oljefyr før utskifting" class="cur"><img src="../images/h-tank.jpg" alt="Ny varmtvannstank montert"><span class="lmulti"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="14" height="14" rx="3"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg></span><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
 
       <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/C5vIwJ0IFVf/" data-cap="Servicebilene klare for oppdrag">
-        <img src="../images/vans.jpg" alt="To Smart Rør-servicebiler ved fjorden"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
+        <img src="../images/vans.jpg" alt="To Smart Rør-servicebiler ved fjorden" class="cur"><span class="lcap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></button>
     </div>
   </div>
 </section>
@@ -508,7 +499,7 @@
   const show = (t) => {
     const v = visible();
     cur = v.indexOf(t);
-    const img = t.querySelector('img');
+    const img = t.querySelector('img.cur') || t.querySelector('img');
     lbImg.src = img.src; lbImg.alt = img.alt;
     lbC.textContent = t.dataset.cap;
     lbA.href = t.dataset.url;
@@ -522,6 +513,29 @@
   };
   const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
   tiles.forEach(t => t.addEventListener('click', () => show(t)));
+
+  // tiles from carousel posts cycle through their images, like on Instagram
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    tiles.forEach((t, ti) => {
+      const imgs = [...t.querySelectorAll('img')];
+      if (imgs.length < 2) return;
+      const dots = document.createElement('span');
+      dots.className = 'ldots';
+      imgs.forEach((_, k) => {
+        const d = document.createElement('i');
+        if (k === 0) d.className = 'on';
+        dots.appendChild(d);
+      });
+      t.appendChild(dots);
+      let idx = 0;
+      setTimeout(() => setInterval(() => {
+        if (t.classList.contains('hide') || lb.classList.contains('open')) return;
+        idx = (idx + 1) % imgs.length;
+        imgs.forEach((im, k) => im.classList.toggle('cur', k === idx));
+        [...dots.children].forEach((d, k) => d.classList.toggle('on', k === idx));
+      }, 3200), (ti % 4) * 800);
+    });
+  }
   document.getElementById('lbX').addEventListener('click', close);
   document.getElementById('lbP').addEventListener('click', () => step(-1));
   document.getElementById('lbN').addEventListener('click', () => step(1));
