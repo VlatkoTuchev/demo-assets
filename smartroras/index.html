@@ -191,7 +191,7 @@
   .proj{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:44px}
   .flip{grid-column:span 5;position:relative;border-radius:18px;overflow:hidden;cursor:pointer;
     border:0;padding:0;background:var(--ocean);box-shadow:0 18px 44px rgba(8,46,64,.2)}
-  .flip img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:opacity .6s ease}
+  .flip img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:opacity .9s ease}
   .flip img.forr{opacity:0}
   .flip.showfor img.forr{opacity:1}
   .flip .fl{position:absolute;top:14px;left:14px;font-family:var(--mono);font-size:11px;
@@ -464,11 +464,11 @@
       — trykk på før/etter-kortet og se forvandlingen.</p>
     <div class="proj rv">
       <button class="flip" id="flip" type="button" aria-pressed="false"
-        aria-label="Vis før-bilde av badet">
+        aria-label="Bytt mellom før- og etter-bilde av badet">
         <img src="images/etter-bad.jpg" alt="Etter: nytt bad med sort dusjramme og rundt lysspeil">
         <img class="forr" src="images/for-bad.jpg" alt="Før: gammelt bad med dusjforheng">
         <span class="fl" id="flipLab">Etter</span>
-        <span class="hint"><i>⇆</i>Trykk for å se badet før vi kom</span>
+        <span class="hint"><i>⇆</i><span id="flipHint">Samme bad — før og etter, helt av seg selv</span></span>
       </button>
       <a class="ptile t1" href="https://www.instagram.com/p/CrL7ycOImRt/" target="_blank" rel="noopener">
         <img src="images/p-bad2.jpg" alt="Nytt bad med dusjhjørne og mørk innredning">
@@ -656,15 +656,36 @@
   hsBtns.forEach(b => b.addEventListener('click', () => setH(+b.dataset.h)));
   setH(0);
 
-  // før/etter flip
+  // før/etter flip — cycles by itself while visible; a tap takes over
   const flip = document.getElementById('flip');
   const flipLab = document.getElementById('flipLab');
-  flip.addEventListener('click', () => {
-    const showFor = !flip.classList.contains('showfor');
+  const flipHint = document.getElementById('flipHint');
+  let flipTimer = null;
+  let flipManual = false;
+  const setFlip = (showFor) => {
     flip.classList.toggle('showfor', showFor);
     flip.setAttribute('aria-pressed', showFor);
     flipLab.textContent = showFor ? 'Før' : 'Etter';
-    flip.querySelector('.hint').lastChild.textContent = showFor
+  };
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const fio = new IntersectionObserver((es) => {
+      if (es[0].isIntersecting && !flipManual) {
+        if (!flipTimer) flipTimer = setInterval(() =>
+          setFlip(!flip.classList.contains('showfor')), 3000);
+      } else {
+        clearInterval(flipTimer); flipTimer = null;
+      }
+    }, {threshold:.35});
+    fio.observe(flip);
+  } else {
+    flipHint.textContent = 'Trykk for å se badet før vi kom';
+  }
+  flip.addEventListener('click', () => {
+    flipManual = true;
+    clearInterval(flipTimer); flipTimer = null;
+    const showFor = !flip.classList.contains('showfor');
+    setFlip(showFor);
+    flipHint.textContent = showFor
       ? 'Trykk for å se badet ferdig' : 'Trykk for å se badet før vi kom';
   });
 
