@@ -23,6 +23,8 @@
   html{scroll-behavior:smooth}
   html,body{overflow-x:clip}
   html{background:var(--ice)}
+  /* defensive: hide elements third-party extensions (translators etc.) inject after the footer */
+  footer ~ :not(script){display:none !important}
   /* paint the iOS overscroll area below the page in the footer color */
   footer{box-shadow:0 50vh 0 50vh var(--ocean)}
   body{font-family:var(--sans);font-size:16.5px;line-height:1.66;color:var(--ink);background:var(--ice)}
