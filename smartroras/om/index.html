@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Om oss — Smart Rør AS</title>
+<meta name="description" content="Smart Rør AS — mesterbedrift i Tønsberg med 7 ansatte, DN Gaselle 2023 og papirene i orden. Møt folkene, se sertifiseringene og bla i bildebiblioteket.">
+<meta name="theme-color" content="#082E40">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='7' height='7' fill='%2343D3F5'/%3E%3Crect x='13' y='4' width='7' height='7' fill='%2314B4E6'/%3E%3Crect x='22' y='4' width='7' height='7' fill='%230B72AC'/%3E%3Crect x='13' y='13' width='7' height='7' fill='%2314B4E6'/%3E%3Crect x='22' y='13' width='7' height='7' fill='%230B72AC'/%3E%3Crect x='22' y='22' width='7' height='7' fill='%23085A88'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@600;700;800&family=Onest:wght@400;500;700&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ice:#F2F8FB; --ice2:#E3EFF6; --white:#FFFFFF;
+    --ink:#0B2B3B; --dim2:#4B6675; --mist:#9DB4C0;
+    --cyan:#14B4E6; --cyan2:#43D3F5; --deep:#0B72AC; --ocean:#082E40; --ocean2:#0A3A52;
+    --grad:linear-gradient(135deg,#43D3F5,#0B72AC);
+    --linei:rgba(11,43,59,.12);
+    --disp:"Gabarito",sans-serif; --sans:"Onest",sans-serif; --mono:"Chivo Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{font-family:var(--sans);font-size:16.5px;line-height:1.66;color:var(--ink);background:var(--ice)}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--cyan);color:#fff}
+  h1,h2,h3{font-family:var(--disp);line-height:1.02;letter-spacing:-.01em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.25,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .rv{transition:none;opacity:1;transform:none}
+  }
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(242,248,251,.88);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linei)}
+  .nav .wrap{display:flex;align-items:center;gap:26px;height:66px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:800;
+    font-size:20px;letter-spacing:-.01em;line-height:1.02}
+  .logo .lg{width:44px;height:44px;border-radius:10px;background:#fff;flex-shrink:0;overflow:hidden;
+    box-shadow:0 2px 10px rgba(11,43,59,.14)}
+  .logo .lg img{width:100%;height:100%;object-fit:cover;transform:scale(1.16)}
+  .logo small{display:block;font-family:var(--mono);font-weight:400;font-size:9px;
+    letter-spacing:.26em;color:var(--deep);text-transform:uppercase}
+  .nav-links{display:flex;gap:22px;margin-left:auto;font-weight:500;font-size:14.5px;color:var(--dim2)}
+  .nav-links a:hover{color:var(--deep)}
+  .nav-links a.on{color:var(--deep);border-bottom:2px solid var(--cyan)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;
+    font-family:var(--sans);padding:13px 22px;border-radius:12px;font-size:15.5px;
+    white-space:nowrap;transition:transform .18s,filter .18s;cursor:pointer}
+  .btn.cy{background:var(--grad);color:#fff;box-shadow:0 8px 22px rgba(20,150,210,.35)}
+  .btn.cy:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn.ghost{border:1.5px solid rgba(11,43,59,.25);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--cyan);color:var(--deep)}
+  .nav .btn{padding:11px 18px;font-size:14.5px}
+  @media (max-width:920px){
+    .nav-links{display:none}
+    .nav .wrap{gap:12px}
+    .logo{font-size:16px}
+    .logo .lg{width:38px;height:38px}
+    .nav .btn{margin-left:auto;padding:11px 13px}
+    .nav .btn span{display:none}
+  }
+
+  .ohero{position:relative;padding:80px 0 66px;overflow:clip}
+  .ohero .px-amb{position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:
+      linear-gradient(rgba(20,180,230,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(20,180,230,.05) 1px,transparent 1px);
+    background-size:44px 44px}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:500;
+    font-size:12.5px;letter-spacing:.2em;color:var(--deep);text-transform:uppercase;margin-bottom:16px}
+  .kick::before{content:"";width:8px;height:8px;background:var(--grad)}
+  .ohero h1{position:relative;font-size:clamp(42px,6vw,78px);font-weight:800;margin-bottom:18px;
+    letter-spacing:-.02em;max-width:16ch}
+  .ohero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;
+    background-clip:text;color:transparent}
+  .ohero p.lead{position:relative;font-size:clamp(16.5px,1.55vw,19px);color:var(--dim2);max-width:56ch}
+  .facts{position:relative;display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:24px;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;color:var(--dim2)}
+  .facts b{color:var(--deep);font-weight:500}
+  @media (max-width:920px){.ohero{padding:52px 0 50px}}
+
+  .sec{padding:88px 0}
+  .sec-k{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:500;
+    font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-bottom:14px}
+  .sec-k::before{content:"";width:8px;height:8px;background:var(--grad)}
+  .sec-t{font-size:clamp(32px,4.2vw,54px);font-weight:800;margin-bottom:16px;letter-spacing:-.015em}
+  .sec-p{max-width:62ch;color:var(--dim2)}
+  .dark{background:var(--ocean);color:#EAF4F9}
+  .dark .sec-k{color:var(--cyan2)}
+  .dark .sec-p{color:#A9C6D4}
+  @media (max-width:920px){.sec{padding:60px 0}}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .sp-img{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 22px 55px rgba(8,46,64,.22)}
+  .sp-img img{width:100%;aspect-ratio:4/3.6;object-fit:cover}
+  .sp-cap{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.12em;color:#EAF6FB;text-transform:uppercase;
+    background:linear-gradient(transparent,rgba(8,46,64,.85))}
+  .feats{list-style:none;margin-top:26px;display:grid;gap:16px}
+  .feats li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;font-weight:700}
+  .feats li small{display:block;font-weight:400;color:var(--dim2);font-size:15px;margin-top:2px}
+  .dark .feats li small{color:#A9C6D4}
+  .feats .px{width:10px;height:10px;background:var(--grad);margin-top:7px}
+  @media (max-width:920px){
+    .split{grid-template-columns:1fr;gap:28px}
+    .split.rev .sp-img{order:-1}
+  }
+
+  /* team duo */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+  .duo figure{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(8,46,64,.16)}
+  .duo img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .5s}
+  .duo figure:hover img{transform:scale(1.04)}
+  .duo figcaption{position:absolute;left:0;right:0;bottom:0;padding:11px 14px;font-family:var(--mono);
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#EAF6FB;
+    background:linear-gradient(transparent,rgba(8,46,64,.85) 40%)}
+  @media (max-width:920px){.duo{grid-template-columns:1fr}}
+
+  /* badges */
+  .bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+  .bg{background:var(--white);border:1px solid rgba(11,43,59,.08);border-radius:16px;padding:20px 18px;
+    transition:transform .22s,box-shadow .22s}
+  .bg:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(10,90,140,.14)}
+  .bg .sq{width:12px;height:12px;background:var(--grad);margin-bottom:12px}
+  .bg h3{font-size:16.5px;font-weight:700;margin-bottom:5px}
+  .bg p{font-size:13.5px;color:var(--dim2);line-height:1.5}
+  @media (max-width:920px){.bgrid{grid-template-columns:1fr 1fr;gap:10px}}
+
+  /* gaselle band */
+  .gas .wrap{display:grid;grid-template-columns:auto 1fr;gap:54px;align-items:center}
+  .gas .big{font-family:var(--disp);font-weight:800;font-size:clamp(80px,11vw,160px);line-height:.9;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .gas .big small{display:block;font-family:var(--mono);font-size:.11em;color:var(--cyan2);
+    -webkit-text-fill-color:var(--cyan2);letter-spacing:.3em;margin-top:14px;text-transform:uppercase}
+  @media (max-width:920px){.gas .wrap{grid-template-columns:1fr;gap:24px}}
+
+  /* hiring */
+  .hire{background:var(--ice2)}
+  .hire .wrap{display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .hire h2{font-size:clamp(28px,3.4vw,42px)}
+  .hire p{color:var(--dim2);max-width:52ch}
+
+  /* library */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:40px 0 0}
+  .fbtn{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    padding:9px 16px;border:1px solid rgba(255,255,255,.25);border-radius:10px;background:none;
+    color:#BFDCEA;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+  .fbtn:hover{border-color:var(--cyan);color:#fff}
+  .fbtn.on{background:var(--grad);border-color:transparent;color:#fff;font-weight:500}
+  .lib{margin-top:26px;display:grid;gap:10px;grid-template-columns:repeat(3,1fr);grid-auto-rows:290px}
+  .ltile{position:relative;display:block;overflow:hidden;background:var(--ocean2);cursor:zoom-in;
+    border:0;padding:0;text-align:inherit;font:inherit;border-radius:14px}
+  .ltile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .ltile:hover img{transform:scale(1.045)}
+  .ltile::after{content:"";position:absolute;inset:0;border:1.5px solid transparent;border-radius:14px;
+    transition:border-color .25s;pointer-events:none}
+  .ltile:hover::after{border-color:rgba(67,211,245,.8)}
+  .lcap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;
+    padding:9px 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:#EAF6FB;
+    background:linear-gradient(transparent,rgba(8,46,64,.9) 38%)}
+  .lcap i{font-style:normal;color:var(--cyan2);flex-shrink:0}
+  .ltile.hide{display:none}
+  .lib .ltile{opacity:0;transform:translateY(-14px)}
+  .lib.go .ltile{opacity:1;transform:none;
+    transition:opacity .45s ease,transform .55s cubic-bezier(.22,.9,.3,1.12)}
+  .lib.go .ltile:nth-child(3n+2){transition-delay:.1s}
+  .lib.go .ltile:nth-child(3n){transition-delay:.2s}
+  @media (prefers-reduced-motion: reduce){
+    .lib .ltile{opacity:1;transform:none;transition:none}
+    .ltile img{transition:none}
+  }
+  @media (max-width:920px){.lib{grid-template-columns:1fr 1fr;grid-auto-rows:220px}}
+  @media (max-width:560px){.lib{grid-template-columns:1fr;grid-auto-rows:280px}}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:90;background:rgba(4,22,32,.94);display:none;
+    align-items:center;justify-content:center;padding:30px 18px 74px}
+  .lb.open{display:flex}
+  .lb img{max-width:min(94vw,900px);max-height:76vh;object-fit:contain;border-radius:10px;
+    border:1px solid rgba(67,211,245,.4)}
+  .lb-bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:14px;align-items:center;
+    justify-content:center;padding:16px;font-family:var(--mono);font-size:12px;
+    letter-spacing:.1em;color:#CFE6F2;text-transform:uppercase;flex-wrap:wrap;text-align:center}
+  .lb-bar i{font-style:normal;color:var(--cyan2)}
+  .lb-bar a{color:var(--cyan2);border-bottom:1px solid rgba(67,211,245,.45)}
+  .lb-x,.lb-p,.lb-n{position:absolute;background:none;border:1px solid rgba(255,255,255,.3);
+    border-radius:12px;color:#EAF6FB;width:46px;height:46px;cursor:pointer;font-size:19px;
+    font-family:var(--sans);display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s,color .2s}
+  .lb-x:hover,.lb-p:hover,.lb-n:hover{border-color:var(--cyan);color:var(--cyan2)}
+  .lb-x{top:18px;right:18px}
+  .lb-p{left:14px;top:50%;transform:translateY(-50%)}
+  .lb-n{right:14px;top:50%;transform:translateY(-50%)}
+  @media (max-width:700px){.lb-p,.lb-n{display:none}}
+
+  .cta{background:var(--ocean);color:#EAF4F9;text-align:center}
+  .cta h2{font-size:clamp(34px,4.8vw,58px);margin-bottom:14px}
+  .cta p{color:#A9C6D4;max-width:52ch;margin:0 auto 30px}
+  .cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta .btn.ghost{border-color:rgba(255,255,255,.3);color:#EAF4F9}
+  .cta .btn.ghost:hover{border-color:var(--cyan);color:var(--cyan2)}
+
+  footer{background:var(--ocean);color:#9DB9C7;font-size:13.5px;padding:26px 0;
+    border-top:1px solid rgba(255,255,255,.12)}
+  footer .wrap{display:flex;gap:8px 26px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  footer i{width:8px;height:8px;background:var(--grad);display:inline-block;font-style:normal}
+
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label="Smart Rør AS — til forsiden">
+      <span class="lg"><img src="../images/logo.png" alt=""></span>
+      <span>Smart Rør AS<small>Rørleggermester · Tønsberg</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Hovedmeny">
+      <a href="../#tjenester">Tjenester</a>
+      <a href="../#huset">Det smarte huset</a>
+      <a href="../#prosjekter">Prosjekter</a>
+      <a class="on" href="./" aria-current="page">Om oss</a>
+      <a href="../#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn cy" href="tel:98262417" aria-label="Ring 982 62 417">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+      <span>982 62 417</span>
+    </a>
+  </div>
+</header>
+
+<section class="ohero">
+  <div class="px-amb" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kick rv">Om oss</span>
+    <h1 class="rv">Folkene bak de <em>smarte rørene</em></h1>
+    <p class="lead rv">Smart Rør AS ble startet i 2019 av rørleggermestre som ville gjøre
+      ting litt smartere: fast pris, ryddig utførelse og teknologi som faktisk sparer deg
+      penger. I dag er vi sju ansatte — og en av Vestfolds raskest voksende rørleggerbedrifter.</p>
+    <div class="facts rv">
+      <span><b>ORG.NR</b> 923 255 788</span>
+      <span><b>ETABLERT</b> 2019</span>
+      <span><b>ANSATTE</b> 7</span>
+      <span><b>BASE</b> TØNSBERG</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec gas dark">
+  <div class="wrap">
+    <div class="big rv">1124&nbsp;%<small>Vekst · DN Gaselle 2023</small></div>
+    <div class="rv">
+      <span class="sec-k">Historien</span>
+      <h2 class="sec-t">Fra to mestre til Gaselle-bedrift</h2>
+      <p class="sec-p">Bak Smart Rør står to rørleggermestre med hver sin styrke: Simon André
+        Prent-Olsen, mester og VVS-ingeniør, og Christian Klemo, mester med bakgrunn fra
+        instrumentrør offshore og hydraulikk. Kombinasjonen — håndverk pluss ingeniørhode —
+        tok bedriften fra oppstart i 2019 til DN Gaselle i 2023, med 1124 % vekst.
+        Vi er fortsatt like sultne.</p>
+      <ul class="feats">
+        <li><span class="px"></span><span>Mesterbrev og VVS-ingeniør
+          <small>Vi både prosjekterer og utfører — du slipper mellomledd</small></span></li>
+        <li><span class="px"></span><span>Erfaring fra industri og offshore
+          <small>Presisjonen fra instrumentrør og hydraulikk, med hjem til badet ditt</small></span></li>
+        <li><span class="px"></span><span>Fast pris, ryddig prosess
+          <small>Du vet hva det koster før vi starter — og vi rydder etter oss</small></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="laget">
+  <div class="wrap">
+    <span class="sec-k rv">Laget</span>
+    <h2 class="sec-t rv">Et lag som vokser</h2>
+    <p class="sec-p rv">Vi er godkjent lærebedrift og bygger laget vårt selv: Troy kom som
+      utplasseringselev og signerte lærekontrakt hos oss. Raymond tok svennebrevet med
+      «meget bestått». Sånn bygger man et fagmiljø — én dyktig person om gangen.</p>
+    <div class="duo rv">
+      <figure><img src="../images/team-troy.jpg" alt="Troy signerer lærekontrakt sammen med laget">
+        <figcaption>Troy signerer lærekontrakt — velkommen på laget</figcaption></figure>
+      <figure><img src="../images/team-hjem.jpg" alt="Smart Rør-teamet samlet med familie">
+        <figcaption>Laget — og støtteapparatet hjemme</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0" id="papirer">
+  <div class="wrap">
+    <span class="sec-k rv">Papirene i orden</span>
+    <h2 class="sec-t rv">Godkjenninger du kan sjekke</h2>
+    <div class="bgrid rv">
+      <div class="bg"><span class="sq"></span><h3>Mesterbedrift</h3>
+        <p>To rørleggermestre — mesterbrevet er ditt kvalitetsstempel.</p></div>
+      <div class="bg"><span class="sq"></span><h3>DN Gaselle 2023</h3>
+        <p>Blant Norges raskest voksende bedrifter, kåret av Dagens Næringsliv.</p></div>
+      <div class="bg"><span class="sq"></span><h3>Sentral godkjenning</h3>
+        <p>Godkjent av Direktoratet for byggkvalitet i tiltaksklasse 1.</p></div>
+      <div class="bg"><span class="sq"></span><h3>Godkjent våtromsbedrift</h3>
+        <p>Bad og våtrom etter våtromsnormen — med dokumentasjonen i orden.</p></div>
+      <div class="bg"><span class="sq"></span><h3>FG-sertifisert</h3>
+        <p>Sertifisert for kontroll av automatiske slokkesystemer (FG-900).</p></div>
+      <div class="bg"><span class="sq"></span><h3>Godkjent lærebedrift</h3>
+        <p>Vi utdanner morgendagens rørleggere — og beholder dem.</p></div>
+      <div class="bg"><span class="sq"></span><h3>Miljøfyrtårn</h3>
+        <p>Sertifisert miljøledelse — avfall, utslipp og innkjøp under kontroll.</p></div>
+      <div class="bg"><span class="sq"></span><h3>Rørentreprenørene Norge</h3>
+        <p>Medlem av bransjeorganisasjonen for seriøse rørleggerbedrifter.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec hire" id="jobb">
+  <div class="wrap">
+    <div class="rv">
+      <span class="sec-k">Jobb hos oss</span>
+      <h2>Rørlegger? Vi vil møte deg.</h2>
+      <p>Vi ser alltid etter dyktige rørleggere og lærlinger som vil være med videre.
+        Varierte oppdrag, servicebil og et lag som heier på deg.</p>
+    </div>
+    <a class="btn cy rv" href="mailto:post@smartror.as?subject=Jobb%20hos%20Smart%20R%C3%B8r">Send en søknad</a>
+  </div>
+</section>
+
+<section class="sec dark" id="bilder">
+  <div class="wrap">
+    <span class="sec-k rv">Bildebiblioteket</span>
+    <h2 class="sec-t rv">Jobbene våre, i bilder</h2>
+    <p class="sec-p rv">Alt er ekte — fra våre egne oppdateringer på
+      <a href="https://www.instagram.com/smartroras/" target="_blank" rel="noopener" style="color:var(--cyan2);font-weight:700;border-bottom:1px solid rgba(67,211,245,.45)">@smartroras</a>.
+      Trykk på et bilde for å se det større.</p>
+
+    <div class="filters rv" role="group" aria-label="Filtrer bilder">
+      <button class="fbtn on" data-f="alle" type="button">Alle</button>
+      <button class="fbtn" data-f="bad" type="button">Bad og våtrom</button>
+      <button class="fbtn" data-f="teknisk" type="button">Teknisk og varme</button>
+      <button class="fbtn" data-f="folk" type="button">Folkene</button>
+      <button class="fbtn" data-f="hverdag" type="button">Fra hverdagen</button>
+    </div>
+
+    <div class="lib go" id="lib">
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/C4a7wygoYa6/" data-cap="Nytt bad — sort dusjramme og lysspeil" data-l="56">
+        <img src="../images/etter-bad.jpg" alt="Nytt bad med sort dusjramme og rundt lysspeil"><span class="lcap"><i>♥ 56</i>Bad ferdigstilt</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Bad med dusjhjørne og mørk innredning" data-l="30">
+        <img src="../images/p-bad2.jpg" alt="Bad med dusjhjørne og mørk innredning"><span class="lcap"><i>♥ 30</i>Ennå et bad levert</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Våtrom etter normen" data-l="30">
+        <img src="../images/p-bad4.jpg" alt="Bad med dusj og vegghengt toalett"><span class="lcap"><i>♥ 30</i>Våtrom etter normen</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/CrL7ycOImRt/" data-cap="Detaljene teller — eik og servant" data-l="30">
+        <img src="../images/p-bad5.jpg" alt="Baderomsinnredning i eik med servant"><span class="lcap"><i>♥ 30</i>Detaljene teller</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/C4a7wygoYa6/" data-cap="Lyst bad med glassdusj" data-l="56">
+        <img src="../images/p-bad6.jpg" alt="Lyst bad med dusjvegger i glass"><span class="lcap"><i>♥ 56</i>Lyst og lettstelt</span></button>
+      <button class="ltile" type="button" data-cat="bad" data-url="https://www.instagram.com/p/C4a7wygoYa6/" data-cap="Badet før vi kom — sånn så det ut" data-l="56">
+        <img src="../images/for-bad.jpg" alt="Gammelt bad med dusjforheng før renovering"><span class="lcap"><i>♥ 56</i>Før-bildet</span></button>
+
+      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cy6TYWAIGTj/" data-cap="Væske/vann varmepumpe med forvarming" data-l="54">
+        <img src="../images/vp.jpg" alt="Væske-vann varmepumpe montert i teknisk rom"><span class="lcap"><i>♥ 54</i>Varmepumpe montert</span></button>
+      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/Cy6TYWAIGTj/" data-cap="Teknisk rom — komplett levert" data-l="54">
+        <img src="../images/vp2.jpg" alt="Teknisk rom med varmepumpe og bereder"><span class="lcap"><i>♥ 54</i>Teknisk rom</span></button>
+      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/CsGbdduIauV/" data-cap="Gulvvarme lagt på knottefilm" data-l="27">
+        <img src="../images/p-gulvvarme.jpg" alt="Gulvvarmerør lagt på knottefilm"><span class="lcap"><i>♥ 27</i>Gulvvarme i hele huset</span></button>
+      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/DVjMYg6jA2D/" data-cap="Aerotempere — 100 kW tilleggsvarme" data-l="19">
+        <img src="../images/p-aero.jpg" alt="Aerotemper montert i driftsbygning"><span class="lcap"><i>♥ 19</i>Aerotempere til næring</span></button>
+      <button class="ltile" type="button" data-cat="teknisk" data-url="https://www.instagram.com/p/DSc74zbjGkh/" data-cap="FG-kontroll av sprinkleranlegg" data-l="85">
+        <img src="../images/p-sprinkler.jpg" alt="Sprinkleranlegg kontrolleres"><span class="lcap"><i>♥ 85</i>Sprinkler under kontroll</span></button>
+
+      <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/C8C7OODI7oG/" data-cap="Troy signerer lærekontrakt" data-l="121">
+        <img src="../images/team-troy.jpg" alt="Troy signerer lærekontrakt med laget rundt"><span class="lcap"><i>♥ 121</i>Lærekontrakt signert</span></button>
+      <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/C8C7OODI7oG/" data-cap="Laget og støtteapparatet" data-l="121">
+        <img src="../images/team-hjem.jpg" alt="Smart Rør-laget samlet"><span class="lcap"><i>♥ 121</i>Laget samlet</span></button>
+      <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/DBbfTeno4q-/" data-cap="Raymond — svennebrev med meget bestått" data-l="65">
+        <img src="../images/team-raymond.jpg" alt="Raymond gratuleres med svennebrevet"><span class="lcap"><i>♥ 65</i>Svennebrev: meget bestått</span></button>
+      <button class="ltile" type="button" data-cat="folk" data-url="https://www.instagram.com/p/DKP6HlEoN9Q/" data-cap="Full fart på fjorden — sosialt lag" data-l="58">
+        <img src="../images/team-boat.jpg" alt="Laget på RIB-tur på fjorden"><span class="lcap"><i>♥ 58</i>Dag på vannet</span></button>
+
+      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/CzeR-wtIBIL/" data-cap="DN Gaselle 2023 — 1124 % vekst" data-l="164">
+        <img src="../images/gaselle.jpg" alt="DN Gaselle 2023-diplom"><span class="lcap"><i>♥ 164</i>DN Gaselle 2023</span></button>
+      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/DV0WpYHDJeN/" data-cap="Toalettrom med X-faktor" data-l="30">
+        <img src="../images/p-detalj.jpg" alt="Toalettrom med elvestein på gulvet"><span class="lcap"><i>♥ 30</i>Rom med X-faktor</span></button>
+      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/DOv-4PHCDHd/" data-cap="Ut med gammelt — inn med nytt" data-l="33">
+        <img src="../images/p-oppgradering.jpg" alt="Gammel stikkledning gravd fram for utskifting"><span class="lcap"><i>♥ 33</i>På tide med oppgradering</span></button>
+      <button class="ltile" type="button" data-cat="hverdag" data-url="https://www.instagram.com/p/C5vIwJ0IFVf/" data-cap="Servicebilene klare for oppdrag" data-l="40">
+        <img src="../images/vans.jpg" alt="To Smart Rør-servicebiler ved fjorden"><span class="lcap"><i>♥ 40</i>Bilene på veien</span></button>
+    </div>
+  </div>
+</section>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Bildevisning">
+  <button class="lb-x" id="lbX" type="button" aria-label="Lukk">✕</button>
+  <button class="lb-p" id="lbP" type="button" aria-label="Forrige bilde">‹</button>
+  <button class="lb-n" id="lbN" type="button" aria-label="Neste bilde">›</button>
+  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+  <div class="lb-bar"><i id="lbL"></i><span id="lbC"></span><a id="lbA" href="#" target="_blank" rel="noopener">Se på Instagram →</a></div>
+</div>
+
+<section class="sec cta">
+  <div class="wrap">
+    <h2 class="rv">Skal vi ta en titt hos deg?</h2>
+    <p class="rv">Ring, eller be om tilbud — du får fast pris før vi starter,
+      og et resultat vi begge kan være stolte av.</p>
+    <div class="row rv">
+      <a class="btn cy" href="tel:98262417">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.03Z"/></svg>
+        982 62 417</a>
+      <a class="btn ghost" href="../#kontakt">Be om tilbud</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><i></i>&nbsp; © Smart Rør AS · Org.nr 923 255 788</span>
+    <span>Basbergveien 163 · 3114 Tønsberg</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es) => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  const lib = document.getElementById('lib');
+  const tiles = [...lib.querySelectorAll('.ltile')];
+  document.querySelectorAll('.fbtn').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.fbtn').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    lib.classList.remove('go');
+    tiles.forEach(t => t.classList.toggle('hide', f !== 'alle' && t.dataset.cat !== f));
+    void lib.offsetWidth;
+    lib.classList.add('go');
+  }));
+
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbC = document.getElementById('lbC');
+  const lbL = document.getElementById('lbL');
+  const lbA = document.getElementById('lbA');
+  let cur = -1;
+  const visible = () => tiles.filter(t => !t.classList.contains('hide'));
+  const show = (t) => {
+    const v = visible();
+    cur = v.indexOf(t);
+    const img = t.querySelector('img');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbC.textContent = t.dataset.cap;
+    lbL.textContent = '♥ ' + t.dataset.l;
+    lbA.href = t.dataset.url;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const step = (d) => {
+    const v = visible();
+    if (!v.length) return;
+    show(v[(cur + d + v.length) % v.length]);
+  };
+  const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
+  tiles.forEach(t => t.addEventListener('click', () => show(t)));
+  document.getElementById('lbX').addEventListener('click', close);
+  document.getElementById('lbP').addEventListener('click', () => step(-1));
+  document.getElementById('lbN').addEventListener('click', () => step(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+</script>
+</body>
+</html>
