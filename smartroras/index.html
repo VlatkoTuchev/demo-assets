@@ -236,12 +236,18 @@
 
   /* ---------- IG strip ---------- */
   .igrow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px}
-  .igrow a{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:9/16;display:block}
+  .igrow a{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;display:block}
   .igrow img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
   .igrow a:hover img{transform:scale(1.06)}
-  .igrow .lk{position:absolute;right:8px;bottom:8px;font-family:var(--mono);font-size:10.5px;
-    color:#fff;background:rgba(8,46,64,.72);padding:3px 8px;border-radius:6px}
+  .igb{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:7px;
+    justify-content:center;padding:8px 10px;font-family:var(--mono);font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;color:#fff;
+    background:linear-gradient(transparent,rgba(8,46,64,.55) 25%,rgba(8,46,64,.9))}
+  .igb svg{width:13px;height:13px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round}
+  .igrow a:hover .igb{color:var(--cyan2)}
   @media (max-width:920px){.igrow{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:560px){.igrow{grid-template-columns:repeat(2,1fr)}}
 
   /* ---------- kontakt ---------- */
   .k-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;margin-top:46px}
@@ -525,18 +531,24 @@
     <p class="sec-p rv">Små glimt fra jobbene våre — rett fra
       <a href="https://www.instagram.com/smartroras/" target="_blank" rel="noopener" style="color:var(--deep);font-weight:700;border-bottom:1px solid rgba(11,114,172,.4)">@smartroras</a>.</p>
     <div class="igrow rv">
-      <a href="https://www.instagram.com/p/DSc74zbjGkh/" target="_blank" rel="noopener">
-        <img src="images/p-sprinkler.jpg" alt="Sprinkleranlegg kontrolleres"><span class="lk">♥ 85</span></a>
-      <a href="https://www.instagram.com/p/DV0WpYHDJeN/" target="_blank" rel="noopener">
-        <img src="images/p-detalj.jpg" alt="Toalettrom med elvestein på gulvet"><span class="lk">♥ 30</span></a>
-      <a href="https://www.instagram.com/p/DOv-4PHCDHd/" target="_blank" rel="noopener">
-        <img src="images/p-oppgradering.jpg" alt="Gammel stikkledning gravd fram"><span class="lk">♥ 33</span></a>
-      <a href="https://www.instagram.com/p/CsGbdduIauV/" target="_blank" rel="noopener">
-        <img src="images/p-gulvvarme.jpg" alt="Gulvvarmerør lagt på knottefilm"><span class="lk">♥ 27</span></a>
-      <a href="https://www.instagram.com/p/DVjMYg6jA2D/" target="_blank" rel="noopener">
-        <img src="images/p-aero.jpg" alt="Aerotemper montert i driftsbygning"><span class="lk">♥ 19</span></a>
-      <a href="https://www.instagram.com/p/DBbfTeno4q-/" target="_blank" rel="noopener">
-        <img src="images/team-raymond.jpg" alt="Raymond gratuleres med svennebrev"><span class="lk">♥ 65</span></a>
+      <a href="https://www.instagram.com/p/CXjx9UGKkyj/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: nytt bad med rundt lysspeil">
+        <img src="images/h-bad.jpg" alt="Nytt bad med rundt lysspeil og sort servant">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
+      <a href="https://www.instagram.com/p/Ca7zLP9K3Ps/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: kundetoalett hos Modena Restec">
+        <img src="images/h-toalett.jpg" alt="Mørkt designtoalett med LED-list hos bedriftskunde">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
+      <a href="https://www.instagram.com/p/CfE36aWr_fj/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: gulvvarme legges i snegle">
+        <img src="images/h-gulvvarme.jpg" alt="To rørleggere legger gulvvarme i snegleform">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
+      <a href="https://www.instagram.com/p/CeNrkVVqh1A/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: ny rørlegger på laget">
+        <img src="images/h-laget.jpg" alt="Ny rørlegger med Smart Rør-genser">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
+      <a href="https://www.instagram.com/p/Cjn307cqFNx/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: feilsøking med varmekamera">
+        <img src="images/h-termo.jpg" alt="Varmekamera-bilde av radiator under feilsøking">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
+      <a href="https://www.instagram.com/p/Cfr2CEpKirN/" target="_blank" rel="noopener" aria-label="Se innlegget på Instagram: Bosch varmepumpe med jordkollektor">
+        <img src="images/h-vp.jpg" alt="Bosch Compress varmepumpe med jordkollektor i teknisk rom">
+        <span class="igb"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>Se innlegget</span></a>
     </div>
   </div>
 </section>
