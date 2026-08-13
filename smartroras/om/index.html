@@ -498,23 +498,38 @@
   const lbImg = document.getElementById('lbImg');
   const lbC = document.getElementById('lbC');
   const lbA = document.getElementById('lbA');
-  let cur = -1;
-  const visible = () => tiles.filter(t => !t.classList.contains('hide'));
-  const show = (t) => {
-    const v = visible();
-    cur = v.indexOf(t);
-    const img = t.querySelector('img.cur') || t.querySelector('img');
+  // the lightbox is scoped to ONE post: arrows step through that post's
+  // carousel images only, like on Instagram
+  let curTile = null, curIdx = 0;
+  const lbP = document.getElementById('lbP');
+  const lbN = document.getElementById('lbN');
+  const lbImgs = () => curTile ? [...curTile.querySelectorAll('img')] : [];
+  const render = () => {
+    const imgs = lbImgs();
+    const img = imgs[curIdx];
     lbImg.src = img.src; lbImg.alt = img.alt;
-    lbC.textContent = t.dataset.cap;
-    lbA.href = t.dataset.url;
+    lbC.textContent = curTile.dataset.cap + (imgs.length > 1 ? '  ·  ' + (curIdx + 1) + ' / ' + imgs.length : '');
+    lbA.href = curTile.dataset.url;
+    const multi = imgs.length > 1;
+    lbP.style.display = multi ? '' : 'none';
+    lbN.style.display = multi ? '' : 'none';
+    lbImg.style.cursor = multi ? 'pointer' : '';
+  };
+  const show = (t) => {
+    curTile = t;
+    const imgs = [...t.querySelectorAll('img')];
+    curIdx = Math.max(0, imgs.findIndex(i => i.classList.contains('cur')));
+    render();
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   };
   const step = (d) => {
-    const v = visible();
-    if (!v.length) return;
-    show(v[(cur + d + v.length) % v.length]);
+    const n = lbImgs().length;
+    if (n < 2) return;
+    curIdx = (curIdx + d + n) % n;
+    render();
   };
+  lbImg.addEventListener('click', () => step(1));
   const close = () => { lb.classList.remove('open'); document.body.style.overflow = ''; };
   tiles.forEach(t => t.addEventListener('click', () => show(t)));
 
