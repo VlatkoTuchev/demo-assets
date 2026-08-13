@@ -26,7 +26,7 @@
   html,body{overflow-x:clip}
   html{background:var(--stone)}
   /* defensive: hide elements third-party extensions (translators etc.) inject after the footer */
-  footer ~ :not(script){display:none !important}
+  footer ~ :not(script):not(#gapfill){display:none !important}
   /* paint the iOS overscroll area below the page in the footer color */
   footer{box-shadow:0 50vh 0 50vh var(--void)}
   body{font-family:var(--sans);font-size:16.5px;line-height:1.65;color:var(--ink);background:var(--stone)}
@@ -558,6 +558,29 @@
     if (e.key === 'ArrowLeft') step(-1);
     if (e.key === 'ArrowRight') step(1);
   });
+</script>
+<script>
+  // Some browser extensions (page translators etc.) force extra document height,
+  // which shows as a blank band below the footer. Measure and cover it.
+  (() => {
+    const f = document.querySelector('footer');
+    const fill = document.createElement('div');
+    fill.id = 'gapfill';
+    fill.setAttribute('aria-hidden', 'true');
+    fill.style.cssText = 'height:0;margin:0;padding:0;background:#101112';
+    f.after(fill);
+    const fix = () => {
+      fill.style.height = '0px';
+      const gap = document.documentElement.scrollHeight
+        - Math.round(f.getBoundingClientRect().bottom + scrollY);
+      if (gap > 8) fill.style.height = gap + 'px';
+    };
+    addEventListener('load', fix);
+    addEventListener('resize', fix);
+    setTimeout(fix, 1200);
+    setTimeout(fix, 3500);
+    setTimeout(fix, 8000);
+  })();
 </script>
 </body>
 </html>
